@@ -1,0 +1,19 @@
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170803-26819-td2q7m.rb extconf.rb
+creating Makefile
+
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling threads.c
+compiling breakpoint.c
+compiling locker.c
+compiling context.c
+compiling byebug.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -m 0755 byebug.so ./.gem.20170803-26819-11noic1/byebug
