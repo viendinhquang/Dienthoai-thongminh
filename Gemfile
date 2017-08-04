@@ -20,6 +20,7 @@ gem 'devise-i18n-views'
 gem 'dragonfly'
 gem 'dragonfly-s3_data_store'
 gem 'sidekiq'
+gem 'faker'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

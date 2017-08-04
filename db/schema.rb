@@ -55,21 +55,11 @@ ActiveRecord::Schema.define(version: 20170804085133) do
   end
 
   create_table "type_colors", force: :cascade do |t|
-    t.string   "System"
+    t.string   "color_code"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "sex"
-    t.string   "email"
-    t.string   "password"
-    t.string   "birthday"
-    t.string   "avatar"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "product_photo"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
