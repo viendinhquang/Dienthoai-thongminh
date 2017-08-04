@@ -1,5 +1,5 @@
 current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/pg-0.21.0/ext
-/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170803-26819-8xnne.rb extconf.rb
+/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170804-10427-lw4if4.rb extconf.rb
 checking for pg_config... yes
 Using config values from /usr/bin/pg_config
 checking for libpq-fe.h... yes
@@ -75,4 +75,4 @@ linking shared-object pg_ext.so
 
 current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/pg-0.21.0/ext
 make "DESTDIR=" install
-/usr/bin/install -m 0755 pg_ext.so ./.gem.20170803-26819-ie87p3
+/usr/bin/install -m 0755 pg_ext.so ./.gem.20170804-10427-1gsqv66

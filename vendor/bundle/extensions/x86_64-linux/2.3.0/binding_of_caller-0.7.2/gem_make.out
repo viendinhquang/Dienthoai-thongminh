@@ -1,5 +1,5 @@
 current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/binding_of_caller-0.7.2/ext/binding_of_caller
-/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170803-26819-ttwuji.rb extconf.rb
+/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170804-10427-ipk58t.rb extconf.rb
 
 current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/binding_of_caller-0.7.2/ext/binding_of_caller
 make "DESTDIR=" clean

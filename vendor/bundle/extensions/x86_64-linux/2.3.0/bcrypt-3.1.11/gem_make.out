@@ -1,0 +1,19 @@
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170804-10427-ofl6td.rb extconf.rb
+creating Makefile
+
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" clean
+
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR="
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+compiling bcrypt_ext.c
+compiling crypt.c
+linking shared-object bcrypt_ext.so
+
+current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20170804-10427-forrnq

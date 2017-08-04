@@ -1,5 +1,5 @@
 current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/json-1.8.6/ext/json
-/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170803-26819-1jh79uc.rb extconf.rb
+/home/asiantech/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170804-10427-1i63kf9.rb extconf.rb
 creating Makefile
 
 current directory: /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/json-1.8.6/ext/json
