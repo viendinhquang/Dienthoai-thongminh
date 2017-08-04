@@ -973,7 +973,7 @@ checked program was:
 /* end */
 
 "gcc -o conftest -I/home/asiantech/.rvm/rubies/ruby-2.3.1/include/ruby-2.3.0/x86_64-linux -I/home/asiantech/.rvm/rubies/ruby-2.3.1/include/ruby-2.3.0/ruby/backward -I/home/asiantech/.rvm/rubies/ruby-2.3.1/include/ruby-2.3.0 -I. -I/usr/include/postgresql     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC conftest.c  -L. -L/home/asiantech/.rvm/rubies/ruby-2.3.1/lib -Wl,-R/home/asiantech/.rvm/rubies/ruby-2.3.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,'/../lib' -Wl,-R'/../lib' -lruby -lpq  -lpthread -ldl -lcrypt -lm   -lc"
-/tmp/ccJ37PUQ.o: In function `t':
+/tmp/ccEFzBfn.o: In function `t':
 /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/pg-0.21.0/ext/conftest.c:14: undefined reference to `rb_enc_alias'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -1136,7 +1136,7 @@ checked program was:
 /* end */
 
 "gcc -o conftest -I/home/asiantech/.rvm/rubies/ruby-2.3.1/include/ruby-2.3.0/x86_64-linux -I/home/asiantech/.rvm/rubies/ruby-2.3.1/include/ruby-2.3.0/ruby/backward -I/home/asiantech/.rvm/rubies/ruby-2.3.1/include/ruby-2.3.0 -I. -I/usr/include/postgresql     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat  -fPIC conftest.c  -L. -L/home/asiantech/.rvm/rubies/ruby-2.3.1/lib -Wl,-R/home/asiantech/.rvm/rubies/ruby-2.3.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,'/../lib' -Wl,-R'/../lib' -lruby -lpq  -lpthread -ldl -lcrypt -lm   -lc"
-/tmp/cc5SjSIp.o: In function `t':
+/tmp/cctQyg0l.o: In function `t':
 /home/asiantech/Documents/Dienthoai-thongminh/vendor/bundle/gems/pg-0.21.0/ext/conftest.c:14: undefined reference to `rb_w32_wrap_io_handle'
 collect2: error: ld returned 1 exit status
 checked program was:
