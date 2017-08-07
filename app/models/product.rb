@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-  belong_to :producer
-  belong_to :operating_systems
-  belong_to :type_colors
+  belongs_to :producer
+  belongs_to :operating_systems
+  belongs_to :type_colors
+  has_many :products, dependent: :destroy
 end
