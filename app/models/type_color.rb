@@ -1,3 +1,3 @@
 class TypeColor < ActiveRecord::Base
-  belongs_to :type_colors
+  has_many :products, dependent: :destroy
 end
