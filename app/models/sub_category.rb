@@ -1,3 +1,4 @@
 class SubCategory < ActiveRecord::Base
-  belong_to :category, dependent: :destroy
+  belongs_to :category
+  has_many :products, dependent: :destroy
 end
