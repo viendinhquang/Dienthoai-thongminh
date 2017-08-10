@@ -10,6 +10,13 @@
   avatar = Faker::Avatar.image
   User.create(name: name, email: email, password: password, sex: sex, birthday: birthday, avatar: avatar)
 end
+
+users = User.order(:created_at).take(5)
+50.times do
+  title = Faker::Name.title
+  content = Faker::Lorem.sentence(1)
+  users.each { |user| user.posts.create!(title: title, content: content) }
+end
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
