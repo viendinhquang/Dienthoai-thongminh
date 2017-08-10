@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'faker'
 gem 'rails', '4.2.8'
 gem 'pg', '~> 0.20.0'
 gem 'sass-rails', '~> 5.0'
