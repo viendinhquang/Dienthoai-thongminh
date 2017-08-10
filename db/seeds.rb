@@ -5,7 +5,10 @@
   name  = Faker::Name.name
   email = Faker::Internet.unique.free_email
   password = Faker::Internet.password(8, 10)
-  sex = "male"
+  sex = "Male"
+  # sex = [ "Male", "Female"].each do |sex|
+  #   User.create({sex: sex})
+  # end
   birthday = Faker::Date.birthday
   avatar = Faker::Avatar.image
   User.create(name: name, email: email, password: password, sex: sex, birthday: birthday, avatar: avatar)
@@ -16,6 +19,48 @@ users = User.order(:created_at).take(5)
   title = Faker::Name.title
   content = Faker::Lorem.sentence(1)
   users.each { |user| user.posts.create!(title: title, content: content) }
+end
+
+#Create Categories
+[ "Smart Phone", "Tablet", "Accessories", "Service", "Promotion"].each do |category|
+  Category.create!({name: category})
+end
+
+#Create Sub Categories
+#Smart Phone
+categories =Category.order(:created_at).where(id: 1)
+5.times do
+  [ "iPhone 5", "iPhone 6", "SamSung J5", "HTC M8", "Oppo F1"].each do |sub_category|
+    categories.each { |category| category.sub_categories.create!(name: sub_category)}
+  end
+end
+#Tablet
+categories =Category.order(:created_at).where(id:2)
+5.times do
+  [ "iPad 2", "iPad 3", "iPad Pro", "iPac Mini", "iPad Air"].each do |sub_category|
+    categories.each { |category| category.sub_categories.create!(name: sub_category)}
+  end
+end
+#Accessories
+categories =Category.order(:created_at).where(id:3)
+5.times do
+  [ "Phone Battery", "Backup Charger", "Headphone", "Memory Card", "Sim 3G"].each do |sub_category|
+    categories.each { |category| category.sub_categories.create!(name: sub_category)}
+  end
+end
+# Service
+categories =Category.order(:created_at).where(id:4)
+5.times do
+  [ "Repair iPhone/iPad", "Repair SamSung", "Repair HTC", "Repair Oppo", "Replace the iPhone case"].each do |sub_category|
+    categories.each { |category| category.sub_categories.create!(name: sub_category)}
+  end
+end
+# Promotion
+categories =Category.order(:created_at).where(id:5)
+5.times do
+  [ "General Promotion", "SALE"].each do |sub_category|
+    categories.each { |category| category.sub_categories.create!(name: sub_category)}
+  end
 end
 # Examples:
 #
