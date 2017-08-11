@@ -1,0 +1,23 @@
+body {
+  background-color: transparent;
+  font-size: 13px;
+  font-family: "opensans", Helvetica, Arial, sans-serif;
+  line-height: 1.42857;
+  color: #383838;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  .wrapper_page {
+    background: url(../images/texture1.png) center center;
+  }
+
+  .layout {
+    width: 1160px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

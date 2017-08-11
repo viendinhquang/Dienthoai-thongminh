@@ -1,0 +1,40 @@
+header{
+  .layout {
+    position: relative;
+  }
+
+  span {
+    font-family: MyriadPro-Regular;
+  }
+
+  strong {
+    font-size: 14px;
+    color: #353D43;
+    text-transform: uppercase;
+  }
+
+  .center {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+  }
+
+  .slogan {
+    color:#ffa500;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+  }
+
+  .title-icon {
+    color:#ff0000;
+    font-size:14px;
+    background-color:#f9f9f9;
+  }
+}
+
+body .header {
+  background: #F5F5F5;
+  position: relative;
+  border-bottom: 1px solid #E8E8E8;
+}
