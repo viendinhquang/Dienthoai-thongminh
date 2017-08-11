@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "font-awesome-rails"
 gem 'faker'
 gem 'rails', '4.2.8'
 gem 'pg', '~> 0.20.0'

@@ -20,4 +20,22 @@ body {
     padding-left: 10px;
     padding-right: 10px;
   }
+
+  .layout:after {
+    clear: both;
+  }
+
+  .layout:before, .layout:after {
+    content: " ";
+    display: table;
+  }
+}
+
+a, a:visited{
+  color: #252525;
+  text-decoration: none;
+}
+a:hover, a:active, a:focus{
+  color: #FF8B00;
+  text-decoration: none;
 }

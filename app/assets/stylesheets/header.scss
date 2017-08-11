@@ -38,3 +38,83 @@ body .header {
   position: relative;
   border-bottom: 1px solid #E8E8E8;
 }
+
+.subnavigation {
+  background: #fff;
+
+  .subnavigation__content {
+    display: table;
+
+    .col__table {
+      display: table-cell;
+      vertical-align: middle;
+      height: 112px;
+    }
+  }
+  .mainmenu__icon {
+    float: right;
+
+    .menu__item {
+      float: left;
+      border-right: 1px dotted #CECECE;
+      padding-right: 40px;
+      margin-right: 40px;
+      position: relative;
+
+      .iconbox {
+        background: none repeat scroll 0 0 #FFF;
+        border: 1px solid #E1E1E1;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        width: 32px;
+        text-align: center;
+        height: 32px;
+        float: left;
+        margin-right: 10px;
+
+        i {
+          line-height: 30px;
+          color: #5C676E;
+        }
+      }
+
+      .contentbox {
+        float: left;
+        position: relative;
+        h4 {
+          margin-top: 0;
+          margin-bottom: 6px;
+          span {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+        }
+        small {
+          color: #7F7F7F;
+          font-size: 13px;
+          text-transform: none;
+          white-space: nowrap;
+          max-width: 145px;
+          display: inline-block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      &:hover{
+        cursor: point;
+        .iconbox {
+          border: 1px solid #FF8B00;
+          .fa {
+            color: #FF8B00;
+          }
+        }
+        span{
+          color: #FF8B00;
+        }
+      }
+    }
+  }
+}
