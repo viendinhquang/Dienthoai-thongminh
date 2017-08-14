@@ -118,3 +118,56 @@ body .header {
     }
   }
 }
+.navigation{
+  background: url(../images/texture2.png) center center #ff8b00;
+  background-size: 39px 18px;
+  .navigation-content{
+    position:relative;
+    .pull-left{
+      width: 840px;
+    }
+    .pull-right{
+      width: 270px;
+    }
+  }
+  .navigation-content {
+    position: relative;
+  }
+}
+.nav-mainmenu-content {
+  width: 100%;
+  display: table;
+  .level_1 {
+    display: table-cell;
+    height: 46px;
+    vertical-align: middle;
+    a {
+      color: #FFFFFF;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 14px;
+      padding-left: 20px;
+      padding-right: 0;
+      white-space: nowrap;
+      .iconbox {
+        text-align: center;
+        background: none repeat scroll 0 0 #FFFFFF;
+        border-radius: 20px 20px 20px 20px;
+        display: inline-block;
+        padding: 2px;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        z-index: 1;
+        i {
+          color: #FF8B00;
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  li {
+    position: relative;
+  }
+}
