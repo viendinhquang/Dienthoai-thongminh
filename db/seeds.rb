@@ -1,17 +1,36 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
+User.create!(name:  "Quang Vien",
+             email: "dinhquangvien@gmail.com",
+             password:              "123456",
+             # password_confirmation: "123456",
+             sex: "Male",
+             admin: true)
+User.create!(name:  "Vien Vip",
+             email: "vienvip9x@gmail.com",
+             password:              "123456",
+             # password_confirmation: "123456",
+             sex: "Female",
+             admin: true)
+User.create!(name:  "Paul Vien",
+             email: "vien@asiantech.vn",
+             password:              "123456",
+             # password_confirmation: "123456",
+             sex: "Female",
+             admin: true)
 100.times do |n|
   name  = Faker::Name.name
   email = Faker::Internet.unique.free_email
-  password = Faker::Internet.password(8, 10)
+  # password = Faker::Internet.password(6, 8)
+  password = "password"
   sex = "Male"
   # sex = [ "Male", "Female"].each do |sex|
   #   User.create({sex: sex})
   # end
   birthday = Faker::Date.birthday
   avatar = Faker::Avatar.image
-  User.create(name: name, email: email, password: password, sex: sex, birthday: birthday, avatar: avatar)
+  User.create(name: name, email: email, password: password, sex: sex, birthday: birthday, avatar: avatar, admin: false)
 end
 
 users = User.order(:created_at).take(5)

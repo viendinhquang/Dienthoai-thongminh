@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
+  # devise_for :users, controllers: {
+  #   # sessions: 'users/sessions'
+  #   sessions: 'users/registrations'
+  # }
+
+  devise_scope :user do
+    get 'sign_in', to: 'devise/sessions#new'
+    get 'sign_up', to: 'devise/registrations#new'
+  end
+
+  #  namespace :admin do
+  #     Directs /admin/products/* to Admin::ProductsController
+  #     (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
   get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
