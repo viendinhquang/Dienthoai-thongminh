@@ -1,0 +1,29 @@
+<h1>New Product</h1>
+<%= form_for :product, url: admin_products_path, method: :post do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter the name", class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :price %>
+    <%= f.text_field :price, placeholder: "Enter the price", class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :made_in %>
+    <%= f.text_field :made_in, placeholder: "Enter the make in place", class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :price %>
+    <%= f.text_field :price, placeholder: "Enter the price", class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :screen_size %>
+    <%= f.text_field :screen_size, placeholder: "Enter the screen_size", class: 'form-control' %>
+  </p>
+
+  <%= f.submit "Create", class: "btn btn-success" %>
+<% end %>

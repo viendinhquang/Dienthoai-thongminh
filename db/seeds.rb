@@ -85,7 +85,7 @@ end
 
 100.times do |n|
   name  = Faker::Vehicle.manufacture
-  price = Faker::Number.number(5)
+  price = Faker::Number.number(3)
   made_in = Faker::Address.country
   screen_size = Faker::Number.between(4, 8)
   sub_category_id = Faker::Number.between(1, 100)
