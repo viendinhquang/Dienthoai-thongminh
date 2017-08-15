@@ -4,33 +4,34 @@
 User.create!(name:  "Quang Vien",
              email: "dinhquangvien@gmail.com",
              password:              "123456",
-             # password_confirmation: "123456",
+             password_confirmation: "123456",
              sex: "Male",
              admin: true)
 User.create!(name:  "Vien Vip",
              email: "vienvip9x@gmail.com",
              password:              "123456",
-             # password_confirmation: "123456",
+             password_confirmation: "123456",
              sex: "Female",
              admin: true)
 User.create!(name:  "Paul Vien",
              email: "vien@asiantech.vn",
              password:              "123456",
-             # password_confirmation: "123456",
+             password_confirmation: "123456",
              sex: "Female",
              admin: true)
 100.times do |n|
   name  = Faker::Name.name
   email = Faker::Internet.unique.free_email
   # password = Faker::Internet.password(6, 8)
-  password = "password"
+  password = Devise.friendly_token.first(6)
+  # password_confirmation = "password"
   sex = "Male"
   # sex = [ "Male", "Female"].each do |sex|
   #   User.create({sex: sex})
   # end
   birthday = Faker::Date.birthday
   avatar = Faker::Avatar.image
-  User.create(name: name, email: email, password: password, sex: sex, birthday: birthday, avatar: avatar, admin: false)
+  User.create(name: name, email: email, password: password, password_confirmation: password, sex: sex, birthday: birthday, avatar: avatar, admin: false)
 end
 
 users = User.order(:created_at).take(5)
@@ -80,6 +81,17 @@ categories =Category.order(:created_at).where(id:5)
   [ "General Promotion", "SALE"].each do |sub_category|
     categories.each { |category| category.sub_categories.create!(name: sub_category)}
   end
+end
+
+100.times do |n|
+  name  = Faker::Vehicle.manufacture
+  price = Faker::Number.number(5)
+  made_in = Faker::Address.country
+  screen_size = Faker::Number.between(4, 8)
+  sub_category_id = Faker::Number.between(1, 100)
+  # producer_id = Faker::Number.between(1, 100)
+  # operating_system_id = Faker::Number.between(1, 100)
+  Product.create(name: name, price: price, made_in: made_in, screen_size: screen_size, sub_category_id: sub_category_id)
 end
 # Examples:
 #
