@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'will_paginate', '>= 3.0'
-gem 'kaminari'
 gem 'devise'
 gem 'faker'
 gem 'rails', '4.2.8'
