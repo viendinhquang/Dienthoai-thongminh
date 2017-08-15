@@ -206,3 +206,25 @@ body .header {
     }
   }
 }
+.indicators-images{
+  width: 75%;
+  text-align: right;
+  li {
+    background: #ff8b00;
+    border-color: #ff8b00;
+    width: 12px;
+    height: 12px;
+  }
+}
+.carousel {
+  padding-bottom: 10px;
+  .carousel-indicators .active {
+    background: #ff8b00;
+  }
+}
+
+.full-width-image {
+  img {
+    width: 100%
+  }
+}

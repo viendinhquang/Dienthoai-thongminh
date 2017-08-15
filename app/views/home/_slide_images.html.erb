@@ -1,0 +1,58 @@
+<div class="layout main_wrapper _2pi4 mbl">
+  <div class="row">
+    <div class="col-xs-6 full-width-image phm">
+      <div id="khuyenmai" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators indicators-images">
+          <% 6.times do |i| %>
+            <li data-target="#khuyenmai" data-slide-to="<%=i%>" class="<%= 'active' if i==0%>"></li>
+          <% end %>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% 6.times do |i| %>
+            <div class="item <%= 'active' if i==0%>">
+              <%= link_to do %>
+                <img src="../images/khuyenmai/khuyenmai<%=i+1%>.png" alt="khuyenmai<%=i+1%>">
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to do %>
+        <%= image_tag "iphone7lock.gif", alt:"iphone7lock" %>
+      <% end %>
+    </div>
+    <div class="col-xs-6 full-width-image phm">
+      <div id="giamgia" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators indicators-images">
+          <% 3.times do |i| %>
+            <li data-target="#giamgia" data-slide-to="<%=i%>" class="<%= 'active' if i==0%>"></li>
+          <% end %>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% 3.times do |i| %>
+            <div class="item <%= 'active' if i==0%>">
+              <%= link_to do %>
+                <img src="../images/giamgia/giamgia<%=i+1%>.png" alt="giamgia<%=i+1%>">
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <ul class="list-inline">
+        <% 3.times do |i| %>
+          <li>
+            <%= link_to do %>
+              <img src="../images/giamgia/giamgia<%=i+1%>.png" alt="giamgia<%=i+1%>" style="width:180px; height:132px;">
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
