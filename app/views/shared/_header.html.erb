@@ -64,34 +64,13 @@
   <div class="navigation-content layout clearfix">
     <div class="pull-left">
       <div class="nav-mainmenu-content">
-        <li class="level_1  dropdown">
-          <a href="http://didongthongminh.vn/san-pham/dien-thoai-3.html" title="Điện thoại" rel="dofollow">
-            <span class="btn-info iconbox"><i class="fa fa-mobile"></i></span>&nbsp;Điện thoại
-          </a>
-        </li>
-        <li class="level_1  dropdown">
-          <a href="http://didongthongminh.vn/san-pham/may-tinh-bang-2.html" title="Máy Tính Bảng" rel="dofollow">
-            <span class="btn-info iconbox"><i class="fa fa-tablet"></i></span>&nbsp;Máy Tính Bảng						</a>
-        </li>
-        <li class="level_1  dropdown">
-          <a href="http://didongthongminh.vn/san-pham/phu-kien-7.html" title="Phụ kiện" rel="dofollow">
-            <span class="btn-info iconbox"><i class="fa fa-headphones"></i></span>&nbsp;Phụ kiện						</a>
-        </li>
-        <li class="level_1  dropdown">
-          <a href="http://didongthongminh.vn/san-pham/dich-vu-56.html" title="Dịch vụ" rel="">
-            <span class="btn-info iconbox"><i class="fa fa-wrench"></i></span>&nbsp;Dịch vụ						</a>
-        </li>
-        <li class="level_1  dropdown">
-          <a href="http://didongthongminh.vn/tra-gop.html" title="Trả góp" rel="">
-            <span class="btn-info iconbox">
-              <i class="fa fa-usd"></i>
-            </span>&nbsp;
-            Trả góp						</a>
-        </li>
-        <li class="level_1  dropdown">
-          <a href="http://didongthongminh.vn/khuyen-mai.html" title="Khuyến mãi" rel="dofollow">
-            <span class="btn-info iconbox"><i class="fa fa-sort-amount-desc"></i></span>&nbsp;Khuyến mãi						</a>
-        </li>
+        <% @categories.each do |category| %>
+          <li class="level_1  dropdown">
+            <a href="#" title="<%= category.name %>" rel="dofollow">
+              <span class="btn-info iconbox"><i class="<%= category.icon %>"></i></span>&nbsp;<%= category.name %>
+            </a>
+          </li>
+        <% end %>
       </div>
     </div>
   </div>

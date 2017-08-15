@@ -22,8 +22,12 @@ users = User.order(:created_at).take(5)
 end
 
 #Create Categories
-[ "Smart Phone", "Tablet", "Accessories", "Service", "Promotion"].each do |category|
-  Category.create!({name: category})
+[{ name: "Smart Phone", icon: "mobile" },
+ { name: "Tablet",      icon: "tablet" },
+ { name: "Accessories", icon: "headphones" },
+ { name: "Service",     icon: "wrench" },
+ { name: "Promotion",   icon: "sort-amount-desc" }].each do |category|
+  Category.create!({ name: category[:name], icon: "fa fa-#{category[:icon]}"})
 end
 
 #Create Sub Categories
