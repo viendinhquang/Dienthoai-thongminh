@@ -1,2 +1,32 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<h1>Listing Users</h1>
+<%= will_paginate @users %>
+<table class="table table-striped">
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Birthday</th>
+  <th>Gender</th>
+  <th>Avatar</th>
+  <th>Action</th>
+</tr>
+  <% @users.each do |user| %>
+    <tr>
+      <th><%= link_to user.name, admin_user_path(user.id)%></th>
+      <th><%= user.email%></th>
+      <td><%= user.birthday%></td>
+      <td><%= user.sex%></td>
+      <td><%= user.avatar%></td>
+
+      <div class="btn btn-group">
+        <th>
+          <%= link_to "Show", admin_user_path(user.id), class: "btn btn-primary" %>
+          <%= link_to "Edit", edit_admin_user_path(user.id), class: "btn btn-warning" %>
+          <%= link_to "Delete", admin_user_path( user.id), class: "btn btn-danger", method: :delete%>
+        </th>
+      </div>
+    </tr>
+  <%end%>
+</table>
+<%= will_paginate @users %>
+<br>
+<%= link_to 'New User', new_admin_user_path, class: "btn btn-info" %>
