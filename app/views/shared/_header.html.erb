@@ -1,0 +1,85 @@
+<header class="header clearfix phm pvs">
+  <div class="layout">
+    <div class="pull-left _2pi3">
+        <p>
+          <span class="title-icon">☎&nbsp;</span><strong>1900.6122</strong> -
+          <span class="title-icon">☎&nbsp;</span><strong>Bảo Hành:</strong></span> <strong>1800.6501</strong> -
+          <span class="title-icon">☎&nbsp;</span><strong>Khiếu Nại:</strong></span> <strong>1800.6502&nbsp;</strong>
+        </p>
+    </div>
+    <div class="center _2pi3">
+      <span class="slogan">
+        <p>tận tình từ lần chạm đầu tiên</p>
+      </span>
+    </div>
+  </div>
+</header>
+<div class="subnavigation">
+  <div class="subnavigation__content layout">
+    <div class="col__left col__table">
+      <a href="#" title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc">
+        <%= image_tag("/images/logo-ddtm.png", alt: "didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc") %>
+      </a>
+    </div>
+    <div class="col__right col__table">
+      <div class="mainmenu mainmenu__icon">
+        <div class="menu__item">
+          <div class="iconbox"><i class="fa fa-life-ring"></i></div>
+          <div class="contentbox">
+            <h4>
+              <a href="#" title="Hỏi đáp" rel="dofollow">
+                <span>Hỏi đáp</span>
+              </a>
+            </h4>
+            <small>Mua hàng online</small>
+          </div>
+        </div>
+        <div class="menu__item">
+          <div class="iconbox"><i class="fa fa-refresh"></i></div>
+          <div class="contentbox">
+            <h4>
+              <a href="#" title="Đổi trả hàng" rel="dofollow">
+                <span>Đổi trả hàng</span>
+              </a>
+            </h4>
+            <small>lên tới 45 ngày</small>
+          </div>
+        </div>
+        <div class="menu__item">
+          <div class="iconbox"><i class="fa fa-truck"></i></div>
+          <div class="contentbox">
+            <h4>
+              <a href="#" title="Miễn phí" rel="">
+                <span>Miễn phí</span>
+              </a>
+            </h4>
+            <small>Vận chuyển toàn quốc</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="navigation mbm">
+  <div class="navigation-content layout clearfix">
+    <div class="pull-left">
+      <div class="nav-mainmenu-content">
+        <% @categories.each do |category| %>
+          <li class="level_1  dropdown">
+            <a href="#" title="<%= category.name %>" rel="dofollow">
+              <span class="btn-info iconbox"><i class="<%= category.icon %>"></i></span>&nbsp;<%= category.name %>
+            </a>
+            <span class="arrow_box" style="margin: 0 50px;"></span>
+            <ul role="menu" class="dropdown-menu">
+              <li>
+                <% category.sub_categories.each do |sub_category| %>
+                <a href="#" title="<%= sub_category.name %>" rel=""><%= sub_category.name %></a>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
