@@ -10,7 +10,7 @@
 </tr>
   <% @products.each do |product| %>
     <tr>
-      <th><%= link_to product.name%></th>
+      <th><%= link_to product.name, admin_product_path(product.id)%></th>
       <th><%= product.price%></th>
       <td><%= product.made_in%></td>
       <td><%= product.screen_size%></td>

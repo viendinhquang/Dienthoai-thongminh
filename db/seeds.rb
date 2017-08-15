@@ -5,18 +5,21 @@ User.create!(name:  "Quang Vien",
              email: "dinhquangvien@gmail.com",
              password:              "123456",
              password_confirmation: "123456",
+             birthday: "1993-10-12",
              sex: "Male",
              admin: true)
 User.create!(name:  "Vien Vip",
              email: "vienvip9x@gmail.com",
              password:              "123456",
              password_confirmation: "123456",
+             birthday: "1993-07-12",
              sex: "Female",
              admin: true)
 User.create!(name:  "Paul Vien",
              email: "vien@asiantech.vn",
              password:              "123456",
              password_confirmation: "123456",
+             birthday: "1993-06-11",
              sex: "Female",
              admin: true)
 100.times do |n|
