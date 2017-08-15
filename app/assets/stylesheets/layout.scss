@@ -1,0 +1,45 @@
+body {
+  background-color: transparent;
+  font-size: 13px;
+  font-family: "opensans", Helvetica, Arial, sans-serif;
+  line-height: 1.42857;
+  color: #383838;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  .wrapper_page {
+    background: url(../images/texture1.png) center center;
+  }
+
+  .layout {
+    width: 1160px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .layout:after {
+    clear: both;
+  }
+
+  .layout:before, .layout:after {
+    content: " ";
+    display: table;
+  }
+
+  .main_wrapper {
+    background: #fff;
+  }
+}
+
+a, a:visited{
+  color: #252525;
+  text-decoration: none;
+}
+a:hover, a:active, a:focus{
+  color: #FF8B00;
+  text-decoration: none;
+}
