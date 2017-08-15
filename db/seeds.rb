@@ -32,39 +32,29 @@ end
 
 #Create Sub Categories
 #Smart Phone
-categories =Category.order(:created_at).where(id: 1)
-5.times do
-  [ "iPhone 5", "iPhone 6", "SamSung J5", "HTC M8", "Oppo F1"].each do |sub_category|
-    categories.each { |category| category.sub_categories.create!(name: sub_category)}
-  end
+category = Category.find(1)
+[ "iPhone 5", "iPhone 6", "SamSung J5", "HTC M8", "Oppo F1"].each do |sub_category|
+  category.sub_categories.create!(name: sub_category)
 end
 #Tablet
-categories =Category.order(:created_at).where(id:2)
-5.times do
-  [ "iPad 2", "iPad 3", "iPad Pro", "iPac Mini", "iPad Air"].each do |sub_category|
-    categories.each { |category| category.sub_categories.create!(name: sub_category)}
-  end
+category = Category.find(2)
+[ "iPad 2", "iPad 3", "iPad Pro", "iPac Mini", "iPad Air"].each do |sub_category|
+  category.sub_categories.create!(name: sub_category)
 end
 #Accessories
-categories =Category.order(:created_at).where(id:3)
-5.times do
-  [ "Phone Battery", "Backup Charger", "Headphone", "Memory Card", "Sim 3G"].each do |sub_category|
-    categories.each { |category| category.sub_categories.create!(name: sub_category)}
-  end
+category = Category.find(3)
+[ "Phone Battery", "Backup Charger", "Headphone", "Memory Card", "Sim 3G"].each do |sub_category|
+  category.sub_categories.create!(name: sub_category)
 end
 # Service
-categories =Category.order(:created_at).where(id:4)
-5.times do
-  [ "Repair iPhone/iPad", "Repair SamSung", "Repair HTC", "Repair Oppo", "Replace the iPhone case"].each do |sub_category|
-    categories.each { |category| category.sub_categories.create!(name: sub_category)}
-  end
+category = Category.find(4)
+[ "Repair iPhone/iPad", "Repair SamSung", "Repair HTC", "Repair Oppo", "Replace the iPhone case"].each do |sub_category|
+  category.sub_categories.create!(name: sub_category)
 end
 # Promotion
-categories =Category.order(:created_at).where(id:5)
-5.times do
-  [ "General Promotion", "SALE"].each do |sub_category|
-    categories.each { |category| category.sub_categories.create!(name: sub_category)}
-  end
+category = Category.find(5)
+[ "General Promotion", "SALE"].each do |sub_category|
+  category.sub_categories.create!(name: sub_category)
 end
 # Examples:
 #
