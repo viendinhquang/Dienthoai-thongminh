@@ -16,14 +16,10 @@
   </p>
 
   <p>
-    <%= f.label :price %>
-    <%= f.text_field :price, placeholder: "Enter the price", class: 'form-control' %>
-  </p>
-
-  <p>
     <%= f.label :screen_size %>
-    <%= f.text_field :screen_size, placeholder: "Enter the screen_size", class: 'form-control' %>
+    <%= f.text_field :screen_size, placeholder: "Enter the screen size", class: 'form-control' %>
   </p>
 
   <%= f.submit "Create", class: "btn btn-success" %>
+  <%= link_to "Back", :back, class: "btn btn-primary"%>
 <% end %>
