@@ -22,7 +22,7 @@ User.create!(name:  "Paul Vien",
              birthday: "1993-06-11",
              sex: "Female",
              admin: true)
-100.times do |n|
+10.times do |n|
   name  = Faker::Name.name
   email = Faker::Internet.unique.free_email
   # password = Faker::Internet.password(6, 8)
@@ -38,7 +38,7 @@ User.create!(name:  "Paul Vien",
 end
 
 users = User.order(:created_at).take(5)
-50.times do
+20.times do
   title = Faker::Name.title
   content = Faker::Lorem.sentence(1)
   users.each { |user| user.posts.create!(title: title, content: content) }
@@ -85,7 +85,7 @@ end
   price = Faker::Number.number(3)
   made_in = Faker::Address.country
   screen_size = Faker::Number.between(4, 8)
-  sub_category_id = Faker::Number.between(1, 100)
+  sub_category_id = Faker::Number.between(1, 20)
   # producer_id = Faker::Number.between(1, 100)
   # operating_system_id = Faker::Number.between(1, 100)
   Product.create(name: name, price: price, made_in: made_in, screen_size: screen_size, sub_category_id: sub_category_id)

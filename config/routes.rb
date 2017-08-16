@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'type_colors/index'
+  end
+
   # namespace :admin do
   # get 'products/index'
   # end
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
     # (app/controllers/admin/users_controller.rb)
     resources :users
     resources :products
+    resources :type_colors
   end
 
   # devise_for :users, controllers: {

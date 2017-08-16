@@ -1,0 +1,24 @@
+<h1>Edit Type Color</h1>
+<%= form_for :type_color, url: admin_type_color_path, method: :put do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter the name", class: 'form-control' %>
+  </p>
+  <p>
+    <%= f.label :color_code %>
+    <%= f.text_field :color_code, placeholder: "Enter the color code", class: 'form-control' %>
+  </p>
+  <p>
+    <%= f.label :product_id %>
+    <%= f.text_field :product_id, placeholder: "Enter the ID Product", class: 'form-control' %>
+  </p>
+  <p>
+    <%= f.label :picture %>
+    <%= link_to image_tag(@type_color.picture.url, size: "150"), admin_type_color_path(@type_color.id) if @type_color.picture? %>
+    <span class="picture">
+      <%= f.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+    </span>
+  </p>
+  <%= f.submit "Update", class: "btn btn-success" %>
+  <%= link_to "Back", :back, class: "btn btn-primary"%>
+<% end %>
