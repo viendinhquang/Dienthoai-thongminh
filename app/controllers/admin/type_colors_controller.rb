@@ -9,6 +9,7 @@ class Admin::TypeColorsController < ApplicationController
   end
   def index
     @type_colors = TypeColor.paginate(:page => params[:page], :per_page => 10)
+                            .order('created_at asc')
   end
   def show
     @type_color = TypeColor.find(params[:id])
