@@ -15,7 +15,7 @@
       <th><%= user.email%></th>
       <td><%= user.birthday%></td>
       <td><%= user.sex%></td>
-      <td><%= user.avatar%></td>
+      <td><%= image_tag(user.avatar.url, size: "150") if user.avatar? %></td>
 
       <div class="btn btn-group">
         <th>
