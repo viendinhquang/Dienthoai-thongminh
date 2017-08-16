@@ -8,7 +8,8 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path
   end
   def index
-    @users = User.paginate(:page => params[:page], :per_page => 10)
+    @users = User.paginate(:page => params[:page], :per_page => 5)
+                 .order('created_at asc')
   end
   def show
     @user = User.find(params[:id])
@@ -17,7 +18,6 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   def update
-    binding.pry
     @user = User.find(params[:id])
       if @user.update_attributes(user_params)
         flash[:success] = "User updated!"

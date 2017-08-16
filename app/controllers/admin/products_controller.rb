@@ -9,7 +9,7 @@ class Admin::ProductsController < ApplicationController
   end
   def index
     @products = Product.paginate(:page => params[:page], :per_page => 10)
-                       # .order('created_at desc')
+                       .order('created_at asc')
   end
   def show
     @product = Product.find(params[:id])

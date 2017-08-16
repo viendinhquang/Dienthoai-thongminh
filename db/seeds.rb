@@ -22,10 +22,9 @@ User.create!(name:  "Paul Vien",
              birthday: "1993-06-11",
              sex: "Female",
              admin: true)
-10.times do |n|
+5.times do |n|
   name  = Faker::Name.name
   email = Faker::Internet.unique.free_email
-  # password = Faker::Internet.password(6, 8)
   password = Devise.friendly_token.first(6)
   # password_confirmation = "password"
   sex = "Male"
