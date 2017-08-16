@@ -18,7 +18,6 @@ class Admin::TypeColorsController < ApplicationController
     @type_color = TypeColor.find(params[:id])
   end
   def update
-    binding.pry
     @type_color = TypeColor.find(params[:id])
       if @type_color.update_attributes(type_color_params)
         flash[:success] = "Type Color updated!"

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'type_colors/index'
-  end
+  get 'admin_page/index'
+
+  # namespace :admin do
+  # get 'type_colors/index'
+  # end
 
   # namespace :admin do
   # get 'products/index'
@@ -11,12 +13,12 @@ Rails.application.routes.draw do
   #   get 'users/index'
   # end
 
-  devise_for :users
+  # devise_for :users
   # devise_for :admins
-  # devise_for :users, controllers: {
-  #   # sessions: 'users/sessions'
-  #   sessions: 'users/registrations'
-  # }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+    # sessions: 'users/registrations'
+  }
 
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
@@ -24,8 +26,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    # Directs /admin/users/* to Admin::UsersController
-    # (app/controllers/admin/users_controller.rb)
     resources :users
     resources :products
     resources :type_colors
@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   # }
 
   get 'home/index'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

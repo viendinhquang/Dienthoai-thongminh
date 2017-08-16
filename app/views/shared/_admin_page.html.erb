@@ -1,0 +1,117 @@
+<header class="header clearfix phm pvs">
+  <div class="layout">
+    <div class="pull-left _2pi3">
+        <p>
+          <span class="title-icon">☎&nbsp;</span><strong>QUANG VIEN:</strong> <strong>0163 6556 937</strong> -
+          <span class="title-icon">☎&nbsp;</span><strong>GUARANTEE:</strong></span> <strong>0935 3435 14</strong>
+        </p>
+    </div>
+    <div class="center _2pi3">
+      <span class="slogan">
+        <p>Dedicated from the first touch</p>
+      </span>
+    </div>
+  </div>
+</header>
+<div class="subnavigation">
+  <div class="subnavigation__content layout">
+    <div class="col__left col__table">
+      <a href="#" title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc">
+        <%= image_tag("/images/logo-ddtm.png", alt: "didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc") %>
+      </a>
+    </div>
+    <div class="col__right col__table">
+      <div class="mainmenu mainmenu__icon">
+        <div class="menu__item">
+          <div class="iconbox"><i class="fa fa-life-ring"></i></div>
+          <div class="contentbox">
+            <h4>
+              <a href="#" title="Hỏi đáp" rel="dofollow">
+                <span>Hỏi đáp</span>
+              </a>
+            </h4>
+            <small>Mua hàng online</small>
+          </div>
+        </div>
+        <div class="menu__item">
+          <div class="iconbox"><i class="fa fa-refresh"></i></div>
+          <div class="contentbox">
+            <h4>
+              <a href="#" title="Đổi trả hàng" rel="dofollow">
+                <span>Đổi trả hàng</span>
+              </a>
+            </h4>
+            <small>lên tới 45 ngày</small>
+          </div>
+        </div>
+        <div class="menu__item">
+          <div class="iconbox"><i class="fa fa-truck"></i></div>
+          <div class="contentbox">
+            <h4>
+              <a href="#" title="Miễn phí" rel="">
+                <span>Miễn phí</span>
+              </a>
+            </h4>
+            <small>Vận chuyển toàn quốc</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="navigation mbm">
+  <div class="navigation-content layout clearfix">
+    <div class="nav-mainmenu-content">
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Users", admin_users_path, class: "glyphicon glyphicon-th-large" %>
+        </span>&nbsp;
+      </li>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Products", admin_products_path, class: "glyphicon glyphicon-tasks" %>
+        </span>&nbsp;
+      </li>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Type Color", admin_type_colors_path, class: "glyphicon glyphicon-th-list" %>
+        </span>&nbsp;
+      </li>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Register Account", sign_up_path, class: "glyphicon glyphicon-pencil"%>
+        </span>&nbsp;
+      </li>
+
+      <% if logged_in? %>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " LOGOUT", destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: "delete" %>
+        </span>&nbsp;
+      </li>
+      <% else %>
+      <li class="level_1  dropdown">
+          <span>
+            <%= link_to " LOGIN", sign_in_path, class: "glyphicon glyphicon-log-out", class: "glyphicon glyphicon-check" %>
+          </span>&nbsp;
+      </li>
+      <% end %>
+    </div>
+  </div>
+</div>
+        <!-- <li class="level_1  dropdown">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-list-alt"></span>
+                  Account <b class="caret"></b>
+            </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile" %></li>
+                <li><%= link_to "Settings" %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          </li> -->
