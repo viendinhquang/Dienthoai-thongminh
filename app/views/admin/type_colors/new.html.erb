@@ -1,30 +1,34 @@
-<h1>New Type Color</h1>
-<%= form_for :type_color, url: admin_type_colors_path, method: :post do |f| %>
-  <p>
+<%= render partial: "shared/admin_page" %>
+<div class= "layout main_wrapper">
+  <h1>New Type Color</h1>
+  <%= form_for :type_color, url: admin_type_colors_path, method: :post do |f| %>
+
+    <p>
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "Enter the name", class: 'form-control' %>
-  </p>
+    <%= f.select :name, ['Gray', 'Silver', 'Gold'], class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.label :color_code %>
-    <%= f.text_field :color_code, placeholder: "Enter the color code", class: 'form-control' %>
-  </p>
+    <p>
+      <%= f.label :color_code %>
+      <%= f.text_field :color_code, placeholder: "Enter the color code", class: 'form-control' %>
+    </p>
 
-  <p>
-    <%= f.label :product_id %>
-    <%= f.text_field :product_id, placeholder: "Enter the ID Product", class: 'form-control' %>
-  </p>
+    <p>
+      <%= f.label :product_id %>
+      <%= f.text_field :product_id, placeholder: "Enter the ID Product", class: 'form-control' %>
+    </p>
 
-  <p>
-    <%= f.label :image %>
-    <span class="picture">
-      <%= f.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
-    </span>
-  </p>
+    <p>
+      <%= f.label :image %>
+      <span class="picture">
+        <%= f.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+      </span>
+    </p>
 
-  <%= f.submit "Create", class: "btn btn-success" %>
-  <%= link_to "Back", :back, class: "btn btn-primary"%>
-<% end %>
+    <%= f.submit "Create", class: "btn btn-success" %>
+    <%= link_to "Back", :back, class: "btn btn-primary"%>
+  <% end %>
+</div>
 <script type="text/javascript">
     $("#type_color_picture").bind("change", function(){
         var size_in_megabytes = this.files(0).size/1024/1024;

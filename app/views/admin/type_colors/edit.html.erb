@@ -1,8 +1,8 @@
+<%= render partial: "shared/admin_page" %>
 <h1>Edit Type Color</h1>
 <%= form_for :type_color, url: admin_type_color_path, method: :put do |f| %>
   <p>
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "Enter the name", class: 'form-control' %>
   </p>
   <p>
     <%= f.label :color_code %>
