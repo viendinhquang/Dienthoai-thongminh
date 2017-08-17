@@ -1,3 +1,4 @@
+<%= render partial: "shared/admin_page" %>
 <h1>New Product</h1>
 <%= form_for :product, url: admin_products_path, method: :post do |f| %>
   <p>
@@ -18,6 +19,11 @@
   <p>
     <%= f.label :screen_size %>
     <%= f.text_field :screen_size, placeholder: "Enter the screen size", class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :color %>
+    <%= f.select :name, ['Gray', 'Silver', 'Gold'], class: "form-control" %>
   </p>
 
   <%= f.submit "Create", class: "btn btn-success" %>

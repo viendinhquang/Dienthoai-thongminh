@@ -1,30 +1,33 @@
-<h1>Listing Type Colors</h1>
-<%= will_paginate @type_colors %>
-<table class="table table-striped">
-<tr>
-  <th>Name</th>
-  <th>Color code</th>
-  <th>Product's name</th>
-  <th>Image</th>
-  <th>Action</th>
-</tr>
-  <% @type_colors.each do |type_color| %>
-    <tr>
-      <th><%= link_to type_color.name, admin_type_color_path(type_color.id)%></th>
-      <th><%= type_color.color_code%></th>
-      <td><%= link_to type_color.product.name, admin_product_path(type_color.product.id)%></td>
-      <td><%= link_to image_tag(type_color.picture.url, size: "150"), admin_type_color_path(type_color.id) if type_color.picture? %></td>
+<%= render partial: "shared/admin_page" %>
+<div class="layout main_wrapper">
+  <h1>Listing Type Colors</h1>
+  <%= will_paginate @type_colors %>
+  <table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Color code</th>
+    <th>Product's name</th>
+    <th>Image</th>
+    <th>Action</th>
+  </tr>
+    <% @type_colors.each do |type_color| %>
+      <tr>
+        <th><%= link_to type_color.name, admin_type_color_path(type_color.id)%></th>
+        <th><%= type_color.color_code%></th>
+        <td><%= link_to type_color.product.name, admin_product_path(type_color.product.id)%></td>
+        <td><%= link_to image_tag(type_color.picture.url, size: "150"), admin_type_color_path(type_color.id) if type_color.picture? %></td>
 
-      <div class="btn btn-group">
-        <th>
-          <%= link_to "Show", admin_type_color_path(type_color.id), class: "btn btn-primary" %>
-          <%= link_to "Edit", edit_admin_type_color_path(type_color.id), class: "btn btn-warning" %>
-          <%= link_to "Delete", admin_type_color_path( type_color.id), class: "btn btn-danger", method: :delete%>
-        </th>
-      </div>
-    </tr>
-  <%end%>
-</table>
-<%= will_paginate @type_colors %>
-<br>
-<%= link_to 'New Type Color', new_admin_type_color_path, class: "btn btn-info" %>
+        <div class="btn btn-group">
+          <th>
+            <%= link_to "Show", admin_type_color_path(type_color.id), class: "btn btn-primary" %>
+            <%= link_to "Edit", edit_admin_type_color_path(type_color.id), class: "btn btn-warning" %>
+            <%= link_to "Delete", admin_type_color_path( type_color.id), class: "btn btn-danger", method: :delete%>
+          </th>
+        </div>
+      </tr>
+    <%end%>
+  </table>
+  <%= will_paginate @type_colors %>
+  <br>
+  <%= link_to 'New Type Color', new_admin_type_color_path, class: "btn btn-info" %>
+</div>

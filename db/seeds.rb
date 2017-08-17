@@ -89,6 +89,13 @@ end
   # operating_system_id = Faker::Number.between(1, 100)
   Product.create(name: name, price: price, made_in: made_in, screen_size: screen_size, sub_category_id: sub_category_id)
 end
+20.times do
+  [ "Gold", "Silver", "Gray"].each do |type_color|
+  product_id = Faker::Number.between(1, 20)
+  TypeColor.create!(name: type_color, product_id: product_id)
+  end
+end
+
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
