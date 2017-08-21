@@ -9,3 +9,56 @@
 .clearfix:after {
   clear: both;
 }
+
+.box_manf {
+  background: #f7f7f7;
+  .block_title {
+    border-top: 3px solid #ff8b00;
+    float: left;
+    margin: 0 10px;
+    padding: 10px 0;
+    width: 160px;
+    z-index: 5;
+    a {
+      color: #ff8b00;
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  }
+}
+.productlist {
+  .product {
+    height: 300px;
+    .product-image {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .product-name {
+      height: 50px;
+      margin-top: 10px;
+      font-weight: bold;
+      overflow: hidden;
+    }
+    .product-price {
+      color: #f30;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    &:hover {
+      outline: 1px solid #ff8b00;
+      outline-offset: -1px;
+    }
+  }
+  .bbl {
+    border-bottom: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
+  }
+  .br {
+    border-right: 1px solid #e2e2e2;
+  }
+  .bt {
+    border-top: 1px solid #e2e2e2;
+  }
+}
