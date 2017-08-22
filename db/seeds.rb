@@ -27,11 +27,7 @@ User.create!(name:  "Paul Vien",
   email = Faker::Internet.unique.free_email
   # password = Devise.friendly_token.first(6)
   password = "password"
-  sex = "Male"
   sex = [ "Male", "Famale"][Faker::Number.between(0, 1)]
-  # sex = [ "Male", "Female"].each do |sex|
-  #   User.create({sex: sex})
-  # end
   birthday = Faker::Date.birthday
   avatar = Faker::Avatar.image
   User.create(name: name, email: email, password: password, password_confirmation: password, sex: sex, birthday: birthday, avatar: avatar, admin: false)
@@ -92,10 +88,9 @@ end
 end
 
 Product.all.each do |product|
-  name = [ "Gold", "Silver", "Gray"][Faker::Number.between(0, 2)]
-  TypeColor.create!(name: name, product: product)
+  type_color = [ "Gold", "Silver", "Gray"][Faker::Number.between(0, 2)]
+  TypeColor.create!(name: type_color, product: product)
 end
-
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
