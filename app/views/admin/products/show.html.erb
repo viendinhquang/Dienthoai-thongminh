@@ -1,9 +1,12 @@
 <%= render partial: "shared/admin_page" %>
 <h1>Show Product</h1>
 <h2>Name: <%= link_to @product.name%></h2>
+<h3>Color: <%= @product.type_colors.first.name%></h3>
 <h3>Price: <%= @product.price%></h3>
 <h3>Made in: <%= @product.made_in%></h3>
 <h3>Screen_size: <%= @product.screen_size%></h3>
+<h3>Image: <%= link_to image_tag(@product.type_colors.first.picture.url, size: "150"), admin_product_path(@product.id) if @product.type_colors.first.picture? %></h3>
+
 
 <%= link_to "Edit", edit_admin_product_path(@product.id), class: "btn btn-warning" %>
 <%= link_to "Delete", admin_product_path(@product.id), class: "btn btn-danger", method: :delete%>

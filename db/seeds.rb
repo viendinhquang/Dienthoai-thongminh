@@ -25,9 +25,10 @@ User.create!(name:  "Paul Vien",
 5.times do |n|
   name  = Faker::Name.name
   email = Faker::Internet.unique.free_email
-  password = Devise.friendly_token.first(6)
-  # password_confirmation = "password"
+  # password = Devise.friendly_token.first(6)
+  password = "password"
   sex = "Male"
+  sex = [ "Male", "Famale"][Faker::Number.between(0, 1)]
   # sex = [ "Male", "Female"].each do |sex|
   #   User.create({sex: sex})
   # end
@@ -79,21 +80,20 @@ category = Category.find(5)
   category.sub_categories.create!(name: sub_category)
 end
 
-100.times do |n|
+50.times do |n|
   name  = Faker::Vehicle.manufacture
   price = Faker::Number.number(3)
   made_in = Faker::Address.country
-  screen_size = Faker::Number.between(4, 8)
+  screen_size = ["4.3", "4.7", "5.1", "5.5"][Faker::Number.between(0, 3)]
   sub_category_id = Faker::Number.between(1, 20)
   # producer_id = Faker::Number.between(1, 100)
   # operating_system_id = Faker::Number.between(1, 100)
   Product.create(name: name, price: price, made_in: made_in, screen_size: screen_size, sub_category_id: sub_category_id)
 end
-20.times do
-  [ "Gold", "Silver", "Gray"].each do |type_color|
-  product_id = Faker::Number.between(1, 20)
-  TypeColor.create!(name: type_color, product_id: product_id)
-  end
+
+Product.all.each do |product|
+  name = [ "Gold", "Silver", "Gray"][Faker::Number.between(0, 2)]
+  TypeColor.create!(name: name, product: product)
 end
 
 # Examples:

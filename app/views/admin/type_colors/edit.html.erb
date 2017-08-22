@@ -3,6 +3,7 @@
 <%= form_for :type_color, url: admin_type_color_path, method: :put do |f| %>
   <p>
     <%= f.label :name %>
+    <%= f.select :name, ['Gray', 'Silver', 'Gold'], class: "form-control" %>
   </p>
   <p>
     <%= f.label :color_code %>
