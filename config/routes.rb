@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'product/index'
+
+  get 'product/show'
+
   get 'admin_page/index'
 
   # namespace :admin do
