@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'product/index'
-
-  get 'product/show'
+  resources :product
 
   get 'admin_page/index'
 
