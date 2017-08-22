@@ -1,4 +1,5 @@
 class Admin::TypeColorsController < ApplicationController
+  before_action :logged_in_user
   def new
     @type_color = TypeColor.new
   end
@@ -33,6 +34,25 @@ class Admin::TypeColorsController < ApplicationController
   end
 
   private
+    def logged_in?
+      !current_user.nil?
+    end
+
+    def logged_in_user
+      # binding.pry
+      unless logged_in?
+        flash[:danger] = "Please log in..."
+        redirect_to sign_in_path
+      end
+    end
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+    def correct_user
+      # binding.pry
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
+    end
     def type_color_params
       params.require(:type_color).permit(:name, :color_code, :product_id, :picture)
     end

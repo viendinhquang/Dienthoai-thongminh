@@ -9,20 +9,9 @@ class SessionsController < Devise::SessionsController
       super
     end
     def destroy
-      # binding.pry
       @referer_url = root_path
       super
     end
-    private
-    def current_user
-      binding.pry
-    @current_user = @current_user || User.find_by(id: session[:user_id])
-  end
-  def logged_in?
-      binding.pry
-    !current_user.nil?
-  end
-
     def get_pre_login_url
       @referer_url = root_path
     end

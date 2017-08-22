@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :logged_in_user
   def new
     @product = Product.new
   end
@@ -33,6 +34,25 @@ class Admin::ProductsController < ApplicationController
   end
 
   private
+    def logged_in?
+      !current_user.nil?
+    end
+
+    def logged_in_user
+      # binding.pry
+      unless logged_in?
+        flash[:danger] = "Please log in..."
+        redirect_to sign_in_path
+      end
+    end
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+    def correct_user
+      # binding.pry
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
+    end
     def product_params
       params.require(:product).permit(:name, :price, :made_in, :screen_size, :color)
     end
