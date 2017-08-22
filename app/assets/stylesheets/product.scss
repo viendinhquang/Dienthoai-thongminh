@@ -1,3 +1,31 @@
 // Place all the styles related to the Product controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.breadcrumbs {
+  .breadcrumb {
+    padding: 0;
+    margin-bottom: 4px;
+    background: transparent;
+    h2 {
+      font-size: inherit;
+      float: left;
+      font-weight: normal;
+      margin: 2px 0;
+    }
+    a {
+      color: #0069b8;
+      font-size: 12px;
+      font-weight: normal;
+    }
+    span {
+      color: #ff8b00;
+    }
+  }
+}
+.breadcrumbs_sepa {
+  background: url(../images/right_arrow.png) no-repeat scroll left center;
+  float: left;
+  margin: 0 5px;
+  padding: 0 4px;
+  text-indent: -999px;
+}

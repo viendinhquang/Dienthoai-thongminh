@@ -1,3 +1,13 @@
 <div class="layout main_wrapper _2pi4 mbl">
-  123
+  <div class="breadcrumbs mbm">
+    <div class="breadcrumb clearfix">
+      <h2><a>Home</a></h2>
+      <div class="breadcrumbs_sepa">&gt;</div>
+      <h2><a><%= @product.sub_category.category.name %></a></h2>
+      <div class="breadcrumbs_sepa">&gt;</div>
+      <h2><a><%= @product.sub_category.name %></a></h2>
+      <div class="breadcrumbs_sepa">&gt;</div>
+      <h2><span><%= @product.name %></span></h2>
+    </div>
+  </div>
 </div>
