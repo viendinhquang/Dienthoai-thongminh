@@ -1,2 +1,5 @@
 <%= render partial: "shared/header", locals: { categories: @categories } %>
-<%= render partial: "slide_images" %>
+<div class="layout main_wrapper _2pi4 mbl">
+  <%= render partial: "slide_images" %>
+  <%= render partial: "products", locals: { categories: @products } %>
+</div>

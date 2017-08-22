@@ -1,0 +1,28 @@
+<div class="products">
+  <div class="box_manf clearfix">
+    <h2 class="block_title"><a>Sản phẩm HOT</a></h2>
+  </div>
+  <div class="box">
+    <div class="productlist">
+      <% @products.each_with_index do |product, index| %>
+        <div class="col-md-3 bbl product <%= 'bt' if index < 4 %> <%= 'br' if index.next % 4 == 0 %>">
+          <div class="info">
+            <div class="product-image">
+              <%=  image_tag(product.type_colors.first.picture.url, size: "170") %>
+            </div>
+            <div class="product-name">
+              <span> <%= product.name %> </span>
+            </div>
+            <div class="product-price">
+              <span> <%= product.price %> USD </span>
+            </div>
+          </div>
+          <div class="info-hover">
+            <%= link_to image_tag("/images/view-details.png") %>
+          </div>
+        </div>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
