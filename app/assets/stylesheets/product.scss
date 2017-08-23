@@ -29,3 +29,46 @@
   padding: 0 4px;
   text-indent: -999px;
 }
+.main-full-column {
+  .heading {
+    .col-left {
+      border-right: 1px solid #d1d1d1;
+    }
+    .col-right {
+      border-left: 1px solid #d1d1d1;
+      margin-left: -1px;
+    }
+    .basic_price {
+      font-size: 22px;
+      color: #ff8b00;
+      margin-bottom: 0;
+    }
+    .status_store {
+      color: #ff8b00;
+    }
+    h1 {
+      font-size: 20px;
+      color: #000000;
+      margin: 0px;
+      font-weight: normal;
+    }
+  }
+  .product {
+    .product-image {
+      img {
+        width: 100%
+      }
+    }
+    .list-product-image {
+      margin-top: 10px;
+      padding: 0 10px;
+      .image {
+        margin: 0 5px;
+        height: 75px;
+        width: auto;
+        outline: 1px solid #d1d1d1;
+        outline-offset: 2px;
+      }
+    }
+  }
+}

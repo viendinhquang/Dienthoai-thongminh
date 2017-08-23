@@ -10,4 +10,30 @@
       <h2><span><%= @product.name %></span></h2>
     </div>
   </div>
+  <div class="main-full-column">
+    <div class="product heading row mbl">
+      <div class="col-left col-md-3">
+        <h1><%= @product.name %></h1>
+        <p class="basic_price"> <%= @product.price %> USD</p>
+        <p><a class="status_store"> (Gọi giữ hàng - 1234.5678) </a></p>
+      </div>
+      <div class="col-right col-md-9">
+      </div>
+    </div>
+    <div class="product row mbm">
+      <div class="leftimg col-md-6">
+        <div class="product-image">
+          <%= image_tag @product.type_colors.first.picture %>
+        </div>
+        <div class="list-product-image">
+          <% @product.type_colors.each do |type_color| %>
+            <%= image_tag type_color.picture, class: "image"%>
+          <% end %>
+        </div>
+      </div>
+      <div class="righttext col-md-6">
+        b
+      </div>
+    </div>
+  </div>
 </div>
