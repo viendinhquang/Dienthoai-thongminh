@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'errors/contact'
+
+  get 'errors/not_found'
+
   resources :product
 
   get 'admin_page/index'
@@ -42,8 +46,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'home#index'
-  root 'admin_page#index'
+  root 'home#index'
+  # root 'admin_page#index'
+  get '/errors', to: 'errors#not_found'
+  get '/contact', to: 'errors#contact'
   get "*path" => redirect("/errors")
 
   # Example of regular route:
