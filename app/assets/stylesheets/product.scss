@@ -1,0 +1,74 @@
+// Place all the styles related to the Product controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.breadcrumbs {
+  .breadcrumb {
+    padding: 0;
+    margin-bottom: 4px;
+    background: transparent;
+    h2 {
+      font-size: inherit;
+      float: left;
+      font-weight: normal;
+      margin: 2px 0;
+    }
+    a {
+      color: #0069b8;
+      font-size: 12px;
+      font-weight: normal;
+    }
+    span {
+      color: #ff8b00;
+    }
+  }
+}
+.breadcrumbs_sepa {
+  background: url(../images/right_arrow.png) no-repeat scroll left center;
+  float: left;
+  margin: 0 5px;
+  padding: 0 4px;
+  text-indent: -999px;
+}
+.main-full-column {
+  .heading {
+    .col-left {
+      border-right: 1px solid #d1d1d1;
+    }
+    .col-right {
+      border-left: 1px solid #d1d1d1;
+      margin-left: -1px;
+    }
+    .basic_price {
+      font-size: 22px;
+      color: #ff8b00;
+      margin-bottom: 0;
+    }
+    .status_store {
+      color: #ff8b00;
+    }
+    h1 {
+      font-size: 20px;
+      color: #000000;
+      margin: 0px;
+      font-weight: normal;
+    }
+  }
+  .product {
+    .product-image {
+      img {
+        width: 100%
+      }
+    }
+    .list-product-image {
+      margin-top: 10px;
+      padding: 0 10px;
+      .image {
+        margin: 0 5px;
+        height: 75px;
+        width: auto;
+        outline: 1px solid #d1d1d1;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
