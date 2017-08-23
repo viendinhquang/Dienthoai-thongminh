@@ -1,5 +1,10 @@
 class Admin::TypeColorsController < ApplicationController
   before_action :logged_in_user
+  # before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: [:destroy]
+  # validates_processing_of :picture
+  # validate :picture_size_validation
+
   def new
     @type_color = TypeColor.new
   end
@@ -54,6 +59,6 @@ class Admin::TypeColorsController < ApplicationController
       redirect_to(root_url) unless @user == current_user
     end
     def type_color_params
-      params.require(:type_color).permit(:name, :color_code, :product_id, :picture)
+      params.require(:type_color).permit(:name, :color_code, :product_id, :picture, :remove_picture)
     end
 end
