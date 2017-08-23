@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :users
     resources :products
     resources :type_colors
+    resources :posts
   end
 
   # devise_for :users, controllers: {
