@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'will_paginate', '>= 3.0'
 gem 'font-awesome-rails'
