@@ -1,0 +1,57 @@
+<div class="layout main_wrapper _2pi4 mbl">
+  <div class="breadcrumbs mbm">
+    <div class="breadcrumb clearfix">
+      <h2><a>Home</a></h2>
+      <div class="breadcrumbs_sepa">&gt;</div>
+      <h2><a><%= @product.sub_category.category.name %></a></h2>
+      <div class="breadcrumbs_sepa">&gt;</div>
+      <h2><a><%= @product.sub_category.name %></a></h2>
+      <div class="breadcrumbs_sepa">&gt;</div>
+      <h2><span><%= @product.name %></span></h2>
+    </div>
+  </div>
+  <div class="main-full-column">
+    <div class="product heading row mbl">
+      <div class="col-left col-md-3">
+        <h1><%= @product.name %></h1>
+        <p class="basic_price"> <%= @product.price %> USD</p>
+        <p><a class="status_store"> (Gọi giữ hàng - 1234.5678) </a></p>
+      </div>
+      <div class="col-right col-md-9">
+      </div>
+    </div>
+    <div class="product row mbm">
+      <div class="leftimg col-md-6">
+        <div class="product-image">
+          <%= image_tag @product.type_colors.first.picture %>
+        </div>
+        <div class="list-product-image">
+          <% @product.type_colors.each do |type_color| %>
+            <%= image_tag type_color.picture, class: "image"%>
+          <% end %>
+        </div>
+      </div>
+      <div class="righttext col-md-6">
+        <div class="righttext  col-lg-6">
+          <div class="accessories mbm">
+            <label>Quà khuyến mãi:</label><br>
+            <p>✌ Tặng kèm <span style="color:#ff8c00"><strong>sạc, cable quickchager samsung chuẩn</strong></span> trị giá <span style="color:#ff0000"><strong>350K</strong></span><br>
+            ✌ Tặng kèm<span style="color:#ff8c00"><strong> tai nghe Samsung Galaxy S7</strong></span>&nbsp;trị giá <span style="color:#ff0000"><strong>150K</strong></span><br>
+            <span style="color:#ffa07a">✌</span><strong> </strong>Tặng <span style="color:#ff8c00"><strong>combo ốp lưng &amp; dán dẻo&nbsp;</strong></span>khi mua <strong><span style="color:#ff0000">gói bảo hành Dcare+<br>
+            <strong><span style="color:#ff0000">♥</span>&nbsp;</strong>Hỗ trợ <span style="color:#ff8c00"><strong>mua kính thực tế ảo Samsung Gear VR</strong></span> chỉ <span style="color:#ff0000"><strong>600K</strong></span><br>
+            <span style="color:#ff0000">♥</span> Hỗ trợ mua <strong><span style="color:#ff8c00">combo ốp lưng, dán dẻo</span></strong> chỉ <span style="color:#ff0000"><strong>200k </strong></span><br>
+            <span style="color:#ff0000">♥&nbsp;</span>Trợ giá<span style="color:#ff8c00"><strong>&nbsp;thẻ nhớ 16G class 10</strong></span>&nbsp;giá&nbsp;<span style="color:#ff0000"><strong>250K&nbsp;</strong></span><br>
+            <span style="color:#ff0000">♥</span>&nbsp;Trợ giá&nbsp;<span style="color:#ff8c00"><strong>PDP Xiaomi 16.0000mah</strong></span>&nbsp;chỉ&nbsp;<span style="color:#ff0000"><strong>499K&nbsp;</strong></span><br>
+            <span style="color:#ff0000">♥</span><span style="color:#ff8c00">&nbsp;</span>Trợ giá <strong><span style="color:#ff8c00">Loa Xiaomi Square Box 2</span></strong> chỉ <span style="color:#ff0000"><strong>690K</strong></span><br>
+            <span style="color:#ff0000">♥</span>&nbsp;Trợ giá&nbsp;<span style="color:#ff8c00"><strong>PDP Xiaomi chính hãng 10.000mAh Gen 2 (Sạc nhanh 2 chiều)</strong></span>&nbsp;chỉ&nbsp;<span style="color:#ff0000"><strong>329K</strong></span><br>
+          </div>
+          <div class="policysale">
+            <span style="font-size:14px">✓&nbsp;</span><span style="color:#ff8c00"><strong>Đổi trả sản phẩm lỗi miễn phí trong 15 ngày</strong></span> -<span style="color:#0000ff"><em> </em></span><a href="#"><em><span style="color:#0000ff">Tìm hiểu.</span></em></a><br>
+            <span style="font-size:14px">✓&nbsp;</span><span style="color:#ff8c00"><strong>Giao hàng toàn quốc miễn phí</strong></span> - <a href="#"><em><span style="color:#0000ff">Tìm hiểu.</span></em></a><br>
+            <span style="font-size:14px">✓&nbsp;</span><span style="color:#ff8c00"><strong>Hỗ trợ thanh toán qua thẻ</strong></span> - <a href="#"><span style="color:#0000ff"><em>Tìm hiểu.</em></span></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
