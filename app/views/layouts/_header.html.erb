@@ -1,0 +1,72 @@
+<header class="header clearfix phm pvs">
+  <div class="layout">
+    <div class="pull-left _2pi3">
+        <p>
+          <span class="title-icon">☎&nbsp;</span><strong>QUANG VIEN:</strong> <strong>0163 6556 937</strong> -
+          <span class="title-icon">☎&nbsp;</span><strong>GUARANTEE:</strong></span> <strong>0935 3435 14</strong>
+        </p>
+    </div>
+    <div class="center _2pi3">
+      <span class="slogan">
+        <p>Dedicated from the first touch</p>
+      </span>
+    </div>
+  </div>
+</header>
+
+<div class="navigation mbm">
+  <div class="navigation-content layout clearfix">
+    <div class="nav-mainmenu-content">
+      <div class="col__left col__table">
+        <%= link_to root_path, title:"didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" do %>
+          <%= image_tag("IPHONE.png", size: "60x60", alt: "didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc") %>
+        <% end %>
+      </div>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Users", admin_users_path, class: "glyphicon glyphicon-th-large" %>
+        </span>&nbsp;
+      </li>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Products", admin_products_path, class: "glyphicon glyphicon-tasks" %>
+        </span>&nbsp;
+      </li>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Type Color", admin_type_colors_path, class: "glyphicon glyphicon-th-list" %>
+        </span>&nbsp;
+      </li>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Register Account", new_admin_user_path, class: "glyphicon glyphicon-pencil"%>
+        </span>&nbsp;
+      </li>
+
+      <li class="level_1  dropdown">
+        <% if logged_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-list-alt"></span>
+                <%= current_user.name%> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", admin_user_path(current_user.id) %></li>
+              <li><%= link_to "Setting",  edit_admin_user_path(current_user.id) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to " LOGOUT", destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: "delete" %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="level_1  dropdown">
+            <span>
+              <%= link_to " LOGIN", sign_in_path, class: "glyphicon glyphicon-check" %>
+            </span>&nbsp;
+          </li>
+        <% end %>
+      </li>
+    </div>
+  </div>
+</div>
