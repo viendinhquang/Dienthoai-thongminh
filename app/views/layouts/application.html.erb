@@ -7,14 +7,15 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <%= render 'layouts/header' %>
+    <%= render partial: "shared/header", locals: { categories: @categories } %>
     <div class="wrapper_page">
-      <div class="container">
-          <% flash.each do |message_type, message| %>
-            <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-          <% end %>
-          <%= yield %>
+      <div class="layout">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% end %>
+        <%= yield %>
       </div>
-    </div>
+      <%= render partial: "shared/footer" %>
+    </div>  
   </body>
 </html>
