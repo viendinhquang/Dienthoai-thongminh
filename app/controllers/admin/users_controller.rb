@@ -6,10 +6,14 @@ class Admin::UsersController < ApplicationController
     @user = User.new
   end
   def create
-    binding.pry
     @user = User.create(user_params)
-    @user.save
-    redirect_to admin_users_path
+    if @user.save
+      flash[:success] = "Account was successfully created."
+      redirect_to admin_users_path
+    else
+      flash.now[:danger] = 'Invalid email/password combination.'
+      render 'new'
+    end
   end
   def index
     @users = User.paginate(:page => params[:page], :per_page => 5)
@@ -33,7 +37,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted!"
-    redirect_to root_path
+    redirect_to :back
   end
 
   private
@@ -48,7 +52,6 @@ class Admin::UsersController < ApplicationController
     end
   end
   def admin_user
-    binding.pry
     redirect_to(root_url) unless current_user.admin?
   end
   def correct_user
@@ -59,6 +62,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :birthday, :sex, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(:name, :email, :birthday, :sex, :password, :password_confirmation, :avatar, :remove_avatar)
   end
 end

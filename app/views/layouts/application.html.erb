@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DienthoaiThongminh</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= render partial: "shared/header", locals: { categories: @categories } %>
-<div class="wrapper_page">
-  <div class="layout">
-    <%= yield %>
-  </div>
-</div>
-
-</body>
+  <head>
+    <title>DienthoaiThongminh</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <%= render 'layouts/header' %>
+    <div class="wrapper_page">
+      <div class="container">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+          <% end %>
+          <%= yield %>
+      </div>
+    </div>
+  </body>
 </html>

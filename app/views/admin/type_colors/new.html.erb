@@ -1,4 +1,3 @@
-<%= render partial: "shared/admin_page" %>
 <div class= "layout main_wrapper">
   <h1>New Type Color</h1>
   <%= form_for :type_color, url: admin_type_colors_path, method: :post do |f| %>
@@ -20,9 +19,7 @@
 
     <p>
       <%= f.label :image %>
-      <span class="picture">
-        <%= f.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
-      </span>
+      <%= f.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
     </p>
 
     <%= f.submit "Create", class: "btn btn-success" %>
