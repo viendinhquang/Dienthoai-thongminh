@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'post/index'
+
   resources :product
 
   get 'admin_page/index'
