@@ -6,6 +6,7 @@
   <th>Title</th>
   <th>Content</th>
   <th>Name's Sub Category</th>
+  <th>Image</th>
   <th>Action</th>
 </tr>
   <% @posts.each do |post| %>
@@ -14,6 +15,7 @@
       <th><%= post.title%></th>
       <th><%= post.content%></th>
       <td><%= post.sub_category.name unless post.sub_category.nil? %></td>
+      <td><%= link_to image_tag(post.image.url, :height => "150", :crop => :fill), admin_post_path(post.id) if post.image? %></td>
       <div class="btn btn-group">
         <th>
           <%= link_to "Show", admin_post_path(post.id), class: "btn btn-primary" %>

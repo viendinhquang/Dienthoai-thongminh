@@ -26,6 +26,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   def update
+    binding.pry
     @user = User.find(params[:id])
       if @user.update_attributes(user_params)
         flash[:success] = "User updated!"
@@ -35,6 +36,7 @@ class Admin::UsersController < ApplicationController
       end
   end
   def destroy
+    binding.pry
     User.find(params[:id]).destroy
     flash[:success] = "User deleted!"
     redirect_to admin_users_path

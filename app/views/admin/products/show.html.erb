@@ -4,7 +4,7 @@
 <h3>Price: <%= @product.price%></h3>
 <h3>Made in: <%= @product.made_in%></h3>
 <h3>Screen_size: <%= @product.screen_size%></h3>
-<h3>Image: <%= link_to image_tag(@product.type_colors.first.picture.url, size: "150"), admin_product_path(@product.id) if @product.type_colors.first.picture? %></h3>
+<h3>Image: <%= link_to image_tag(@product.type_colors.first.picture.url, :height => "150", :crop => :fill), admin_product_path(@product.id) if @product.type_colors.first.picture? %></h3>
 
 
 <%= link_to "Back", :back, class: "btn btn-primary"%>
