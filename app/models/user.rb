@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_save { self.email = email.downcase }
   # has_secure_password
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,4 +13,7 @@ class User < ActiveRecord::Base
   has_many :post_replies, dependent: :destroy
   has_many :user_products
   has_many :products, through: :user_products
+  validates :name,  presence: true, length: { maximum: 50, message: 'Must be less than 50 characters'}
+  validates :email, presence: true, length: { maximum: 255 }, uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }
 end

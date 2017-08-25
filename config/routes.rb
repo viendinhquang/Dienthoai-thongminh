@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :product
 
-  get 'admin_page/index'
 
   # namespace :admin do
   # get 'type_colors/index'
@@ -48,7 +47,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  # root 'admin_page#index'
+  root to: 'admin_page#index', as: :admin_root
+  get 'admin_page/index'
   get '/errors', to: 'errors#not_found'
   get '/contact', to: 'errors#contact'
   get "*path" => redirect("/errors")
