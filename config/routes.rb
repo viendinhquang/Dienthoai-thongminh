@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   get 'post/index'
+  get 'errors/contact'
+
+  get 'errors/not_found'
 
   resources :product
 
-  get 'admin_page/index'
 
   # namespace :admin do
   # get 'type_colors/index'
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
     resources :users
     resources :products
     resources :type_colors
+    resources :posts
   end
 
   # devise_for :users, controllers: {
@@ -44,9 +47,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'home#index'
   root 'home#index'
-  # get "*path" => redirect("/errors")
+  root to: 'admin_page#index', as: :admin_root
+  get 'admin_page/index'
+  get '/errors', to: 'errors#not_found'
+  get '/contact', to: 'errors#contact'
+  get "*path" => redirect("/errors")
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

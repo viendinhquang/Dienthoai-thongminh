@@ -17,11 +17,22 @@
 <div class="navigation mbm">
   <div class="navigation-content layout clearfix">
     <div class="nav-mainmenu-content">
+      <div class="col__left col__table">
+        <%= link_to root_path, title:"didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" do %>
+          <%= image_tag("IPHONE.png", size: "60x60", alt: "didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc") %>
+        <% end %>
+      </div>
       <li class="level_1  dropdown">
         <span>
           <%= link_to " Users", admin_users_path, class: "glyphicon glyphicon-th-large" %>
         </span>&nbsp;
       </li>
+      <li class="level_1  dropdown">
+        <span>
+          <%= link_to " Posts", admin_posts_path, class: "glyphicon glyphicon-list-alt" %>
+        </span>&nbsp;
+      </li>
+
       <li class="level_1  dropdown">
         <span>
           <%= link_to " Products", admin_products_path, class: "glyphicon glyphicon-tasks" %>

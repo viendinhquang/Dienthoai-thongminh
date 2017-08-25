@@ -27,18 +27,12 @@ User.create!(name:  "Paul Vien",
   email = Faker::Internet.unique.free_email
   # password = Devise.friendly_token.first(6)
   password = "password"
-  sex = [ "Male", "Famale"][Faker::Number.between(0, 1)]
+  sex = [ "Male", "Female"][Faker::Number.between(0, 1)]
   birthday = Faker::Date.birthday
   avatar = Faker::Avatar.image
   User.create(name: name, email: email, password: password, password_confirmation: password, sex: sex, birthday: birthday, avatar: avatar, admin: false)
 end
 
-users = User.order(:created_at).take(5)
-20.times do
-  title = Faker::Name.title
-  content = Faker::Lorem.sentence(1)
-  users.each { |user| user.posts.create!(title: title, content: content) }
-end
 
 #Create Categories
 [{ name: "Smart Phone", icon: "mobile" },
@@ -90,6 +84,23 @@ end
 Product.all.each do |product|
   type_color = [ "Gold", "Silver", "Gray"][Faker::Number.between(0, 2)]
   TypeColor.create!(name: type_color, product: product)
+end
+
+# Create posts
+users = User.order(:created_at).take(5)
+10.times do
+  title = Faker::Name.title
+  content = Faker::Lorem.sentence(1)
+  sub_category_id = Faker::Number.between(1, 4)
+  users.each { |user| user.posts.create!(title: title, content: content, sub_category_id: sub_category_id)}
+end
+
+#Create Post Comment
+50.times do
+  content = Faker::Lorem.sentence(3, true, 4)
+  user_id = Faker::Number.between(1, 5)
+  post_id = Faker::Number.between(5, 45)
+  PostComment.create!(content: content, user_id: user_id, post_id: post_id)
 end
 # Examples:
 #
