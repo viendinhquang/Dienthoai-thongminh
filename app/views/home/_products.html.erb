@@ -8,7 +8,7 @@
         <div class="col-md-3 bbl product <%= 'bt' if index < 4 %> <%= 'br' if index.next % 4 == 0 %>">
           <div class="info">
             <div class="product-image">
-              <%=  image_tag(product.type_colors.first.picture.url, size: "170") %>
+              <%=  image_tag(product.type_colors.first.picture.url, :height => "200", :crop => :fill) %>
             </div>
             <div class="product-name">
               <span> <%= product.name %> </span>

@@ -17,7 +17,7 @@
       <th><%= product.price%></th>
       <td><%= product.made_in%></td>
       <td><%= product.screen_size%></td>
-      <td><%= link_to image_tag(product.type_colors.first.picture.thumb.url), admin_type_color_path(product.type_colors.first.id)%></td>
+      <td><%= link_to image_tag(product.type_colors.first.picture.url, :height => "150", :crop => :fill), admin_type_color_path(product.type_colors.first.id)%></td>
 
       <div class="btn btn-group">
         <th>

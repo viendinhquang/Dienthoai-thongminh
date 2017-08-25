@@ -2,7 +2,7 @@
 <%= form_for :type_color, url: admin_type_color_path, method: :put do |f| %>
   <p>
     <%= f.label :name %>
-    <%= f.select :name, ['Gray', 'Silver', 'Gold'], class: "form-control" %>
+    <%= f.select :name, ['Gray', 'Silver', 'Gold', 'Black'], class: "form-control" %>
   </p>
   <p>
     <%= f.label :color_code %>
@@ -16,7 +16,7 @@
     <%= f.label :image %>
     <%= f.file_field :picture %>
       <% if @type_color.picture? %>
-        <%= link_to image_tag(@type_color.picture.thumb.url), admin_type_color_path(@type_color.id) %><br>
+        <%= link_to image_tag(@type_color.picture.url, :height => "150", :crop => :fill), admin_type_color_path(@type_color.id) %><br>
         <%= f.label :remove_image %>
         <%= f.check_box :remove_picture %>
       <% end %>

@@ -11,13 +11,15 @@ module SessionHelper
   def logged_in_user
     unless logged_in?
       flash[:danger] = "Please log in."
-      redirect_to login_url
+      redirect_to sign_in_path
     end
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
-    flash[:danger] = "You must be admin!!!"
+    unless current_user.admin?
+      redirect_to(root_url)
+      flash[:danger] = "You must be admin!!!"
+    end
   end
 
   def log_out

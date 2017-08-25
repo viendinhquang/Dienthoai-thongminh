@@ -1,5 +1,72 @@
-<div class="layout main_wrapper _2pi4 mbl">
-  <div class=" main-column  main-colum-left">
-    code somethings here
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    ul {
+    overflow: auto;  similar to clearing the floats...
+    border: 1px solid gray;
+}
+.item {
+    display: inline-block;
+    /*border: 1px solid black;*/
+    padding: 0;
+    margin: 2px 1px;
+    position: relative;
+}
+.title {
+  background: none repeat scroll 0 0 rgba(0,0,0,0.5);
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  padding: 0 20px;
+}
+  </style>
+</head>
+<body>
+  <div class="layout main_wrapper _2pi4 mbl">
+    <div class=" main-column  main-colum-left">
+      <div class="related-articles">
+        <h2 class="block_title">TOP 5</h2>
+            <div class=" main-column  main-colum-left">
+              <ul class="media-grid clearfix mt20">
+                <% @post.each do |post| %>
+                  <li class="item">
+                    <div class="image"><%= link_to (image_tag post.image.url, :height => "180", :crop => :fill), admin_post_path(post.id) %></div>
+                    <div class="title"><%= post.title %></div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
   </div>
-</div>
+
+  <div class="layout main_wrapper _2pi4 mbl">
+    <div class="main-column  main-colum-left">
+      <div class="related-articles">
+        <h2 class="headline">List Posts</h2>
+          <div class=" main-column  main-colum-left">
+          <%= will_paginate @posts %>
+            <% @posts.each do |post| %>
+            <ul>
+              <h3><%= post.title%></h3>
+              <p><%= post.created_at.time %>, Poster: <%= link_to post.user.name, admin_user_path(post.user.id)%></p>
+              <div align="middle"><%= link_to (image_tag post.image.url, :width => "600", :crop => :fill), admin_post_path(post.id) %></div>
+              <br>
+              <p><%= post.content%></p>
+              <hr style="border: 0.5px dashed #808080" />
+            </ul>
+          <%end%>
+          <%= will_paginate @posts %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

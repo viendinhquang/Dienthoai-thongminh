@@ -20,6 +20,16 @@
     <%= f.text_field :sub_category_id, placeholder: "Enter the ID sub category from 0 to 7", class: "form-control" %>
   </p>
 
+  <p>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+      <% if @post.image? %>
+        <%= link_to image_tag(@post.image.thumb.url) %><br>
+        <%= f.label :remove_image %>
+        <%= f.check_box :remove_image %>
+      <% end %>
+  </p>
+
   <%= f.submit "Update", class: "btn btn-success" %>
   <%= link_to "Back", :back, class: "btn btn-primary"%>
 <% end %>
