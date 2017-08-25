@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'post/index'
   get 'errors/contact'
 
   get 'errors/not_found'

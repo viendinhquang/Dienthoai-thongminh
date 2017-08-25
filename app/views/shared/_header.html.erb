@@ -1,16 +1,36 @@
-<header class="header clearfix phm pvs">
+<header class="header clearfix phm ptl pbs">
   <div class="layout">
-    <div class="pull-left _2pi3">
+    <div class="pull-left">
         <p>
           <span class="title-icon">☎&nbsp;</span><strong>1900.6122</strong> -
           <span class="title-icon">☎&nbsp;</span><strong>Bảo Hành:</strong></span> <strong>1800.6501</strong> -
           <span class="title-icon">☎&nbsp;</span><strong>Khiếu Nại:</strong></span> <strong>1800.6502&nbsp;</strong>
         </p>
     </div>
-    <div class="center _2pi3">
+    <div class="center">
       <span class="slogan">
         <p>tận tình từ lần chạm đầu tiên</p>
       </span>
+    </div>
+    <div class="pull-right">
+      <div class="pull-left">
+        <div class="mainmenu">
+          <ul class="clearfix">
+            <li class="menu-item">
+              <%= link_to "Giới Thiệu", root_path, title:"Giới Thiệu", class:"menu-name" %>
+            </li>
+            <li class="menu-item">
+              <%= link_to "Tin tức", post_index_path, title:"Tin tức", class:"menu-name" %>
+            </li>
+            <li class="menu-item">
+              <%= link_to "Đăng nhập", root_path, title:"Đăng nhập", class:"menu-name" %>
+            </li>
+            <li class="menu-item">
+              <%= link_to "Liên hệ", root_path, title:"Liên hệ", class:"menu-name" %>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </header>
