@@ -36,23 +36,23 @@ class Admin::PostsController < ApplicationController
   end
 
   private
-    def logged_in?
-      !current_user.nil?
-    end
+    # def logged_in?
+    #   !current_user.nil?
+    # end
 
-    def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in..."
-        redirect_to sign_in_path
-      end
-    end
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
-    end
+    # def logged_in_user
+    #   unless logged_in?
+    #     flash[:danger] = "Please log in..."
+    #     redirect_to sign_in_path
+    #   end
+    # end
+    # def admin_user
+    #   redirect_to(root_url) unless current_user.admin?
+    # end
+    # def correct_user
+    #   @user = User.find(params[:id])
+    #   redirect_to(root_url) unless @user == current_user
+    # end
     def post_params
       params.require(:post).permit(:title, :content, :user_id, :sub_category_id)
     end
