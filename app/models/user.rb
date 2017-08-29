@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-  # has_secure_password
+  before_create :generate_authentication_token
+
+  has_secure_password
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

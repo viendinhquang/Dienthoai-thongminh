@@ -4,7 +4,6 @@ class SessionsController < Devise::SessionsController
       super
     end
     def create
-      # binding.pry
       @referer_url = root_path
       super
     end
