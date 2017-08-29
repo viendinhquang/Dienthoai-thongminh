@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'post/index'
   get 'post/contact'
-  get 'errors/contact'
 
+  get 'errors/contact'
   get 'errors/not_found'
 
   resources :product

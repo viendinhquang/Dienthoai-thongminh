@@ -9,18 +9,17 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   # def create
   #   binding.pry
-  #   redirect_to admin_page_index_path
-    # user = User.find_by(email: params[:user][:email])
-  #   if user && user.authenticate(params[:session][:password])
+  #   user = User.find_by_email(params[:user][:email])
+  #   if user && user.authenticate(params[:user][:password])
   #     log_in user
   #     flash[:success] = 'Login success'
-  # redirect_to admin_page_index_path
-  #     redirect_to root_path
+  #     redirect_to admin_page_index_path
+  #     # redirect_to root_path
   #   else
   #     flash[:danger] = 'Invalid email/password combination'
   #     render 'new'
   #   end
-    # super
+  #   super
   # end
 
   # DELETE /resource/sign_out

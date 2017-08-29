@@ -6,6 +6,7 @@
     ul {
     overflow: auto;  similar to clearing the floats...
     border: 1px solid gray;
+    padding: 0px;
 }
 .item {
     display: inline-block;
@@ -24,49 +25,87 @@
   font-size: 18px;
   padding: 0 20px;
 }
+.breadcrumb {
+    padding: 0;
+    margin-bottom: 4px;
+    background: transparent;
+}
+.breadcumbs {
+  display: inline-block;
+}
+.news_menu.nav-tabs {
+    background: none repeat scroll 0 0 #f7f7f7;
+    border: medium none;
+    margin-bottom: 20px;
+}
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+}
+  .nav {
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style: none;
+  }
   </style>
 </head>
 <body>
   <div class="layout main_wrapper _2pi4 mbl">
     <div class=" main-column  main-colum-left">
       <div class="related-articles">
-        <h2 class="block_title">TOP 5</h2>
-            <div class=" main-column  main-colum-left">
-              <ul class="media-grid clearfix mt20">
-                <% @post.each do |post| %>
-                  <li class="item">
-                    <div class="image"><%= link_to (image_tag post.image.url, :height => "180", :crop => :fill), admin_post_path(post.id) %></div>
-                    <div class="title"><%= post.title %></div>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
+        <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+          <h5 class="breadcumbs">
+            <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Home</a>
+          </h5>
+          <p class="breadcumbs"> >> </p>
+          <h5 class="breadcumbs"><a href="http://localhost:3000/post/index" title="new" itemprop="url">News</a></h5>
+          <div class="clear"></div>
+        </div>
+        <ul class="main-column  main-colum-left">
+          <% @post.each do |post| %>
+            <li class="item">
+              <div class="image"><%= link_to (image_tag post.image.url, :height => "220", :crop => :fill), admin_post_path(post.id) %></div>
+              <div class="title"><%= post.title %></div>
+            </li>
+          <% end %>
+        </ul>
       </div>
-    </div>
-  </div>
 
-  <div class="layout main_wrapper _2pi4 mbl">
-    <div class="main-column  main-colum-left">
-      <div class="related-articles">
-        <h2 class="headline">List Posts</h2>
-          <div class=" main-column  main-colum-left">
-          <%= will_paginate @posts %>
-            <% @posts.each do |post| %>
-            <ul>
-              <h3><%= post.title%></h3>
-              <p><%= post.created_at.time %>, Poster: <%= link_to post.user.name, admin_user_path(post.user.id)%></p>
-              <div align="middle"><%= link_to (image_tag post.image.url, :width => "600", :crop => :fill), admin_post_path(post.id) %></div>
-              <br>
-              <p><%= post.content%></p>
-              <hr style="border: 0.5px dashed #808080" />
+      <div class="main-column  main-colum-left">
+        <div class="related-articles">
+          <div class="menu-news">
+            <ul class="nav nav-tabs news_menu  news_menu-default">
+              <li class="item  level_0 first-item  " id="pr_38"><a href="http://didongthongminh.vn/danh-muc-tin/san-pham-moi-reviews.html"><span>Tin mới nhất</span></a>
+              </li>
+              </li><li class="item  level_0 first-item  " id="pr_40"><a href="http://didongthongminh.vn/danh-muc-tin/huong-dan-mua-hang.html"><span>Hướng dẫn mua hàng</span></a>
+              </li>
+              </li><li class="item  level_0 first-item  " id="pr_49"><a href="http://didongthongminh.vn/danh-muc-tin/tin-khuyen-mai.html"><span>Tin Khuyến Mãi</span></a>
+              </li><li class="item  level_0 first-item  " id="pr_74"><a href="http://didongthongminh.vn/danh-muc-tin/ban-tin-cong-nghe.html"><span>Bản tin công nghệ</span></a>
+              </li><li class="item  level_0 first-item  " id="pr_61"><a href="http://didongthongminh.vn/danh-muc-tin/huong-dan-ki-thuat.html"><span>Hướng dẫn kĩ thuật</span></a>
+              </li><li class="item  level_0 first-item  " id="pr_64"><a href="http://didongthongminh.vn/danh-muc-tin/tin-hoat-dong.html"><span>Tuyển dụng</span></a>
+              </li>
             </ul>
-          <%end%>
-          <%= will_paginate @posts %>
           </div>
+        </div>
+      </div>
+
+      <div class="main-column  main-colum-left">
+        <div class="related-articles">
+            <div class=" main-column  main-colum-left">
+              <% @posts.each do |post| %>
+              <ul>
+                <h3><%= post.title%></h3>
+                <p><%= post.created_at.time %>, Poster: <b><%= link_to post.user.name, admin_user_path(post.user.id)%></b></p>
+                <div align="middle"><%= link_to (image_tag post.image.url, :width => "600", :crop => :fill), admin_post_path(post.id) %></div>
+                <br>
+                <p><%= post.content%></p>
+                <hr style="border: 0.5px dashed #808080" />
+              </ul>
+            <%end%>
+            <%= will_paginate @posts %>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
 </html>
