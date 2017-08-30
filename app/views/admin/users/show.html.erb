@@ -3,10 +3,11 @@
 <h3>Email: <%= @user.email %></h3>
 <h3>Birthday: <%= @user.birthday %></h3>
 <h3>Gender: <%= @user.sex %></h3>
-<h3>Avatar: <%= image_tag(@user.avatar.url, size: "150") if @user.avatar? %></h3>
+<h3>Avatar: <%= image_tag(@user.avatar.url,  :height => "150", :crop => :fill) if @user.avatar? %></h3>
 
 <%= link_to "Back", :back, class: "btn btn-primary" %>
-<% if current_user.admin? %>
+<!-- % if current_user.admin? %> -->
+<% if can? [:update, :destroy], @user %>
   <%= link_to "Edit", edit_admin_user_path(@user.id), class: "btn btn-warning" %>
   <%= link_to "Delete", admin_user_path(@user.id), class: "btn btn-danger", method: :delete %>
 <% end %>
