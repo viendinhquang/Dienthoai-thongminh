@@ -1,93 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <style type="text/css">
-  input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-  }
-  input[type=submit] {
-    background-color: #FF8B00;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  input[type=submit]:hover {
-    background-color: #FE670C;
-  }
-  h3 {
-    color: #FF8B00;
-  }
-  #map {
-    border: 1px solid #FF8B00;
-      width: 100%;
-      height: 400px;
-      background-color: grey;
-  }
-  .container {
-    text-align: left;
-  }
-  .form_left {
-    float: left;
-    width: 40%;
-  }
-  .form_right {
-    float: right;
-    width: 55%;
-  }
-  </style>
-</head>
-<body>
-<div class="container">
-  <div class="form_left">
-    <h3>Contact Form</h3>
-      <form action="/action_page.php">
-      <label for="name">Your Name *</label>
-      <input type="text" id="name" name="yourname" placeholder="Your name..">
+<div class="layout main_wrapper _2pi4 mbl">
+  <div class=" main-column  main-colum-left">
+      <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <h5 class="breadcumbs">
+          <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Home</a>
+        </h5>
+        <p class="breadcumbs"> >> </p>
+        <h5 class="breadcumbs"><a href="http://localhost:3000/post/index" title="new" itemprop="url">Contact</a></h5>
+        <div class="clear"></div>
+      </div>
+      <h3>Contact Form</h3>
+    <div class="container">
+      <div class="form_left">
+          <form action="/action_page.php">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="yourname" placeholder="Your name..">
 
-      <label for="email">Email *</label>
-      <input type="text" id="email" name="email" placeholder="Your email..">
+          <label for="email">Email *</label>
+          <input type="text" id="email" name="email" placeholder="Your email..">
 
-      <label for="gender">Gender</label>
-      <select id="gender" name="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
+          <label for="phone">Your phone *</label>
+          <input type="text" id="phone" name="phone" placeholder="Your phone..">
 
-      <label for="phone">Your phone *</label>
-      <input type="text" id="phone" name="phone" placeholder="Your phone..">
+          <label for="subject">Subject :</label>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
 
-      <label for="subject">Subject :</label>
-      <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
-
-      <input type="submit" value="SEND">
-    </form>
+          <input type="submit" value="SEND">
+        </form>
+        </div>
+      <div class="form_right">
+        <div class="information">
+        <h3>My First Google Map</h3>
+          <p>Đà Nẵng</p>
+          <p>Địa chỉ 6: 95 Hàm Nghi Đà Nẵng</p>
+          <p>Điện thoại: 0918503543</p>
+          <p>Địa chỉ 7: 388 Phan Đình Phùng - Tp Kon Tum - Tỉnh Kon Tum</p>
+          <p>Điện thoại: 0916.55.11.77</p>
+        </div>
+        <div id="map">
+          <script>
+            var map;
+            function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 16.076265, lng: 108.235507},
+                zoom: 15
+              });
+            }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuhH5yPTqE0zYH7Vj6GuycJcidKFxLVwA&callback=initMap" async defer>
+          </script>
+        </div>
+      </div>
     </div>
-  <div class="form_right">
-    <h3>My First Google Map</h3>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 16.076265, lng: 108.235507},
-          zoom: 8
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuhH5yPTqE0zYH7Vj6GuycJcidKFxLVwA&callback=initMap" async defer>
-    </script>
   </div>
 </div>
-
-</body>
-</html>
