@@ -7,7 +7,7 @@ class Admin::PostsController < ApplicationController
   end
   def index
     @posts = Post.paginate(:page => params[:page], :per_page => 15)
-                 .order('created_at asc')
+                 .order('created_at desc')
   end
   def create
     @post = Post.create(post_params)

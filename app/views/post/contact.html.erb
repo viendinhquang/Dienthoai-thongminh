@@ -1,220 +1,55 @@
-<div class="contact">
-  <h1 class="content_title"><span>Contact</span></h1>
-  <div class="row">
-    <div class=" col-lg-r col-lg-5 col-md-6 col-sm-12 col-xs-12">
-      <div class="contact_form">
-    <!--  FORM        -->
-    <form method="post" action="#" name="contact" class="form" >
-      <table  cellpadding="5" align="center" class="contact_table" width="100%">
-        <tbody>
-          <tr>
-            <td class="form_text"><span  class="form_text_note">Liên hệ với chúng tôi </span></td>
-          </tr>
-          <tr>
-            <td class="form_name">H&#7885; v&#224; t&#234;n<span class="red">* </span></td>
-          </tr>
-          <tr>
-            <td class="form_text">
-              <input type="text" maxlength="255"  value="" name="contact_name" id="contact_name" title="H&#7885; v&#224; t&#234;n" class="form_control">
-            </td>
-          </tr>
-          <tr>
-            <td class="form_name">Email<span class="red">* </span></td>
-          </tr>
-          <tr>
-            <td class="form_text">
-              <input type="text" maxlength="255"  value="" name="contact_email" id="contact_email" title="Email" class="form_control">
-            </td>
-          </tr>
-          <tr>
-            <td class="form_name">
-              &#272;i&#7879;n tho&#7841;i<span class="red">* </span>
-            </td>
-          </tr>
-          <tr>
-            <td class="form_text">
-              <input type="text" maxlength="255" value="" name="contact_phone" id="contact_phone" title="&#272;i&#7879;n tho&#7841;i" class="form_control">
-            </td>
-          </tr>
-          <tr>
-            <td class="form_name">N&#7897;i dung :</td>
-          </tr>
-          <tr>
-            <td class="form_text">
-              <textarea rows="6" cols="30" name='message' id='message' ></textarea>
-            </td>
-          </tr>
-           <tr>
-              <td class="form_name">Nhập mã</td>
-            </tr>
-            <tr>
-            <td class="form_name " id="form_captcha">
-            <input  class="form_control" type="text"  id="txtCaptcha" value="" name="txtCaptcha"  maxlength="10" size="23" />
-            <a href="javascript:changeCaptcha();"  title="Click here to change the captcha" class="code-view" >
-              <img id="imgCaptcha" src="http://didongthongminh.vn/libraries/jquery/ajax_captcha/create_image.php" />
-            </a>
-          </td>
-        </tr>
-          <tr>
-            <td class="form_text">
-              &nbsp;
-            </td>
-          </tr>
-          <tr>
-            <td class="form_text button_area">
-              <a class="button" href="javascript: void(0)" id='submitbt'>
-                <span>&nbsp;Gửi&nbsp;</span>
-              </a>
-              <a class="button" href="javascript: void(0)" id='resetbt'>
-                <span>Làm lại</span>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <input type="hidden" name="module" value="contact">
-      <input type="hidden" name="task" value="save">
-      <input type="hidden" name="view" value="contact">
-      <input type="hidden" name="Itemid" value="43">
-    </form>
-    <!--  end FORM        -->
-    <div class="clear"></div>
-  </div>    </div>
-    <div class="col-lg-r col-lg-7 col-md-6 col-sm-6 col-xs-12 hidden-xs  hidden-sm">
-        <div class="address">
-  <div class="address_wapper">
-    <div class="">
-      <div class="row">
-        <div class="col-lg-6">
-          <p><strong>Hà nội</strong></p>
-                      <p><b>Địa chỉ 1:</b> 119 - 121 Thái Thịnh, Đống Đa</p>
-            <p><b>Điện thoại: </b>0917.999.919</p>
-            <br />
-                                              <p><b>Địa chỉ 2:</b> 208 Xã Đàn , Đống Đa</p>
-            <p><b>Điện thoại: </b>0917.999.919</p>
-            <br />
-                                              <p><b>Địa chỉ 3:</b> Bán Hàng Online - 208 Xã Đàn</p>
-            <p><b>Điện thoại: </b>19006122</p>
-            <br />
-                                              <p><b>Địa chỉ 4:</b> 95 Xuân Thủy - Cầu Giấy (135 Xuân Thủy cũ)</p>
-            <p><b>Điện thoại: </b>0966.119.995</p>
-            <br />
-                                          </div>
-        <div class="col-lg-6">
-          <div id="map-canvas-1" class="map-canvas"></div>
+<div class="layout main_wrapper _2pi4 mbl">
+  <div class=" main-column  main-colum-left">
+      <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <h5 class="breadcumbs">
+          <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Home</a>
+        </h5>
+        <p class="breadcumbs"> >> </p>
+        <h5 class="breadcumbs"><a href="http://localhost:3000/post/index" title="new" itemprop="url">Contact</a></h5>
+        <div class="clear"></div>
+      </div>
+      <h3>Contact Form</h3>
+    <div class="container">
+      <div class="form_left">
+          <form action="/action_page.php">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="yourname" placeholder="Your name..">
+
+          <label for="email">Email *</label>
+          <input type="text" id="email" name="email" placeholder="Your email..">
+
+          <label for="phone">Your phone *</label>
+          <input type="text" id="phone" name="phone" placeholder="Your phone..">
+
+          <label for="subject">Subject :</label>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+
+          <input type="submit" value="SEND">
+        </form>
+        </div>
+      <div class="form_right">
+        <div class="information">
+        <h3>My First Google Map</h3>
+          <p>Đà Nẵng</p>
+          <p>Địa chỉ 6: 95 Hàm Nghi Đà Nẵng</p>
+          <p>Điện thoại: 0918503543</p>
+          <p>Địa chỉ 7: 388 Phan Đình Phùng - Tp Kon Tum - Tỉnh Kon Tum</p>
+          <p>Điện thoại: 0916.55.11.77</p>
+        </div>
+        <div id="map">
           <script>
-          var locations  = [['119 - 121 Thái Thịnh, Đống Đa',21.010093547686264,105.8186111211121,15],['208 Xã Đàn , Đống Đa',21.012477230459137,105.83630297177433,15],['Bán Hàng Online - 208 Xã Đàn',21.008591207043604,105.83943579190372,15],['95 Xuân Thủy - Cầu Giấy (135 Xuân Thủy cũ)',21.03628692809505,105.78836116784214,15]];
-          var map = new google.maps.Map(document.getElementById('map-canvas-1'), {
-              zoom: 10,
-              center: new google.maps.LatLng(21.037834051277333,105.8411953210175),
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            var infowindow = new google.maps.InfoWindow();
-            var marker, i;
-            for (i = 0; i < locations.length; i++) {
-              marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                map: map
+            var map;
+            function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 16.076265, lng: 108.235507},
+                zoom: 15
               });
-              google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                  infowindow.setContent(locations[i][0]);
-                  infowindow.open(map, marker);
-                }
-              })(marker, i));
             }
-              </script>
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuhH5yPTqE0zYH7Vj6GuycJcidKFxLVwA&callback=initMap" async defer>
+          </script>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="address">
-  <div class="address_wapper">
-      <div class="row">
-        <div class="col-lg-6">
-          <p><strong>Đà Nẵng</strong></p>
-                      <p><b>Địa chỉ 6:</b> 95 Hàm Nghi Đà Nẵng</p>
-            <p><b>Điện thoại: </b>0918503543</p>
-            <br />
-                                              <p><b>Địa chỉ 7:</b> 388 Phan Đình Phùng - Tp Kon Tum - Tỉnh Kon Tum</p>
-            <p><b>Điện thoại: </b>0916.55.11.77</p>
-            <br />
-                                          </div>
-        <div class="col-lg-6">
-          <div id="map-canvas-2" class="map-canvas"></div>
-          <script>
-          var locations  = [['95 Hàm Nghi Đà Nẵng',15.997749260258761,108.0824062585175,15],['388 Phan Đình Phùng - Tp Kon Tum - Tỉnh Kon Tum',21.037834051277333,105.8411953210175,15]];
-          var map = new google.maps.Map(document.getElementById('map-canvas-2'), {
-              zoom: 10,
-              center: new google.maps.LatLng(15.997749260258761,108.0824062585175),
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            var infowindow = new google.maps.InfoWindow();
-            var marker, i;
-            for (i = 0; i < locations.length; i++) {
-              marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                map: map
-              });
-              google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                  infowindow.setContent(locations[i][0]);
-                  infowindow.open(map, marker);
-                }
-              })(marker, i));
-            }
-              </script>
-        </div>
-      </div>
-  </div>
-</div>
-<div class="address">
-  <div class="address_wapper">
-      <div class="row">
-        <div class="col-lg-6">
-          <p><strong>TP. Hồ Chí Minh</strong></p>
-                      <p><b>Địa chỉ 8:</b> 392 Hoàng Diệu, Phường 5, Quận 4</p>
-            <p><b>Điện thoại: </b>0917999918</p>
-            <br />
-                                              <p><b>Địa chỉ 9:</b> 602 Lê Hồng Phong, Phường 10, Quận 10</p>
-            <p><b>Điện thoại: </b>0911189119</p>
-            <br />
-                                              <p><b>Địa chỉ 10:</b> 325 Hoàng Văn Thụ - P2 - Quận Tân Bình</p>
-            <p><b>Điện thoại: </b>‎0918808880</p>
-            <br />
-                                              <p><b>Địa chỉ 11:</b> 482 Quang Trung , P10 , Quận Gò Vấp</p>
-            <p><b>Điện thoại: </b>091.3333.090</p>
-            <br />
-                                              <p><b>Địa chỉ 12:</b> 699-701 Lê Hồng Phong - Phường 10 - Quận 10</p>
-            <p><b>Điện thoại: </b>0971699701</p>
-            <br />
-                                          </div>
-        <div class="col-lg-6">
-        <div id="map-canvas-3" class="map-canvas"></div>
-          <script>
-          var locations  = [['392 Hoàng Diệu, Phường 5, Quận 4',10.830408608026115,106.45915482037663,15],['602 Lê Hồng Phong, Phường 10, Quận 10',10.811587630473063,106.66872117512821,15],['325 Hoàng Văn Thụ - P2 - Quận Tân Bình',10.825360992625392,106.6142186879456,15],['482 Quang Trung , P10 , Quận Gò Vấp',10.778790363636318,106.6322109460175,15],['699-701 Lê Hồng Phong - Phường 10 - Quận 10',21.037834051277333,105.8411953210175,15]];
-          var map = new google.maps.Map(document.getElementById('map-canvas-3'), {
-              zoom: 10,
-              center: new google.maps.LatLng(10.830408608026115,106.45915482037663),
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            var infowindow = new google.maps.InfoWindow();
-            var marker, i;
-            for (i = 0; i < locations.length; i++) {
-              marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                map: map
-              });
-              google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                  infowindow.setContent(locations[i][0]);
-                  infowindow.open(map, marker);
-                }
-              })(marker, i));
-            }
-            </script>
-        </div>
-      </div>
   </div>
 </div>

@@ -17,8 +17,8 @@ module SessionHelper
 
   def admin_user
     unless current_user.admin?
-      redirect_to(root_url)
       flash[:danger] = "You must be admin!!!"
+      redirect_to(root_url)
     end
   end
 
@@ -26,12 +26,22 @@ module SessionHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
   def correct_user
     @user = User.find(params[:id])
-    if @user.admin?
-      redirect_to(root_url) unless @user == current_user
+    unless @user == current_user
+      flash[:danger] = "Not your account"
+      redirect_to(root_url)
     end
   end
+  # def correct_user
+  #   binding.pry
+  #   @user = User.find(params[:id])
+  #   if @user.admin?
+  #     flash[:danger] = "Not your account"
+  #     redirect_to(root_url) unless @user == current_user
+  #   end
+  # end
    # def current_user
    #    binding.pry
    #    @current_user = @current_user || User.find_by(id: session[:user_id])
