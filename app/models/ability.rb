@@ -4,10 +4,10 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
+    binding.pry
       user ||= User.new # guest user (not logged in)
-      binding.pry
       if user.admin?
-        can :manage, :all
+        can :update, :all
       else
         can :read, :all
       end
@@ -30,4 +30,6 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
+  private
+
 end

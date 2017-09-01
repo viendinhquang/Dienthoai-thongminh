@@ -1,35 +1,36 @@
-<h1>Edit Post</h1>
-<%= form_for :post, url: admin_post_path, method: :put do |f| %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title, placeholder: "Enter the title", class: 'form-control' %>
-  </p>
+<div class= "layout main_wrapper">
+  <h1>Edit Post</h1>
+  <%= form_for :post, url: admin_post_path, method: :put do |f| %>
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: "Enter the title", class: 'form-control' %>
+    </p>
 
-  <p>
-    <%= f.label :content %>
-    <%= f.text_field :content, placeholder: "Enter the content", class: 'form-control' %>
-  </p>
+    <p>
+      <%= f.label :content %>
+      <%= f.text_field :content, placeholder: "Enter the content", class: 'form-control' %>
+    </p>
 
-  <p>
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id, placeholder: "Enter the ID user from 0 to 21", class: "form-control" %>
-  </p>
+    <p>
+        <%= f.label :category_id %>
+        <%= f.select :category_id, ['Smart Phone', 'Tablet', 'Accessories', 'Service', 'Promotion'], placeholder: "Enter the ID sub category from 0 to 4", class: "form-control" %>
+      </p>
 
-  <p>
-    <%= f.label :sub_category_id %>
-    <%= f.text_field :sub_category_id, placeholder: "Enter the ID sub category from 0 to 7", class: "form-control" %>
-  </p>
+    <p>
+      <%= f.hidden_field :sub_category_id, placeholder: "Enter the ID sub category from 0 to 7", class: "form-control" %>
+    </p>
 
-  <p>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-      <% if @post.image? %>
-        <%= link_to image_tag(@post.image.thumb.url) %><br>
-        <%= f.label :remove_image %>
-        <%= f.check_box :remove_image %>
-      <% end %>
-  </p>
+    <p>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+        <% if @post.image? %>
+          <%= link_to image_tag(@post.image.thumb.url) %><br>
+          <%= f.label :remove_image %>
+          <%= f.check_box :remove_image %>
+        <% end %>
+    </p>
 
-  <%= f.submit "Update", class: "btn btn-success" %>
-  <%= link_to "Back", :back, class: "btn btn-primary"%>
-<% end %>
+    <%= f.submit "Update", class: "btn btn-success" %>
+    <%= link_to "Back", :back, class: "btn btn-primary"%>
+  <% end %>
+</div>

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ gem "nokogiri"
 gem 'cancancan', '~> 1.10'
 gem 'mini_magick'
 gem 'carrierwave'

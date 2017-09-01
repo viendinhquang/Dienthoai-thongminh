@@ -1,33 +1,39 @@
-<h1>Listing Posts</h1>
-<%= will_paginate @posts %>
-<table class="table table-striped">
-<tr>
-  <th>Author</th>
-  <th>Title</th>
-  <th>Content</th>
-  <th>Name's Sub Category</th>
-  <th>Image</th>
-  <th>Action</th>
-</tr>
-  <% @posts.each do |post| %>
+<div class="layout main_wrapper _2pi4 mbl">
+  <div class=" main-column  main-colum-left">
+    <h1>Listing Posts</h1>
+    <%= will_paginate @posts %>
+    <table class="table table-striped">
     <tr>
-      <th><%= link_to post.user.name, admin_user_path(post.user.id) %></th>
-      <th><%= post.title%></th>
-      <th><%= post.content%></th>
-      <td><%= post.sub_category.name unless post.sub_category.nil? %></td>
-      <td><%= link_to image_tag(post.image.url, :height => "150", :crop => :fill), admin_post_path(post.id) if post.image? %></td>
-      <div class="btn btn-group">
-        <th>
-          <%= link_to "Show", admin_post_path(post.id), class: "btn btn-primary" %>
-          <% if current_user.admin? %>
-            <%= link_to "Edit", edit_admin_post_path(post.id), class: "btn btn-warning" %>
-            <%= link_to "Delete", admin_post_path( post.id), class: "btn btn-danger", method: :delete%>
-          <% end %>
-        </th>
-      </div>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Category</th>
+      <!-- <th>Sub Category</th> -->
+      <th>Image</th>
+      <th>Action</th>
     </tr>
-  <%end%>
-</table>
-<%= will_paginate @posts %>
-<br>
-<%= link_to 'New Post', new_admin_post_path, class: "btn btn-info" %>
+      <% @posts.each do |post| %>
+        <tr>
+          <th><%= link_to post.user.name, admin_user_path(post.user.id) unless post.user.nil? %></th>
+          <th><%= post.title%></th>
+          <th><%= post.content%></th>
+          <td><%= post.category_id %></td>
+          <!-- <td>%= post.sub_category.name unless post.sub_category.nil? %></td> -->
+          <td><%= link_to image_tag(post.image.url, :width => "200", :crop => :fill), admin_post_path(post.id) if post.image? %></td>
+          <div class="btn btn-group">
+            <th>
+              <%= link_to "Show", admin_post_path(post.id), class: "btn btn-primary" %>
+              <% if current_user.admin? %>
+                <%= link_to "Edit", edit_admin_post_path(post.id), class: "btn btn-warning" %>
+                <%= link_to "Delete", admin_post_path( post.id), class: "btn btn-danger", method: :delete%>
+              <% end %>
+            </th>
+          </div>
+        </tr>
+      <%end%>
+    </table>
+    <%= will_paginate @posts %>
+    <br>
+    <%= link_to 'New Post', new_admin_post_path, class: "btn btn-info" %>
+  </div>
+</div>

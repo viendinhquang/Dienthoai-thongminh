@@ -1,8 +1,8 @@
 <h1>Show Type Color</h1>
-<h2>Name: <%= link_to @type_color.name%></h2>
-<h3>Color code: <%= @type_color.color_code%></h3>
-<h3>Product's name: <%= link_to @type_color.product.name , admin_product_path(@type_color.product.id)%></h3>
-<h3>Image: <%= link_to image_tag(@type_color.picture.url, size: "150"), admin_type_color_path(@type_color.id) if @type_color.picture? %></h3>
+<h4>Name: <%= link_to @type_color.name%></h4>
+<h4>Color code: <%= @type_color.color_code%></h4>
+<h4>Product's name: <%= link_to @type_color.product.name , admin_product_path(@type_color.product.id)%></h4>
+<h4>Image: <%= link_to image_tag(@type_color.picture.url, :height => "150"), admin_type_color_path(@type_color.id) if @type_color.picture? %></h4>
 
 <%= link_to "Back", :back, class: "btn btn-primary"%>
 <% if current_user.admin? %>

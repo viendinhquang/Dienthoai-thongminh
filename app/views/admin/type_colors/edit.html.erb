@@ -1,26 +1,28 @@
-<h1>Edit Type Color</h1>
-<%= form_for :type_color, url: admin_type_color_path, method: :put do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.select :name, ['Gray', 'Silver', 'Gold', 'Black', 'Red'], class: "form-control" %>
-  </p>
-  <p>
-    <%= f.label :color_code %>
-    <%= f.text_field :color_code, placeholder: "Enter the color code", class: 'form-control' %>
-  </p>
-  <p>
-    <%= f.label :product_id %>
-    <%= f.text_field :product_id, placeholder: "Enter the ID Product", class: 'form-control' %>
-  </p>
-  <p>
-    <%= f.label :image %>
-    <%= f.file_field :picture %>
-      <% if @type_color.picture? %>
-        <%= link_to image_tag(@type_color.picture.url, :height => "150", :crop => :fill), admin_type_color_path(@type_color.id) %><br>
-        <%= f.label :remove_image %>
-        <%= f.check_box :remove_picture %>
-      <% end %>
-  </p>
-  <%= f.submit "Update", class: "btn btn-success" %>
-  <%= link_to "Back", :back, class: "btn btn-primary"%>
-<% end %>
+<div class="layout main_wrapper">
+  <h1>Edit Type Color</h1>
+  <%= form_for :type_color, url: admin_type_color_path, method: :put do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.select :name, ['Gray', 'Silver', 'Gold', 'Black', 'Red'], class: "form-control" %>
+    </p>
+    <p>
+      <%= f.label :color_code %>
+      <%= f.text_field :color_code, placeholder: "Enter the color code", class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :product_id %>
+      <%= f.text_field :product_id, placeholder: "Enter the ID Product", class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :image %>
+      <%= f.file_field :picture %>
+        <% if @type_color.picture? %>
+          <%= link_to image_tag(@type_color.picture.url, :height => "150", :crop => :fill), admin_type_color_path(@type_color.id) %><br>
+          <%= f.label :remove_image %>
+          <%= f.check_box :remove_picture %>
+        <% end %>
+    </p>
+    <%= f.submit "Update", class: "btn btn-success" %>
+    <%= link_to "Back", :back, class: "btn btn-primary"%>
+  <% end %>
+</div>

@@ -96,7 +96,7 @@
     <div class="product row mbm">
       <div class="leftimg col-md-6">
         <div class="product-image">
-          <%= image_tag @product.type_colors.first.picture %>
+          <%= link_to image_tag @product.type_colors.first.picture %>
         </div>
         <div class="list-product-image">
           <% @product.type_colors.each do |type_color| %>

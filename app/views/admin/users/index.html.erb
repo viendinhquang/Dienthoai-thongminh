@@ -1,37 +1,39 @@
-<h1>Listing Users</h1>
-<%= will_paginate @users %>
-<table class="table table-striped">
-<tr>
-  <th>Name</th>
-  <th>Email</th>
-  <th>Birthday</th>
-  <th>Gender</th>
-  <th>Avatar</th>
-  <th>Action</th>
-</tr>
-  <% @users.each do |user| %>
+<div class="layout main_wrapper _2pi4 mbl">
+  <div class=" main-column  main-colum-left">
+    <h1>Listing Users</h1>
+    <%= will_paginate @users %>
+    <table class="table table-striped">
     <tr>
-      <th><%= link_to user.name, admin_user_path(user.id)%></th>
-      <th><%= user.email%></th>
-      <td><%= user.birthday%></td>
-      <td><%= user.sex%></td>
-      <td><%= link_to image_tag(user.avatar.thumb.url),admin_user_path(user.id) if user.avatar? %></td>
-
-      <div class="btn btn-group">
-        <th>
-          <%= link_to "Show", admin_user_path(user.id), class: "btn btn-primary" %>
-          <% binding.pry%>
-          <!-- % if correct_user? %> -->
-          <!-- % if current_user.admin? %> -->
-          <% if can? :update, @user %>
-            <%= link_to "Edit", edit_admin_user_path(user.id), class: "btn btn-warning" %>
-            <%= link_to "Delete", admin_user_path(user.id), class: "btn btn-danger", method: :delete%>
-          <% end%>
-        </th>
-      </div>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Birthday</th>
+      <th>Gender</th>
+      <th>Avatar</th>
+      <th>Action</th>
     </tr>
-  <%end%>
-</table>
-<%= will_paginate @users %>
-<br>
-<%= link_to 'New User', new_admin_user_path, class: "btn btn-info" %>
+      <% @users.each do |user| %>
+        <tr>
+          <th><%= link_to user.name, admin_user_path(user.id)%></th>
+          <th><%= user.email%></th>
+          <td><%= user.birthday%></td>
+          <td><%= user.sex%></td>
+          <td><%= link_to image_tag(user.avatar.thumb.url),admin_user_path(user.id) if user.avatar? %></td>
+
+          <div class="btn btn-group">
+            <th>
+              <%= link_to "Show", admin_user_path(user.id), class: "btn btn-primary" %>
+              <!-- % if current_user.admin? %> -->
+              <% if can? :update, @user %>
+                <%= link_to "Edit", edit_admin_user_path(user.id), class: "btn btn-warning" %>
+                <%= link_to "Delete", admin_user_path(user.id), class: "btn btn-danger", method: :delete%>
+              <% end%>
+            </th>
+          </div>
+        </tr>
+      <%end%>
+    </table>
+    <%= will_paginate @users %>
+    <br>
+    <%= link_to 'New User', new_admin_user_path, class: "btn btn-info" %>
+  </div>
+</div>

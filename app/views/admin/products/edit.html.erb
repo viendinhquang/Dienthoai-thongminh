@@ -1,21 +1,23 @@
-<h1>Edit Product</h1>
-<%= form_for :product, url: admin_product_path, method: :put do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </p>
-  <p>
-    <%= f.label :price %>
-    <%= f.text_field :price, class: 'form-control' %>
-  </p>
-  <p>
-    <%= f.label :made_in %>
-    <%= f.text_field :made_in, class: 'form-control' %>
-  </p>
-  <p>
-    <%= f.label :screen_size %>
-    <%= f.text_field :screen_size, class: 'form-control' %>
-  </p>
-  <%= f.submit "Update", class: "btn btn-success" %>
-  <%= link_to "Back", :back, class: "btn btn-primary"%>
-<% end %>
+<div class="layout main_wrapper">
+  <h1>Edit Product</h1>
+  <%= form_for :product, url: admin_product_path, method: :put do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :price %>
+      <%= f.text_field :price, class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :made_in %>
+      <%= f.text_field :made_in, class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :screen_size %>
+      <%= f.text_field :screen_size, class: 'form-control' %>
+    </p>
+    <%= f.submit "Update", class: "btn btn-success" %>
+    <%= link_to "Back", :back, class: "btn btn-primary"%>
+  <% end %>
+</div>
