@@ -58,7 +58,7 @@
               <ul class="index">
                 <h2><%= post.title%></h2>
                 <p><%= post.created_at.time %>, Poster: <b><%= link_to post.user.name, admin_user_path(post.user.id)%></b></p>
-                <div align="middle"><%= link_to (image_tag post.image.url, :width => "600", :crop => :fill), admin_post_path(post.id) %></div>
+                <div align="middle"><%= link_to (image_tag post.image.url, width: "600", crop: :fill), admin_post_path(post.id) %></div>
                 <br>
                 <p><%= post.content%></p>
                 <hr style="border: 0.5px dashed #808080" />

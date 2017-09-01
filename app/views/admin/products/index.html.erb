@@ -1,36 +1,39 @@
-<h1>Listing Products</h1>
-<%= will_paginate @products %>
-<table class="table table-striped">
-<tr>
-  <th>Name</th>
-  <th>Color</th>
-  <th>Price(USD)</th>
-  <th>Made in</th>
-  <th>Screen size(inch)</th>
-  <th>Image</th>
-  <th>Action</th>
-</tr>
-  <% @products.each do |product| %>
-    <tr>
-      <th><%= link_to product.name, admin_product_path(product.id)%></th>
-      <th><%= product.type_colors.first.name%></th>
-      <th><%= product.price%></th>
-      <td><%= product.made_in%></td>
-      <td><%= product.screen_size%></td>
-      <td><%= link_to image_tag(product.type_colors.first.picture.url, :height => "150", :crop => :fill), admin_type_color_path(product.type_colors.first.id)%></td>
 
-      <div class="btn btn-group">
-        <th>
-          <%= link_to "Show", admin_product_path(product.id), class: "btn btn-primary" %>
-          <% if current_user.admin? %>
-            <%= link_to "Edit", edit_admin_product_path(product.id), class: "btn btn-warning" %>
-            <%= link_to "Delete", admin_product_path( product.id), class: "btn btn-danger", method: :delete%>
-          <% end %>
-        </th>
-      </div>
+<div class="layout main_wrapper">
+    <h1>Listing Products</h1>
+    <%= will_paginate @products %>
+    <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Price(USD)</th>
+      <th>Made in</th>
+      <th>Screen size(inch)</th>
+      <th>Image</th>
+      <th>Action</th>
     </tr>
-  <%end%>
-</table>
-<%= will_paginate @products %>
-<br>
-<%= link_to 'New Product', new_admin_product_path, class: "btn btn-info" %>
+      <% @products.each do |product| %>
+        <tr>
+          <th><%= link_to product.name, admin_product_path(product.id)%></th>
+          <th><%= product.type_colors.first.name%></th>
+          <th><%= product.price%></th>
+          <td><%= product.made_in%></td>
+          <td><%= product.screen_size%></td>
+          <td><%= link_to image_tag(product.type_colors.first.picture.url, :height => "150", :crop => :fill), admin_type_color_path(product.type_colors.first.id)%></td>
+
+          <div class="btn btn-group">
+            <th>
+              <%= link_to "Show", admin_product_path(product.id), class: "btn btn-primary" %>
+              <% if current_user.admin? %>
+                <%= link_to "Edit", edit_admin_product_path(product.id), class: "btn btn-warning" %>
+                <%= link_to "Delete", admin_product_path( product.id), class: "btn btn-danger", method: :delete%>
+              <% end %>
+            </th>
+          </div>
+        </tr>
+      <%end%>
+    </table>
+    <%= will_paginate @products %>
+    <br>
+    <%= link_to 'New Product', new_admin_product_path, class: "btn btn-info" %>
+</div>

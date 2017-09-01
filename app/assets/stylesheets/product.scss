@@ -72,3 +72,50 @@
     }
   }
 }
+
+// Show Product
+.controll-price {
+  text-align: left;
+}
+.left {
+  float: left;
+  width: 25%
+}
+.center {
+  float: left;
+  width: 25%
+}
+.right {
+  float: right;
+  width: 25%;
+}
+#mua {
+  background: linear-gradient(#ffad2d, #ff9000);
+  border: none;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-transform: uppercase;
+  display: block;
+}
+#mua:hover {
+  background: #FF6C00;
+}
+#ban {
+  background: linear-gradient(#00aeff, #0092ff);
+  border: none;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-transform: uppercase;
+  display: block;
+}
+#ban:hover {
+  background: #0069F9;
+}
+.sev_check {
+  width: 24px;
+  height: 24px;
+}

@@ -17,13 +17,86 @@
         <p class="basic_price"> <%= @product.price %> USD</p>
         <p><a class="status_store"> (Gọi giữ hàng - 1234.5678) </a></p>
       </div>
+
+      <div class="col-right col-lg-9">
+        <div class="controll-wap clearfix">
+          <div class="controll-price clearfix colorStore ">
+
+            <div class="left">
+              <div class="textlabel "><span>Chọn màu sắc: </span></div>
+              <div class="select-box">
+                <label class="checkbox-inline">
+                  <input id="s_fac" type="checkbox" value="" class="sev_check">
+                </label>
+                <label class="checkbox-inline">
+                  <input id="s_fac" type="checkbox" value="" class="sev_check">
+                </label>
+                <label class="checkbox-inline">
+                  <input id="s_fac" type="checkbox" value="" class="sev_check">
+                </label>
+                <!-- <a href="http://didongthongminh.vn/images/products/2015/04/20/original/6-gold_ok_1426732923_1429556510.jpg" rel="zoom-id:Zoomer" class="Selector MagicThumb-swap" onclick="load_quick(this);" data-price="+300000" data-type="color" data-id="891" rev="http://didongthongminh.vn/images/products/2015/04/20/large/6-gold_ok_1426732923_1429556510.jpg" style="outline: 0px; display: inline-block;" id="mt-1456584248814">
+                  <span class="color-item" data-toggle="tooltip" data-original-title="+300.000 vnđ" style="background-color: #ffff00"></span>
+                </a>
+                <a href="http://didongthongminh.vn/images/products/2015/04/20/original/6-silver_ok_1426732923_1429556510.jpg" rel="zoom-id:Zoomer" class="Selector MagicThumb-swap" onclick="load_quick(this);" data-price="+100000" data-type="color" data-id="895" rev="http://didongthongminh.vn/images/products/2015/04/20/large/6-silver_ok_1426732923_1429556510.jpg" style="outline: 0px; display: inline-block;" id="mt-845440647880">
+                  <span class="color-item" data-toggle="tooltip" data-original-title="+100.000 vnđ" style="background-color: #dad8d8"></span>
+                </a>
+                <a href="http://didongthongminh.vn/images/products/2015/04/20/original/6-gray_ok_1426732923_1429556510.jpg" rel="zoom-id:Zoomer" class="Selector MagicThumb-swap active" onclick="load_quick(this);" data-price="" data-type="color" data-id="896" rev="http://didongthongminh.vn/images/products/2015/04/20/large/6-gray_ok_1426732923_1429556510.jpg" style="outline: 0px; display: inline-block;" id="mt-947648017230">
+                  <span class="color-item" data-toggle="tooltip" data-original-title="+0 vnđ" style="background-color: #666666"></span>
+                </a> -->
+              </div>
+            </div>
+
+
+            <div class="center">
+              <div class="textlabel"><span>Chọn bảo hành:</span></div>
+              <div class="select-box2 mbm">
+                <select name="warranty" class="boxwarranty" onchange="load_quick(this)">
+                  <option value="2" data-price="0" data-type="warranty" selected="">1 tháng phần cứng, không nguồn, màn, vân tay (Free) </option>
+                  <option value="3" data-price="300000" data-type="warranty">6 tháng cả nguồn, màn, vân tay (300.000 vnđ)</option>
+                  <option value="4" data-price="600000" data-type="warranty">12 tháng cả nguồn, màn, vân tay, rơi móp (600.000 vnđ)</option>
+                </select>
+              </div>
+            </div>
+            <div class="right">
+              <div class="controll-price clearfix">
+                <div class="textlabel"><span>Chọn Bộ nhớ:</span></div>
+                <div class="select-box">
+                  <select class="boxattribute_0" name="attributeX[455388]" onchange="load_quick(this)">
+                  <option class="lt" value="0" data-price="0" data-type="attribute" data-stt="0" selected="">16GB (mặc định)</option>
+                  <option class="lt" value="2" data-price="+1300000" data-type="attribute" data-stt="0">64GB</option>
+                  <option class="lt" value="3" data-price="+1800000" data-type="attribute" data-stt="0">128GB</option>
+                            </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-btn col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <a id="mua" href="#quick_order" class="btn  btn-buy col-lg-6" data-toggle="modal">
+             Mua ngay
+              <span>(Mua hàng trực tuyến)</span>
+            </a>
+          </div>
+          <div class="col-btn col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <a id="ban" href="javascript: instalment('http://didongthongminh.vn/tra-gop.html')" class="btn  btn-instalment">
+                    Trả góp từ 1.000.000 vnđ
+          <span>(Lãi suất &lt; 5%)</span>
+              </a>
+          </div>
+        </div>
+      </div>
+
+
+
+
       <div class="col-right col-md-9">
       </div>
     </div>
     <div class="product row mbm">
       <div class="leftimg col-md-6">
         <div class="product-image">
-          <%= image_tag @product.type_colors.first.picture %>
+          <%= link_to image_tag @product.type_colors.first.picture %>
         </div>
         <div class="list-product-image">
           <% @product.type_colors.each do |type_color| %>

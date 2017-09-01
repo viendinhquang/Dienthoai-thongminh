@@ -1,11 +1,20 @@
-<h1>Show Post</h1>
-<h2>Author: <%= link_to @post.user.name, admin_user_path(@post.user.id) %></h2>
-<h2>Title: <%= @post.title %></h2>
-<h2>Content: <%= @post.content %></h2>
-<h2>Name's Sub Catergory: <%= @post.sub_category.name %></h2>
-
-<%= link_to "Back", :back, class: "btn btn-primary"%>
-<% if current_user.admin? %>
-  <%= link_to "Edit", edit_admin_post_path(@post.id), class: "btn btn-warning" %>
-  <%= link_to "Delete", admin_post_path(@post.id), class: "btn btn-danger", method: :delete%>
-<% end %>
+<div class= "layout main_wrapper">
+  <div class="main-column  main-colum-left">
+    <div class=" main-column  main-colum-left">
+      <div class="related-articles">
+        <h1>Show Post</h1>
+        <h2><%= @post.title%></h2>
+        <p><%= @post.created_at.time %>, Poster: <b><%= link_to @post.user.name, admin_user_path(@post.user.id)%></b></p>
+        <div align="middle"><%= link_to (image_tag @post.image.url, width: "600", crop: :fill), admin_post_path(@post.id) %></div>
+        <br>
+        <p><%= @post.content%></p>
+        <%= link_to "Back", :back, class: "btn btn-primary"%>
+        <% if current_user.admin? %>
+          <%= link_to "Edit", edit_admin_post_path(@post.id), class: "btn btn-warning" %>
+          <%= link_to "Delete", admin_post_path(@post.id), class: "btn btn-danger", method: :delete%>
+        <% end %>
+        <hr style="border: 0.5px dashed #808080" />
+      </div>
+    </div>
+  </div>
+</div>
