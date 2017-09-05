@@ -47,6 +47,7 @@
     color: #FF8B00;
   }
   h1 {
+    margin-top: 0;
     font-size: 26px;
     color: #FF8B00;
     font-weight: bold;
@@ -120,4 +121,14 @@ h2 {
       margin-bottom: 0;
       padding-left: 0;
       list-style: none;
+  }
+  // Search
+  input[type=submit]{
+    background-color: #FF8B00;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
   }

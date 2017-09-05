@@ -1,0 +1,37 @@
+  <div class="layout main_wrapper _2pi4 mbl">
+    <div class="main-column  main-colum-left">
+      <div class="related-articles">
+        <div class=" main-column  main-colum-left">
+          <h1><%= @posts.size%> results for "<%= params[:q][:title_or_content_cont]%>"</h1>
+          <% if @posts.empty?%>
+            <h4>There are no posts in this forum</h4>
+          <% elsif %>
+            <% @posts.each do |post| %>
+              <h2><%= post.title%></h2>
+              <p><%= post.created_at.time %>, Poster: <b><%= link_to post.user.name, admin_user_path(post.user.id)%></b></p>
+              <div align="middle"><%= link_to (image_tag post.image.url, width: "600", crop: :fill), admin_post_path(post.id) %></div>
+              <br>
+              <p><%= post.content%></p>
+              <hr style="border: 0.5px dashed #808080" />
+            <% end%>
+          <% end%>
+              <%= link_to 'Back', :back, class: "btn btn-primary" %>
+          </div>
+
+          <div id="oc-column-right">
+            <div class="block_search_news search_news- search_news_ block">
+              <%= search_form_for @q, :url => search_post_index_path, :html => {:method => :get} do |f| %>
+                <h1><%= f.label :search_news %></h1>
+                <div id="imaginary_container">
+                  <div class="input-group stylish-input-group">
+                    <%= f.text_field :title_or_content_cont, placeholder: "Search news"%>
+                    <%= f.submit%>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>

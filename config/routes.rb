@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
   get 'post/index'
   get 'post/contact'
-
+  # get 'post/search'
   get 'errors/contact'
   get 'errors/not_found'
 
   resources :product
-  # resources :posts
 
+  resources :post do
+  collection do
+    match 'search' => 'post#search', :via => [:get, :post], :as => :search
+    end
+  end
+
+
+  # resources :posts
 
   # namespace :admin do
   # get 'type_colors/index'

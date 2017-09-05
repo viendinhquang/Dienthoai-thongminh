@@ -7,30 +7,57 @@
     overflow: auto;  similar to clearing the floats...
     border: 1px solid gray;
     padding: 0px;
+    margin-right: 10px;
   }
+
+stylish-input-group .input-group-addon{
+    background: white !important;
+}
+ button[type="submit"] {
+  background: white !important;
+  border: white;
+ }
 
   </style>
 </head>
 <body>
   <div class="layout main_wrapper _2pi4 mbl">
-    <div class=" main-column  main-colum-left">
+    <div class="main-column  main-colum-left">
       <div class="related-articles">
-        <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-          <h5 class="breadcumbs">
-            <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Home</a>
-          </h5>
-          <p class="breadcumbs"> >> </p>
-          <h5 class="breadcumbs"><a href="http://localhost:3000/post/index" title="new" itemprop="url">News</a></h5>
-          <div class="clear"></div>
+        <div class=" main-column  main-colum-left">
+          <div class="related-articles">
+            <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+              <h5 class="breadcumbs">
+                <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Home</a>
+              </h5>
+              <p class="breadcumbs"> >> </p>
+              <h5 class="breadcumbs"><a href="http://localhost:3000/post/index" title="new" itemprop="url">News</a></h5>
+              <div class="clear"></div>
+            </div>
+            <ul class="index">
+              <% @post.each do |post| %>
+                <li class="item">
+                  <div class="image"><%= link_to (image_tag post.image.url, :height => "200", :width => "410", :crop => :fill), admin_post_path(post.id) %></div>
+                  <div class="title"><%= post.title %></div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <ul class="index">
-          <% @post.each do |post| %>
-            <li class="item">
-              <div class="image"><%= link_to (image_tag post.image.url, :height => "220", :crop => :fill), admin_post_path(post.id) %></div>
-              <div class="title"><%= post.title %></div>
-            </li>
-          <% end %>
-        </ul>
+
+        <div id="oc-column-right">
+          <div class="block_search_news search_news- search_news_ block">
+            <%= search_form_for @q, :url => search_post_index_path, :html => {:method => :get} do |f| %>
+              <h1><%= f.label :search_news %></h1>
+              <div id="imaginary_container">
+              <div class="input-group stylish-input-group">
+              <%= f.text_field :title_or_content_cont, placeholder: "Search news"%>
+              <%= f.submit %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
       </div>
 
       <div class="main-column  main-colum-left">
@@ -53,8 +80,8 @@
 
       <div class="main-column  main-colum-left">
         <div class="related-articles">
-            <div class=" main-column  main-colum-left">
-              <% @posts.each do |post| %>
+          <div class=" main-column  main-colum-left">
+            <% @posts.each do |post| %>
               <ul class="index">
                 <h2><%= post.title%></h2>
                 <p><%= post.created_at.time %>, Poster: <b><%= link_to post.user.name, admin_user_path(post.user.id)%></b></p>
@@ -65,7 +92,8 @@
               </ul>
             <%end%>
             <%= will_paginate @posts %>
-            </div>
+          </div>
+          <%= link_to "Back", :back, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
