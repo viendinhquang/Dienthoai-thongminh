@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'searchs/index'
+
   get 'post/index'
   get 'post/contact'
-  # get 'post/search'
+  get 'post/introduce'
   get 'errors/contact'
   get 'errors/not_found'
 

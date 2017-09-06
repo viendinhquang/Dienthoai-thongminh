@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    h2 {
+    font-weight: bold;
+    font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+<div class="products">
+    <h2>There are <strong style="color:red"><%= @products.size%></strong> products with key: <strong style="color:red"><%= params[:q][:name_cont]%></strong></h2>
+  <div class="box">
+    <div class="productlist">
+      <% @products.each_with_index do |product, index| %>
+        <div class="col-md-3 bbl product <%= 'bt' if index < 4 %> <%= 'br' if index.next % 4 == 0 %>">
+          <div class="info">
+            <div class="product-image">
+              <%=  image_tag(product.type_colors.first.picture.url, :height => "200", :crop => :fill) %>
+            </div>
+            <div class="product-name">
+              <span> <%= product.name %> </span>
+            </div>
+            <div class="product-price">
+              <span> <%= product.price %> USD </span>
+            </div>
+          </div>
+          <div class="info-hover">
+            <%= link_to image_tag("/images/view-details.png"), product_path(product.id)%>
+          </div>
+        </div>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

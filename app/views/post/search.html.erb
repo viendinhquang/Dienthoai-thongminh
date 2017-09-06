@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    h1 {
+    color: #FF8B00;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
   <div class="layout main_wrapper _2pi4 mbl">
     <div class="main-column  main-colum-left">
       <div class="related-articles">
@@ -21,17 +38,22 @@
           <div id="oc-column-right">
             <div class="block_search_news search_news- search_news_ block">
               <%= search_form_for @q, :url => search_post_index_path, :html => {:method => :get} do |f| %>
-                <h1><%= f.label :search_news %></h1>
+                <!-- <h1>%= f.label :search_news %></h1> -->
+                <h1>Search news</h1>
                 <div id="imaginary_container">
                   <div class="input-group stylish-input-group">
                     <%= f.text_field :title_or_content_cont, placeholder: "Search news"%>
-                    <%= f.submit%>
+                    <button class="searchbt"><span class="glyphicon glyphicon-search"></span></button>
                   </div>
                 </div>
               <% end %>
             </div>
           </div>
+          <h1>Related products</h1>
 
       </div>
     </div>
   </div>
+
+</body>
+</html>

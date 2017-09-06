@@ -9,31 +9,39 @@
     padding: 0px;
     margin-right: 10px;
   }
-
+  h1 {
+    color: #FF8B00;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
 stylish-input-group .input-group-addon{
     background: white !important;
 }
- button[type="submit"] {
-  background: white !important;
-  border: white;
- }
-
   </style>
 </head>
 <body>
   <div class="layout main_wrapper _2pi4 mbl">
+
+    <div class="breadcrumbs mbm">
+      <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <h2 class="breadcumbs-first flever_12">
+          <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Trang chủ</a>
+        </h2>
+        <div class="breadcrumbs_sepa">&gt;</div>
+        <h2><a href="javascript:void(0)" itemprop="url"><span itemprop="title">Tin tức</span></a></h2>
+        <div class="clear"></div>
+      </div>
+    </div>
+
     <div class="main-column  main-colum-left">
+      <h3 class="content_title"><span>News</span></h3>
       <div class="related-articles">
         <div class=" main-column  main-colum-left">
           <div class="related-articles">
-            <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-              <h5 class="breadcumbs">
-                <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Home</a>
-              </h5>
-              <p class="breadcumbs"> >> </p>
-              <h5 class="breadcumbs"><a href="http://localhost:3000/post/index" title="new" itemprop="url">News</a></h5>
-              <div class="clear"></div>
-            </div>
             <ul class="index">
               <% @post.each do |post| %>
                 <li class="item">
@@ -48,15 +56,17 @@ stylish-input-group .input-group-addon{
         <div id="oc-column-right">
           <div class="block_search_news search_news- search_news_ block">
             <%= search_form_for @q, :url => search_post_index_path, :html => {:method => :get} do |f| %>
-              <h1><%= f.label :search_news %></h1>
+              <!-- <h1 style="color: #FF8B00">%= f.label :search_news %></h1> -->
+              <h1>Search news</h1>
               <div id="imaginary_container">
               <div class="input-group stylish-input-group">
-              <%= f.text_field :title_or_content_cont, placeholder: "Search news"%>
-              <%= f.submit %>
+              <%= f.text_field :title_or_content_cont, placeholder: "Search news", class: "search_news_btn"%>
+              <button class="searchbt"><span class="glyphicon glyphicon-search"></span></button>
               </div>
             </div>
             <% end %>
           </div>
+        <h1>Related products</h1>
         </div>
       </div>
 

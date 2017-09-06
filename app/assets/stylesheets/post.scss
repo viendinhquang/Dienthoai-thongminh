@@ -16,15 +16,15 @@
   .breadcumbs {
   display: inline-block;
   }
-  input[type=text], select, textarea {
+  input[type=ip_text], select, textarea {
     width: 100%;
-    padding: 12px;
+    padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
+    margin: 8px 0;
     resize: vertical;
+    position: relative;
   }
   input[type=submit_contact] {
     background-color: #FF8B00;
@@ -37,20 +37,6 @@
   }
   input[type=submit_contact]:hover {
     background-color: #FE670C;
-  }
-  h3 {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 8px;
-    margin: 0px;
-    background-color: #F3F3F3;
-    color: #FF8B00;
-  }
-  h1 {
-    margin-top: 0;
-    font-size: 26px;
-    color: #FF8B00;
-    font-weight: bold;
   }
   #map {
     margin: 10px;
@@ -81,10 +67,6 @@
     width: 60%;
   }
 // Index
-h2 {
-  margin-top: 0px;
-  font-size: 22px;
-}
 .item {
     display: inline-block;
     padding: 0;
@@ -122,13 +104,28 @@ h2 {
       padding-left: 0;
       list-style: none;
   }
-  // Search
-  input[type=submit]{
-    background-color: #FF8B00;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
+ h1 {
+    color: #FF8B00;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px;
+    background-color: #F5F5F5;
+    color: #FF8B00;
+  }
+  .content_title span{
+    border-top: 3px solid #ff8b00;
+    color: #ff8b00;
+    display: inline-block;
+    font-family: MyriadPro-BoldCond;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 15px;
   }

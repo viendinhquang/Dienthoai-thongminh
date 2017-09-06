@@ -48,11 +48,15 @@ body .header {
     .col__table {
       display: table-cell;
       vertical-align: middle;
-      height: 112px;
+      height: 100px;
     }
   }
   .mainmenu__icon {
     float: right;
+    a {
+      color: black;
+      text-decoration: none;
+    }
 
     .menu__item {
       float: left;
@@ -60,7 +64,6 @@ body .header {
       padding-right: 40px;
       margin-right: 40px;
       position: relative;
-
       .iconbox {
         background: none repeat scroll 0 0 #FFF;
         border: 1px solid #E1E1E1;
@@ -149,6 +152,7 @@ body .header {
       padding-left: 20px;
       padding-right: 0;
       white-space: nowrap;
+      text-decoration: none;
       .iconbox {
         text-align: center;
         background: none repeat scroll 0 0 #FFFFFF;

@@ -47,3 +47,28 @@ a:hover, a:active, a:focus{
   color: #FF8B00;
   text-decoration: none;
 }
+
+input[type=text] {
+    width: 250px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 8px 0;
+    resize: vertical;
+    position: relative;
+}
+.searchbt {
+  background-color: white;
+  border: none;
+  color: #A39B9B;
+  position: absolute;
+  right: 5px;
+  top: 15px;
+}
+h1 {
+    margin-top: 0;
+    font-size: 26px;
+    color: #FF8B00;
+    font-weight: bold;
+  }
