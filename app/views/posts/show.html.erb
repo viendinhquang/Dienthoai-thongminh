@@ -13,6 +13,16 @@
     padding: 0px;
     margin-right: 10px;
 }
+.content {
+  padding: 0px 40px;
+}
+.comment {
+  padding: 5px 0;
+}
+li {
+  padding: 5px;
+  display: inline;
+}
 </style>
 
 <div class="layout main_wrapper _2pi4 mbl">
@@ -67,7 +77,7 @@
             <ul class="index">
               <h2><%= @post_show.title%></h2>
               <p><%= @post_show.created_at.time %>, Poster: <b><%= link_to @post_show.user.name, admin_user_path(@post_show.user.id)%></b></p>
-              <div align="middle"><%= link_to (image_tag @post_show.image.url, width: "600", crop: :fill), admin_post_path(@post_show.id) %></div>
+              <div align="middle"><%= link_to (image_tag @post_show.image.url, width: "600", crop: :fill), post_path(@post_show.id) %></div>
               <br>
               <p><%= @post_show.content%></p>
               <%= link_to "Back", :back, class: "btn btn-primary" %>
@@ -82,18 +92,46 @@
 
             <div class="comments">
               <div class="form_comment">
-                <form action="/action_page.php">
-                  <label for="comment">Comment :</label>
-                  <textarea id="comment" name="comment" placeholder="Your comment.." style="height:100px"></textarea>
-                  <p style="color:red">You must enter your information</p>
-                  <input type="ip_text" id="name" name="yourname" placeholder="Your name(enforce)..">
-                  <input type="ip_text" id="email" name="email" placeholder="Your email..">
-                  <button class="submit_contact" value="send">SEND</button>
-                </form>
+                <!-- <form action="/action_page.php"> -->
+                <%= form_for :post_comment, url: post_comments_path, method: :post do |f| %>
+                  <label for="content">Comment :</label>
+                  <%= f.text_area :content, id:"content", name: "content", style: "height:100px"%>
+                  <p style="color:red">You must login to comment...</p>
+                  <!-- <input type="ip_text" id="name" name="yourname" placeholder="Your name(enforce).."> -->
+                  <%= f.hidden_field :name, placeholder: "Your name(enforce)..", class: "form-control"%>
+                  <!-- <input type="ip_text" id="email" name="email" placeholder="Your email.."> -->
+                  <%= f.hidden_field :email, placeholder: "Email..", class: "form-control"%>
+                  <!-- <button class="submit_contact" value="send">SEND</button> -->
+                  <%= f.hidden_field :post_id, value: "#{@post_show.id}", placeholder: "post_id.. ", class: "form-control"%>
+                  <%= f.button :submit, value: "send", class: "submit_contact"%>
+                <!-- </form> -->
+                <% end%>
+              </div>
+            </div>
+
+            <div class="info_comment">
+              <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng Quản trị viên mới là đại diện của chúng tôi trả lời khách hàng.</div>
+              <div class="contents">
+                <div class="item_comment">
+                  <% @post_show.post_comments.each do |post_show|%>
+                    <div class="comment">
+                      <span class="name"><%= image_tag(post_show.user.avatar.url, class: 'img-circle', size: "30x30")%></span>
+                      <strong> <%= current_user.name%></strong>
+                      <div class="content"><%= post_show.content%></div>
+                      <div>
+                        <ul class="action">
+                          <li><a href=""><span class="glyphicon glyphicon-thumbs-up"></span></a></li>
+                          <li><a href=""><span class="glyphicon glyphicon-share"></span></a></li>
+                          <li><a href=""><span class="glyphicon glyphicon-edit"></span></a></li>
+                          <li><%= link_to '', post_comment_path, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                        </ul>
+                      </div>
+                    </div>
+                  <% end%>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>

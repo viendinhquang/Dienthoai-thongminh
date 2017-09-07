@@ -51,7 +51,7 @@ stylish-input-group .input-group-addon{
             <ul class="index">
               <% @post.each do |post| %>
                 <li class="item">
-                  <div class="image"><%= link_to (image_tag post.image.url, :height => "200", :width => "410", :crop => :fill), admin_post_path(post.id) %></div>
+                  <div class="image"><%= link_to (image_tag post.image.url, :height => "200", :width => "410", :crop => :fill), post_path(post.id) %></div>
                   <div class="title"><%= post.title %></div>
                 </li>
               <% end %>
