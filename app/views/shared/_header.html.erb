@@ -1,8 +1,12 @@
-<style type="text/css">
-  .logo {
-    color: red;
-  }
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+  </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
 
 
 <header class="header clearfix phm ptl pbs">
@@ -23,7 +27,7 @@
         <div class="mainmenu">
           <ul class="clearfix">
             <li class="menu-item">
-              <%= link_to "Introduce", root_path, title:"Introduce", class:"menu-name" %>
+              <%= link_to "Introduce", post_introduce_path, title:"Introduce", class:"menu-name" %>
             </li>
             <li class="menu-item">
               <%= link_to "News", post_index_path, title:"News", class:"menu-name" %>
@@ -44,7 +48,8 @@
   <div class="subnavigation__content layout">
     <div class="col__left col__table">
       <%= link_to root_path, title:"didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" do %>
-        <%= image_tag("IPHONE2.png", size: "60x60", alt: "didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc", class: "logo") %><strong> NHAN VIEN </strong>
+        <%= image_tag("IPHONE2.png", size: "60x60", alt: "didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc", class: "logo") %>
+        <strong>NHAN VIEN</strong>
       <% end %>
     </div>
     <div class="col__right col__table">
@@ -107,5 +112,21 @@
         <% end %>
       </div>
     </div>
+      <div id="oc-column-right">
+          <div class="block_search_news search_news- search_news_ block">
+            <%= search_form_for @q_product, :url => searchs_index_path, :html => {:method => :get} do |f| %>
+            <div id="imaginary_container">
+              <div class="input-group">
+                <%= f.text_field :name_cont, placeholder: "Search products"%>
+                <button class="searchbt"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
   </div>
 </div>
+
+
+</body>
+</html>

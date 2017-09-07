@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    h1 {
+    color: #FF8B00;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .readmore {
+    color: #FF8B00 !important;
+  }
+  a {
+    text-decoration: none !important;
+}
+  </style>
+</head>
+<body>
+  <div class="layout main_wrapper _2pi4 mbl">
+    <div class="main-column  main-colum-left">
+      <div class="related-articles">
+        <div class=" main-column  main-colum-left">
+          <h1><%= @posts.size%> results for "<%= params[:q][:title_or_content_cont]%>"</h1>
+          <% if @posts.empty?%>
+            <h4>There are no posts in this forum</h4>
+          <% elsif %>
+            <% @posts.each do |post| %>
+              <h2><%= post.title%></h2>
+              <p><%= post.created_at.time %>, Poster: <b><%= link_to post.user.name, admin_user_path(post.user.id)%></b></p>
+              <div align="middle"><%= link_to (image_tag post.image.url, width: "600", crop: :fill), post_path(post.id) %></div>
+              <br>
+                  <% if post.content.split.length > 50 %>
+                    <p><%= post.content.truncate_words(50, omission: "...")%></p>
+                    <span style="color:#ff8b00" class="glyphicon glyphicon-arrow-right"></span>
+                    <%= link_to "Xem thêm", post_path(post.id), class: "readmore" %>
+                  <% else %>
+                    <%= post.content %>
+                  <% end %>
+              <hr style="border: 0.5px dashed #808080" />
+            <% end%>
+          <% end%>
+              <%= link_to 'Back', :back, class: "btn btn-primary" %>
+          </div>
+
+          <div id="oc-column-right">
+            <div class="block_search_news search_news- search_news_ block">
+              <%= search_form_for @q, :url => post_search_path, :html => {:method => :get} do |f| %>
+                <h1>Search news</h1>
+                <div id="imaginary_container">
+                  <div class="input-group stylish-input-group">
+                    <%= f.text_field :title_or_content_cont, placeholder: "Search news"%>
+                    <button class="searchbt"><span class="glyphicon glyphicon-search"></span></button>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <h1>Related products</h1>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

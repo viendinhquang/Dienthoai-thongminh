@@ -7,30 +7,72 @@
     overflow: auto;  similar to clearing the floats...
     border: 1px solid gray;
     padding: 0px;
+    margin-right: 10px;
   }
-
+  h1 {
+    color: #FF8B00;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .readmore {
+    color: #FF8B00 !important;
+  }
+  a {
+    text-decoration: none !important;
+}
+stylish-input-group .input-group-addon{
+    background: white !important;
+}
   </style>
 </head>
 <body>
   <div class="layout main_wrapper _2pi4 mbl">
-    <div class=" main-column  main-colum-left">
+
+    <div class="breadcrumbs mbm">
+      <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <h2 class="breadcumbs-first flever_12">
+          <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Trang chủ</a>
+        </h2>
+        <div class="breadcrumbs_sepa">&gt;</div>
+        <h2><a href="javascript:void(0)" itemprop="url"><span itemprop="title">Tin tức</span></a></h2>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div class="main-column  main-colum-left">
+      <h3 class="content_title"><span>News</span></h3>
       <div class="related-articles">
-        <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-          <h5 class="breadcumbs">
-            <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Home</a>
-          </h5>
-          <p class="breadcumbs"> >> </p>
-          <h5 class="breadcumbs"><a href="http://localhost:3000/post/index" title="new" itemprop="url">News</a></h5>
-          <div class="clear"></div>
+        <div class=" main-column  main-colum-left">
+          <div class="related-articles">
+            <ul class="index">
+              <% @post.each do |post| %>
+                <li class="item">
+                  <div class="image"><%= link_to (image_tag post.image.url, :height => "200", :width => "410", :crop => :fill), admin_post_path(post.id) %></div>
+                  <div class="title"><%= post.title %></div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <ul class="index">
-          <% @post.each do |post| %>
-            <li class="item">
-              <div class="image"><%= link_to (image_tag post.image.url, :height => "220", :crop => :fill), admin_post_path(post.id) %></div>
-              <div class="title"><%= post.title %></div>
-            </li>
-          <% end %>
-        </ul>
+
+        <div id="oc-column-right">
+          <div class="block_search_news search_news- search_news_ block">
+            <%= search_form_for @q, :url => post_search_path, :html => {:method => :get} do |f| %>
+              <h1>Search news</h1>
+              <div id="imaginary_container">
+              <div class="input-group stylish-input-group">
+              <%= f.text_field :title_or_content_cont, placeholder: "Search news", class: "search_news_btn"%>
+              <button class="searchbt"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <h1>Related products</h1>
+        </div>
       </div>
 
       <div class="main-column  main-colum-left">
@@ -53,19 +95,36 @@
 
       <div class="main-column  main-colum-left">
         <div class="related-articles">
-            <div class=" main-column  main-colum-left">
-              <% @posts.each do |post| %>
+          <div class=" main-column  main-colum-left">
+            <% @posts.each do |post| %>
               <ul class="index">
                 <h2><%= post.title%></h2>
                 <p><%= post.created_at.time %>, Poster: <b><%= link_to post.user.name, admin_user_path(post.user.id)%></b></p>
-                <div align="middle"><%= link_to (image_tag post.image.url, width: "600", crop: :fill), admin_post_path(post.id) %></div>
+                <div align="middle"><%= link_to (image_tag post.image.url, width: "600", crop: :fill), post_path(post.id) %></div>
                 <br>
-                <p><%= post.content%></p>
+                <div>
+                  <% if post.content.split.length > 50 %>
+                    <!-- <p>%= truncate(post.content.split, length: 250) %></p> -->
+                    <p><%= post.content.truncate_words(50, omission: "...")%></p>
+                    <span style="color:#ff8b00" class="glyphicon glyphicon-arrow-right"></span>
+                    <%= link_to "Xem thêm", post_path(post.id), class: "readmore" %>
+                    <!-- %= link_to '...Read more', '', class: "read-more-#{post.id}" %> -->
+                    <!-- <script>
+                      $('.read-more-<%= post.id %>').on('click', function(e) {
+                        e.preventDefault()
+                        $(this).parent().html('<%= escape_javascript post.content %>')
+                      })
+                    </script> -->
+                  <% else %>
+                    <%= post.content %>
+                  <% end %>
+                <div>
                 <hr style="border: 0.5px dashed #808080" />
               </ul>
             <%end%>
             <%= will_paginate @posts %>
-            </div>
+          </div>
+          <%= link_to "Back", :back, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
