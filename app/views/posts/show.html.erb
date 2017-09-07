@@ -1,0 +1,99 @@
+<style type="text/css">
+  h1 {
+    color: #FF8B00;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .index {
+    overflow: auto;
+    padding: 0px;
+    margin-right: 10px;
+}
+</style>
+
+<div class="layout main_wrapper _2pi4 mbl">
+  <div class="breadcrumbs mbm">
+      <div class="breadcrumb clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <h2 class="breadcumbs-first flever_12">
+          <a title="didongthongminh.vn - Hệ Thống Bán Lẻ Điện Thoại Di Động Uy Tín Toàn Quốc" href="http://didongthongminh.vn/" rel="nofollow" itemprop="url">Trang chủ</a>
+        </h2>
+        <div class="breadcrumbs_sepa">&gt;</div>
+        <h2><a href="javascript:void(0)" itemprop="url"><span itemprop="title">Tin tức</span></a></h2>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div class="main-column  main-colum-left">
+      <h3 class="content_title"><span>News</span></h3>
+      <div class="related-articles">
+        <div class=" main-column  main-colum-left">
+          <div class="related-articles">
+            <ul class="index">
+              <% @post.each do |post| %>
+                <li class="item">
+                  <div class="image"><%= link_to (image_tag post.image.url, :height => "200", :width => "410", :crop => :fill), admin_post_path(post.id) %></div>
+                  <div class="title"><%= post.title %></div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+        <div id="oc-column-right">
+          <div class="block_search_news search_news- search_news_ block">
+            <%= search_form_for @q, :url => post_search_path, :html => {:method => :get} do |f| %>
+              <h1>Search news</h1>
+              <div id="imaginary_container">
+              <div class="input-group stylish-input-group">
+              <%= f.text_field :title_or_content_cont, placeholder: "Search news", class: "search_news_btn"%>
+              <button class="searchbt"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <h1>Related products</h1>
+        </div>
+      </div>
+
+
+      <div class="main-column  main-colum-left">
+        <div class="related-articles">
+          <div class=" main-column  main-colum-left">
+            <ul class="index">
+              <h2><%= @post_show.title%></h2>
+              <p><%= @post_show.created_at.time %>, Poster: <b><%= link_to @post_show.user.name, admin_user_path(@post_show.user.id)%></b></p>
+              <div align="middle"><%= link_to (image_tag @post_show.image.url, width: "600", crop: :fill), admin_post_path(@post_show.id) %></div>
+              <br>
+              <p><%= @post_show.content%></p>
+              <%= link_to "Back", :back, class: "btn btn-primary" %>
+            </ul>
+
+            <div class="pull-right">
+              <div class="share_bottom">
+                <div class="fb-like fb_iframe_widget" ><span style="vertical-align: bottom; width: 74px; height: 20px;"><iframe name="f4ca3721f21124" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" src="https://www.facebook.com/v2.9/plugins/like.php?action=like&amp;app_id=472431253105503&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F0sTQzbapM8j.js%3Fversion%3D42%23cb%3Df141e8206fa6d24%26domain%3Ddidongthongminh.vn%26origin%3Dhttp%253A%252F%252Fdidongthongminh.vn%252Ff2672cfb4e1f8fc%26relation%3Dparent.parent&amp;container_width=45&amp;href=http%3A%2F%2Fdidongthongminh.vn%2Fsan-pham-moi-reviews%2F5-ly-do-xiaomi-mi4-3gb-chau-au-ba-dao-tam-gia-duoi-3-trieu-n3789.html&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;show_faces=true&amp;size=small" style="border: none; visibility: visible; width: 74px; height: 20px;" class=""></iframe></span></div>
+                <div class="fb-share-button fb_iframe_widget" ><span style="vertical-align: bottom; width: 85px; height: 20px;"><iframe name="ffca4663654d2c" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" src="https://www.facebook.com/v2.9/plugins/share_button.php?app_id=472431253105503&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F0sTQzbapM8j.js%3Fversion%3D42%23cb%3Df225772eb33bc38%26domain%3Ddidongthongminh.vn%26origin%3Dhttp%253A%252F%252Fdidongthongminh.vn%252Ff2672cfb4e1f8fc%26relation%3Dparent.parent&amp;container_width=45&amp;href=http%3A%2F%2Fdidongthongminh.vn%2Fsan-pham-moi-reviews%2F5-ly-do-xiaomi-mi4-3gb-chau-au-ba-dao-tam-gia-duoi-3-trieu-n3789.html&amp;layout=button_count&amp;locale=vi_VN&amp;mobile_iframe=true&amp;sdk=joey&amp;size=small" style="border: none; visibility: visible; width: 85px; height: 20px;" class=""></iframe></span></div>
+              </div>
+            </div>
+
+            <div class="comments">
+              <div class="form_comment">
+                <form action="/action_page.php">
+                  <label for="comment">Comment :</label>
+                  <textarea id="comment" name="comment" placeholder="Your comment.." style="height:100px"></textarea>
+                  <p style="color:red">You must enter your information</p>
+                  <input type="ip_text" id="name" name="yourname" placeholder="Your name(enforce)..">
+                  <input type="ip_text" id="email" name="email" placeholder="Your email..">
+                  <button class="submit_contact" value="send">SEND</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

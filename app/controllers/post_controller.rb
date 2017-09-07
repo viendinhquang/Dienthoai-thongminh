@@ -6,7 +6,7 @@ class PostController < ApplicationController
                  .order('created_at DESC')
   end
   def search
-    @q = Post.search(params[:q])
+    # @q = Post.search(params[:q])
     @posts = @q.result
                .order('created_at DESC')
                .to_a.uniq

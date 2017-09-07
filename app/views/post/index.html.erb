@@ -18,6 +18,12 @@
     font-size: 20px;
     font-weight: bold;
   }
+  .readmore {
+    color: #FF8B00 !important;
+  }
+  a {
+    text-decoration: none !important;
+}
 stylish-input-group .input-group-addon{
     background: white !important;
 }
@@ -55,8 +61,7 @@ stylish-input-group .input-group-addon{
 
         <div id="oc-column-right">
           <div class="block_search_news search_news- search_news_ block">
-            <%= search_form_for @q, :url => search_post_index_path, :html => {:method => :get} do |f| %>
-              <!-- <h1 style="color: #FF8B00">%= f.label :search_news %></h1> -->
+            <%= search_form_for @q, :url => post_search_path, :html => {:method => :get} do |f| %>
               <h1>Search news</h1>
               <div id="imaginary_container">
               <div class="input-group stylish-input-group">
@@ -95,9 +100,25 @@ stylish-input-group .input-group-addon{
               <ul class="index">
                 <h2><%= post.title%></h2>
                 <p><%= post.created_at.time %>, Poster: <b><%= link_to post.user.name, admin_user_path(post.user.id)%></b></p>
-                <div align="middle"><%= link_to (image_tag post.image.url, width: "600", crop: :fill), admin_post_path(post.id) %></div>
+                <div align="middle"><%= link_to (image_tag post.image.url, width: "600", crop: :fill), post_path(post.id) %></div>
                 <br>
-                <p><%= post.content%></p>
+                <div>
+                  <% if post.content.split.length > 50 %>
+                    <!-- <p>%= truncate(post.content.split, length: 250) %></p> -->
+                    <p><%= post.content.truncate_words(50, omission: "...")%></p>
+                    <span style="color:#ff8b00" class="glyphicon glyphicon-arrow-right"></span>
+                    <%= link_to "Xem thêm", post_path(post.id), class: "readmore" %>
+                    <!-- %= link_to '...Read more', '', class: "read-more-#{post.id}" %> -->
+                    <!-- <script>
+                      $('.read-more-<%= post.id %>').on('click', function(e) {
+                        e.preventDefault()
+                        $(this).parent().html('<%= escape_javascript post.content %>')
+                      })
+                    </script> -->
+                  <% else %>
+                    <%= post.content %>
+                  <% end %>
+                <div>
                 <hr style="border: 0.5px dashed #808080" />
               </ul>
             <%end%>

@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   def init_variable
     @categories = Category.all.includes(:sub_categories)
     @q_product = Product.search(params[:q])
+    @q = Post.search(params[:q])
   end
 
   def store_location
