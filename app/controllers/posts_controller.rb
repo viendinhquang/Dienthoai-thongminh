@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
   def index
     @posts = Post.paginate(:page => params[:page], :per_page => 15)
-                 .order('created_at desc')
+                 .order('created_at DESC')
   end
   def show
     @post = Post.order("created_at DESC").limit(4)

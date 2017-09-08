@@ -91,20 +91,15 @@ li {
             </div>
 
             <div class="comments">
+              <label for="content">Comment :</label>
+              <p style="color:red">You must login to comment...</p>
               <div class="form_comment">
-                <!-- <form action="/action_page.php"> -->
                 <%= form_for :post_comment, url: post_comments_path, method: :post do |f| %>
-                  <label for="content">Comment :</label>
                   <%= f.text_area :content, id:"content", name: "content", style: "height:100px"%>
-                  <p style="color:red">You must login to comment...</p>
-                  <!-- <input type="ip_text" id="name" name="yourname" placeholder="Your name(enforce).."> -->
                   <%= f.hidden_field :name, placeholder: "Your name(enforce)..", class: "form-control"%>
-                  <!-- <input type="ip_text" id="email" name="email" placeholder="Your email.."> -->
                   <%= f.hidden_field :email, placeholder: "Email..", class: "form-control"%>
-                  <!-- <button class="submit_contact" value="send">SEND</button> -->
                   <%= f.hidden_field :post_id, value: "#{@post_show.id}", placeholder: "post_id.. ", class: "form-control"%>
-                  <%= f.button :submit, value: "send", class: "submit_contact"%>
-                <!-- </form> -->
+                  <%= f.button "SEND", value: "send", class: "submit_contact"%>
                 <% end%>
               </div>
             </div>
@@ -113,22 +108,47 @@ li {
               <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng Quản trị viên mới là đại diện của chúng tôi trả lời khách hàng.</div>
               <div class="contents">
                 <div class="item_comment">
-                  <% @post_show.post_comments.each do |post_show|%>
+                  <% @post_show.post_comments.order("created_at DESC").each do |post_show|%>
                     <div class="comment">
-                      <span class="name"><%= image_tag(post_show.user.avatar.url, class: 'img-circle', size: "30x30")%></span>
-                      <strong> <%= current_user.name%></strong>
+                      <span class="name">
+                      <% unless post_show.user.avatar.url.nil?%>
+                        <%= image_tag(post_show.user.avatar.url, class: 'img-circle fa-3x', size: "30x30")%>
+                      <% else%>
+                        <%= image_tag(post_show.user.avatar.url, class: "fa fa-user-circle-o fa-2x")%>
+                      <% end%>
+                      </span>
+                      <strong> <%= post_show.user.name%></strong>
                       <div class="content"><%= post_show.content%></div>
                       <div>
                         <ul class="action">
+                          <div id="edit_comment_form">
+                            <%= form_for :post_comment, url: post_comment_path(post_show.id), method: :put do |f| %>
+                              <%= f.text_area :content, id:"content", name: "content", style: "height:50px"%>
+                              <%= f.button "Update", value: "update", class: "edit_comment_btn"%>
+                            <% end%>
+                          </div>
                           <li><a href=""><span class="glyphicon glyphicon-thumbs-up"></span></a></li>
                           <li><a href=""><span class="glyphicon glyphicon-share"></span></a></li>
-                          <li><a href=""><span class="glyphicon glyphicon-edit"></span></a></li>
-                          <li><%= link_to '', post_comment_path, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                          <li class="edit">
+                            <%= link_to '', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit", id: "edit_comment_btn"%>
+                            <!-- <button id="edit_comment_btn"><span class="glyphicon glyphicon-edit"></span></button> -->
+                          </li>
+                          <% if can? :update, @user%>
+                            <li class="delete"><%= link_to '', post_comment_path(id: post_show.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                          <% end%>
+                          <% if post_show.created_at > Time.now.beginning_of_day %>
+                            <%="#{time_ago_in_words(post_show.created_at)} ago"%>
+                          <% else %>
+                            <%= post_show.created_at.strftime("%b %d, %Y") %>
+                          <% end %>
+
+
                         </ul>
                       </div>
                     </div>
                   <% end%>
                 </div>
+
               </div>
             </div>
           </div>

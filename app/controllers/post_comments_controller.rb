@@ -5,16 +5,36 @@ class PostCommentsController < ApplicationController
   def create
     @post_comment = PostComment.create(user_id: current_user.id, post_id: params[:post_comment][:post_id], content: params[:content])
     @post_comment.save
+    flash[:success] = "Thank for your commit!"
     redirect_to post_path(@post_comment.post_id)
   end
   def index
-    @post_comments = PostComment.all
+    binding.pry
+    @post_comments = PostComment.all.order('created_at DESC')
+  end
+  def edit
+    # binding.pry
+    @post_comment = PostComment.find(params[:id])
+    # redirect_to post_path(@post_comment.post_id)
+  end
+  def update
+    # binding.pry
+    @post_comment = PostComment.find(params[:id])
+    if @post_comment.update_attributes(content: params[:content])
+        flash[:success] = "Comment updated!"
+        redirect_to post_path(@post_comment.post_id)
+      else
+        render 'edit'
+      end
+
   end
   def show
 
   end
   def destroy
-    binding.pry
+    PostComment.find(params[:id]).destroy
+    flash[:success] = "Comment deleted!"
+    redirect_to :back
   end
 
   # private

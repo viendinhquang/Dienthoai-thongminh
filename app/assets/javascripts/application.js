@@ -15,3 +15,9 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+$(document).on("click","#edit_comment_btn",function(){
+  $('#edit_comment_form').show();
+});
+// $('#edit_comment_btn').click(function (){
+//   $('#edit_comment_form').toggle();
+// });
