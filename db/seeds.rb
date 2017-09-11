@@ -96,12 +96,12 @@ users = User.order(:created_at).take(5)
 end
 
 #Create Post Comment
-50.times do
-  content = Faker::Lorem.sentence(3, true, 4)
-  user_id = Faker::Number.between(1, 5)
-  post_id = Faker::Number.between(5, 45)
-  PostComment.create!(content: content, user_id: user_id, post_id: post_id)
-end
+# 50.times do
+#   content = Faker::Lorem.sentence(3, true, 4)
+#   user_id = Faker::Number.between(1, 5)
+#   post_id = Faker::Number.between(5, 45)
+#   PostComment.create!(content: content, user_id: user_id, post_id: post_id)
+# end
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])

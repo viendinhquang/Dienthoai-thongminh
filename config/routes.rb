@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
 
   resources :posts
+  resources :post_comments
 
   # namespace :admin do
   # get 'type_colors/index'

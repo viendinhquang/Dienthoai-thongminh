@@ -48,9 +48,29 @@
     border: none;
     border-radius: 5px;
     text-align: center;
+    margin: 10px 0;
   }
   .submit_contact:hover {
     background-color: #FE670C;
+  }
+  .edit_comment_btn {
+    background-color: #129CEC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    height: 30px;
+    width: 80px;
+  }
+  .edit_comment_btn:hover {
+    background-color: #094BF5;
+  }
+    #edit_comment_form {
+    display:none;
+  }
+  #edit_comment_btn{
+    border: none;
+    background-color: white;
   }
   #map {
     margin: 10px;
