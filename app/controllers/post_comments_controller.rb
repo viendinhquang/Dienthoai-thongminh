@@ -3,10 +3,16 @@ class PostCommentsController < ApplicationController
     @post_comment = PostComment.new
   end
   def create
-    @post_comment = PostComment.create(user_id: current_user.id, post_id: params[:post_comment][:post_id], content: params[:content])
-    @post_comment.save
-    flash[:success] = "Thank for your commit!"
-    redirect_to post_path(@post_comment.post_id)
+    # binding.pry
+    unless current_user.nil?
+      @post_comment = PostComment.create(user_id: current_user.id, post_id: params[:post_comment][:post_id], content: params[:content])
+      @post_comment.save
+      flash[:success] = "Thank for your commit!"
+      redirect_to post_path(@post_comment.post_id)
+    else
+      flash[:danger] = "You must login"
+      redirect_to :back
+    end
   end
   def index
     binding.pry
