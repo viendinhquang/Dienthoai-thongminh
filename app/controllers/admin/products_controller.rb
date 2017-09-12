@@ -24,7 +24,8 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
       if @product.update_attributes(product_params)
         flash[:success] = "Product updated!"
-        redirect_to  admin_products_path
+        redirect_to request.referrer
+        # redirect_to :back
       else
         render 'edit'
       end

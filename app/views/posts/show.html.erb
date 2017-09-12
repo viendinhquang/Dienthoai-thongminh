@@ -20,9 +20,10 @@
   padding: 5px 0;
 }
 li {
-  padding: 5px;
+  padding: 10px;
   display: inline;
 }
+
 </style>
 
 <div class="layout main_wrapper _2pi4 mbl">
@@ -106,6 +107,9 @@ li {
 
             <div class="info_comment">
               <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng Quản trị viên mới là đại diện của chúng tôi trả lời khách hàng.</div>
+              <div class="count_comment">
+                <h3>Comment(<%= @post_show.post_comments.size%>)</h3>
+              </div>
               <div class="contents">
                 <div class="item_comment">
                   <% @post_show.post_comments.order("created_at DESC").each do |post_show|%>
@@ -127,20 +131,26 @@ li {
                               <%= f.button "Update", value: "update", class: "edit_comment_btn"%>
                             <% end%>
                           </div>
-                          <li><a href=""><span class="glyphicon glyphicon-thumbs-up"></span></a></li>
-                          <li><a href=""><span class="glyphicon glyphicon-share"></span></a></li>
+                          <li>
+                            <a href=""><span class="glyphicon glyphicon-share"></span>Reply</a>
+                          </li>
+                          <li>
+                            <a href=""><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
+                          </li>
                           <li class="edit">
-                            <%= link_to '', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit", id: "edit_comment_btn"%>
+                            <%= link_to 'Edit', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit", id: "edit_comment_btn"%>
                             <!-- <button id="edit_comment_btn"><span class="glyphicon glyphicon-edit"></span></button> -->
                           </li>
                           <% if can? :update, @user%>
-                            <li class="delete"><%= link_to '', post_comment_path(id: post_show.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                            <li class="delete"><%= link_to 'Delete', post_comment_path(id: post_show.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
                           <% end%>
-                          <% if post_show.created_at > Time.now.beginning_of_day %>
+                          <li class="time_comment">
+                            <% if post_show.created_at > Time.now.beginning_of_day %>
                             <%="#{time_ago_in_words(post_show.created_at)} ago"%>
-                          <% else %>
-                            <%= post_show.created_at.strftime("%b %d, %Y") %>
-                          <% end %>
+                            <% else %>
+                              <%= post_show.created_at.strftime("%b %d, %Y") %>
+                            <% end %>
+                          </li>
 
 
                         </ul>
