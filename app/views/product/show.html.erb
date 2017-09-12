@@ -13,7 +13,7 @@
   <div class="main-full-column">
     <div class="product heading row mbl">
       <div class="col-left col-md-3">
-        <h1><%= @product.name %></h1>
+        <h1><%= @product.name %> <%= @product.type_colors.first.name %></h1>
         <p class="basic_price"> <%= @product.price %> USD</p>
         <p><a class="status_store"> (Gọi giữ hàng - 1234.5678) </a></p>
       </div>
@@ -98,10 +98,24 @@
         <div class="product-image">
           <%= link_to image_tag @product.type_colors.first.picture %>
         </div>
+
         <div class="list-product-image">
           <% @product.type_colors.each do |type_color| %>
             <%= image_tag type_color.picture, class: "image"%>
           <% end %>
+        </div>
+        <hr>
+        <div class="col-xs-4">
+          <%= form_for :order_item, url: order_items_path, method: :post do |f| %>
+            <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency @product.price %></span></h4>
+            <div class="input-group">
+              <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+              <div class="input-group-btn">
+                <%= f.hidden_field :product_id, value: @product.id %>
+                <%= f.submit "Add to Cart", class: "btn btn-warning" %>
+              </div>
+            </div>
+            <% end %>
         </div>
       </div>
       <div class="righttext col-md-6">

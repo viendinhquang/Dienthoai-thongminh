@@ -76,9 +76,10 @@ end
   made_in = Faker::Address.country
   screen_size = ["4.3", "4.7", "5.1", "5.5"][Faker::Number.between(0, 3)]
   sub_category_id = Faker::Number.between(1, 20)
+  active = true
   # producer_id = Faker::Number.between(1, 100)
   # operating_system_id = Faker::Number.between(1, 100)
-  Product.create(name: name, price: price, made_in: made_in, screen_size: screen_size, sub_category_id: sub_category_id)
+  Product.create(name: name, price: price, made_in: made_in, screen_size: screen_size, sub_category_id: sub_category_id, active: active)
 end
 
 Product.all.each do |product|

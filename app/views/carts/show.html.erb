@@ -1,0 +1,6 @@
+<div class="shopping-cart">
+  <h2 style="color: #FF8B00">Your Cart</h2>
+  <%= render "shopping_cart" %>
+  <%= link_to "Back", :back, class: "btn btn-primary"%>
+  <%= will_paginate @order_items %>
+</div>

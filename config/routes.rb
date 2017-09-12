@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # get 'order_items/create'
+
+  # get 'order_items/update'
+
+  # get 'order_items/destroy'
+
+  # get 'carts/show'
+
   get 'searchs/index'
 
   get 'post/index'
@@ -9,6 +17,8 @@ Rails.application.routes.draw do
   get 'errors/not_found'
 
   resources :product
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 
   # resources :post do
   # collection do
