@@ -1,4 +1,4 @@
-<% binding.pry %>
+<!-- % binding.pry %> -->
 <!-- %= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.order_items.first.product.price
 } )", cart_path, class: "btn btn-link", method: :get %> -->
-<%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )", cart_path, class: "btn btn-link" %>
+<h3 style="color:#FF8B00"><%= "#{current_order.order_items.size} Items in Cart: " %><span style="color: green"><%= "#{number_to_currency current_order.subtotal}"%></span></h3>

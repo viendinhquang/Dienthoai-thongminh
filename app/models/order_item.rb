@@ -1,10 +1,13 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
+  # before_save :finalize
+
 
   def unit_price
-    binding.pry
-    if persisted?
+    # binding.pry
+    # if persisted?
+    unless persisted?
       self[:unit_price]
     else
       product.price
@@ -28,8 +31,9 @@ class OrderItem < ActiveRecord::Base
     end
   end
 
-  def finalize
-    self[:unit_price] = unit_price
-    self[:total_price] = quantity * self[:unit_price]
-  end
+  # def finalize
+  #   binding.pry
+  #   self[:unit_price] = unit_price
+  #   self[:total_price] = quantity * self[:unit_price]
+  # end
 end
