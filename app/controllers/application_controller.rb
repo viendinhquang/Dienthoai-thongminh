@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :init_variable
   after_filter :store_location
+  before_action :current_cart
   include SessionHelper
   # def user_is_logged_in
   #   if !session[:current_user]
@@ -57,6 +58,22 @@ class ApplicationController < ActionController::Base
   #   stored_location_for(resource) || admin_page_index_path
   # end
   private
+    def current_cart
+      # binding.pry
+      if session[:cart_id]
+        cart = Cart.find_by(:id => session[:cart_id])
+        if cart.present?
+          @current_cart = cart
+        else
+          session[:cart_id] = nil
+        end
+      end
+
+      if session[:cart_id] == nil
+        @current_cart = Cart.create
+        session[:cart_id] = @current_cart.id
+      end
+    end
 
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
