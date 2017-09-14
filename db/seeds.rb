@@ -95,6 +95,10 @@ users = User.order(:created_at).take(5)
   users.each { |user| user.posts.create!(title: title, content: content, sub_category_id: sub_category_id)}
 end
 
+# CART
+Cart.destroy_all
+puts "\nTotal cart count: #{Cart.all.count}"
+
 #Create Post Comment
 # 50.times do
 #   content = Faker::Lorem.sentence(3, true, 4)

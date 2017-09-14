@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-  before_create :generate_authentication_token
+  # before_create :generate_authentication_token
 
-  has_secure_password
+  # has_secure_password
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :avatar, PictureUploader
