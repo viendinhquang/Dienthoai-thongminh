@@ -23,7 +23,7 @@
 
       <i id="cart" class="fa fa-opencart fa-2x"> My Cart: <span class="count"><%= order_item.quantity.to_i%><span></i>
       <%= form_for :order_item, url: order_item, method: :put do |f| %>
-        <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency order_item.product.price %></span></h4>
+        <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency order_item.unit_price %></span></h4>
         <div class="row">
           <div class="col-xs-4">
             <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
@@ -36,7 +36,8 @@
             </div>
           </div>
         </div>
-        <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency (order_item.quantity.to_i)*(order_item.product.price.to_i) %></span></h4>
+        <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency order_item.total_price %></span></h4>
+        <!-- <h4 class="text-right">Total Price: <span style="color: green">%= number_to_currency (order_item.quantity.to_i)*(order_item.product.price.to_i) %></span></h4> -->
       <% end %>
     </div>
 

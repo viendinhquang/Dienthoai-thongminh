@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <% if (controller.controller_name == "admin_page") || (controller.controller_name == "users")|| (controller.controller_name == "posts") ||(controller.controller_name == "products") || (controller.controller_name == "type_colors") || (controller.controller_name == "registrations") || (controller.controller_name == "sessions")%>
+    <% if (controller.controller_name == "admin_page") || (controller.controller_name == "users") ||(controller.controller_name == "products") || (controller.controller_name == "type_colors") || (controller.controller_name == "registrations") || (controller.controller_name == "sessions")%>
       <%= render partial: "shared/admin_page" %>
     <% else %>
       <%= render partial: "shared/header", locals: { categories: @categories } %>
@@ -20,6 +20,19 @@
         <%= yield %>
       </div>
       <%= render partial: "shared/footer" %>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <h1><%= link_to "My Store", root_path %></h1>
+        </div>
+        <div class="col-xs-6 text-right">
+          <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
+        </div>
+      </div>
+      <hr>
+      <%= yield %>
     </div>
   </body>
 </html>

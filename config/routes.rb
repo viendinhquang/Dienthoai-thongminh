@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'product_comments/new'
+
+  get 'product_comments/index'
+
   # get 'order_items/create'
 
   # get 'order_items/update'
@@ -29,6 +33,7 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :post_comments
+  resources :product_comments
 
   # namespace :admin do
   # get 'type_colors/index'

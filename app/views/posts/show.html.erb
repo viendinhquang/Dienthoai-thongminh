@@ -23,6 +23,13 @@ li {
   padding: 10px;
   display: inline;
 }
+#admin {
+  background-color: #FF8B00;
+  color: white;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
 
 </style>
 
@@ -46,7 +53,7 @@ li {
             <ul class="index">
               <% @post.each do |post| %>
                 <li class="item">
-                  <div class="image"><%= link_to (image_tag post.image.url, :height => "200", :width => "410", :crop => :fill), admin_post_path(post.id) %></div>
+                  <div class="image"><%= link_to (image_tag post.image.url, :height => "200", :width => "410", :crop => :fill), post_path(post.id) %></div>
                   <div class="title"><%= post.title %></div>
                 </li>
               <% end %>
@@ -96,7 +103,7 @@ li {
               <p style="color:red">You must login to comment...</p>
               <div class="form_comment">
                 <%= form_for :post_comment, url: post_comments_path, method: :post do |f| %>
-                  <%= f.text_area :content, id:"content", name: "content", style: "height:100px"%>
+                  <%= f.text_area :content, id:"content", placeholder: "Create your comment...", name: "content", style: "height:100px"%>
                   <%= f.hidden_field :name, placeholder: "Your name(enforce)..", class: "form-control"%>
                   <%= f.hidden_field :email, placeholder: "Email..", class: "form-control"%>
                   <%= f.hidden_field :post_id, value: "#{@post_show.id}", placeholder: "post_id.. ", class: "form-control"%>
@@ -108,7 +115,7 @@ li {
             <div class="info_comment">
               <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng Quản trị viên mới là đại diện của chúng tôi trả lời khách hàng.</div>
               <div class="count_comment">
-                <h3>Comment(<%= @post_show.post_comments.size%>)</h3>
+                <h3 style="color: #FF8B00">Comment (<%= @post_show.post_comments.size%>)</h3>
               </div>
               <div class="contents">
                 <div class="item_comment">
@@ -120,9 +127,12 @@ li {
                       <% else%>
                         <%= image_tag(post_show.user.avatar.url, class: "fa fa-user-circle-o fa-2x")%>
                       <% end%>
+                      <strong><%= post_show.user.name%></strong>
+                      <% if post_show.user.admin?%>
+                        <i id="admin">ADMIN</i>
+                      <% end %>
                       </span>
-                      <strong> <%= post_show.user.name%></strong>
-                      <div class="content"><%= post_show.content%></div>
+                      <div class="content"><%= post_show.content%></div> 
                       <div>
                         <ul class="action">
                           <div id="edit_comment_form">

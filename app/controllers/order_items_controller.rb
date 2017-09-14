@@ -21,12 +21,12 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
     @order_items = @order.order_items
-    flash[:success] = "Your cart was updated"
+    flash[:success] = "Your cart was updated successfully!!!"
     redirect_to cart_path
   end
 
   def destroy
-    # binding.pry
+    binding.pry
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy

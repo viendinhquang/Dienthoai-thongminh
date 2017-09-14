@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # before_action :authenticate_user!
   protect_from_forgery with: :exception
+  helper_method :current_order
   before_action :init_variable
   after_filter :store_location
-  helper_method :current_order
   include SessionHelper
   # def user_is_logged_in
   #   if !session[:current_user]
@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
+    # binding.pry
     if !session[:order_id].nil?
       Order.find(session[:order_id])
     else
