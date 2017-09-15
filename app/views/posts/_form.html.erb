@@ -1,0 +1,11 @@
+<div class="comments">
+              <label for="content">Comment :</label>
+              <p style="color:red">You must login to comment...</p>
+              <div class="form_comment">
+                <%= form_for :post_comment, url: post_comments_path, method: :post do |f| %>
+                  <%= f.text_area :content, id:"content", placeholder: "Create your comment...", name: "content", style: "height:100px"%>
+                  <%= f.hidden_field :post_id, value: "#{@post_show.id}", placeholder: "post_id.. ", class: "form-control"%>
+                  <%= f.button "SEND", value: "send", class: "submit_contact"%>
+                <% end%>
+              </div>
+            </div>

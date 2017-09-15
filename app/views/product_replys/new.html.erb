@@ -1,0 +1,15 @@
+<h1>ProductReplys#new</h1>
+<div class="comments">
+        <label for="content">Reply comment :</label>
+        <p style="color:red">You must login to reply comment...</p>
+        <div class="form_comment">
+          <%= form_for :product_reply, url: product_replys_path, method: :post do |f| %>
+            <%= f.text_area :content, id:"content", name: "content", placeholder: "Create your reply...", style: "height:100px"%>
+            <%= f.hidden_field :name, placeholder: "Your name(enforce)..", class: "form-control"%>
+            <%= f.hidden_field :email, placeholder: "Email..", class: "form-control"%>
+            <%binding.pry%>
+            <%= f.hidden_field :product_comment_id, value: "#{@product_show.id}", placeholder: "product_id.. ", class: "form-control"%>
+            <%= f.button "Submit", value: "submit", class: "submit_contact"%>
+          <% end%>
+        </div>
+      </div>

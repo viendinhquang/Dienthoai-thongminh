@@ -98,21 +98,9 @@ li {
               </div>
             </div>
 
-            <div class="comments">
-              <label for="content">Comment :</label>
-              <p style="color:red">You must login to comment...</p>
-              <div class="form_comment">
-                <%= form_for :post_comment, url: post_comments_path, method: :post do |f| %>
-                  <%= f.text_area :content, id:"content", placeholder: "Create your comment...", name: "content", style: "height:100px"%>
-                  <%= f.hidden_field :name, placeholder: "Your name(enforce)..", class: "form-control"%>
-                  <%= f.hidden_field :email, placeholder: "Email..", class: "form-control"%>
-                  <%= f.hidden_field :post_id, value: "#{@post_show.id}", placeholder: "post_id.. ", class: "form-control"%>
-                  <%= f.button "SEND", value: "send", class: "submit_contact"%>
-                <% end%>
-              </div>
-            </div>
+            <%= render 'posts/form' %>
 
-            <div class="info_comment">
+            <div class="well">
               <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng Quản trị viên mới là đại diện của chúng tôi trả lời khách hàng.</div>
               <div class="count_comment">
                 <h3 style="color: #FF8B00">Comment (<%= @post_show.post_comments.size%>)</h3>
@@ -132,7 +120,9 @@ li {
                         <i id="admin">ADMIN</i>
                       <% end %>
                       </span>
-                      <div class="content"><%= post_show.content%></div> 
+                      <blockquote>
+                        <div class="content"><%= post_show.content%></div>
+                      </blockquote>
                       <div>
                         <ul class="action">
                           <div id="edit_comment_form">
@@ -142,13 +132,14 @@ li {
                             <% end%>
                           </div>
                           <li>
-                            <a href=""><span class="glyphicon glyphicon-share"></span>Reply</a>
+                            <!-- <a href=""><span class="glyphicon glyphicon-share"></span>Reply</a> -->
+                            <%= link_to "Reply", new_post_post_reply_path(@post_show.id), class: "glyphicon glyphicon-share"%>
                           </li>
                           <li>
                             <a href=""><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
                           </li>
                           <li class="edit">
-                            <%= link_to 'Edit', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit", id: "edit_comment_btn"%>
+                            <%= link_to 'Edit', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit"%>
                             <!-- <button id="edit_comment_btn"><span class="glyphicon glyphicon-edit"></span></button> -->
                           </li>
                           <% if can? :update, @user%>
@@ -158,7 +149,8 @@ li {
                             <% if post_show.created_at > Time.now.beginning_of_day %>
                             <%="#{time_ago_in_words(post_show.created_at)} ago"%>
                             <% else %>
-                              <%= post_show.created_at.strftime("%b %d, %Y") %>
+                            <%= l(post_show.created_at, format: '%B, %d %Y %H:%M:%S') %>
+                              <!-- %= "#{post_show.created_at.in_time_zone(7).strftime("%b %d, %Y")} at #{post_show.created_at.in_time_zone(7).strftime("%H:%M")}" %> -->
                             <% end %>
                           </li>
 

@@ -1,0 +1,7 @@
+<div class="form_reply">
+                <%= form_for :post_reply, url: post_post_replies_path, method: :post do |f| %>
+                  <%= f.text_area :content, id:"content", placeholder: "Create your reply...", name: "content", style: "height:100px"%>
+                  <%= f.hidden_field :post_id, value: "#{@post_show.id}", placeholder: "post_id.. ", class: "form-control"%>
+                  <%= f.button "Reply", value: "reply", class: "submit_contact"%>
+                <% end%>
+              </div>
