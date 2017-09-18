@@ -44,11 +44,19 @@ Rails.application.routes.draw do
 
 
   resources :product_replys
-  resources :posts do
-    resources :post_replies
-  end
+  # resources :post_comments do
+  #   resources :post_replies
+  # end
+  # resources :posts do
+  #   resources :post_comments
+  # end
   resources :post_comments
   resources :product_comments
+  resources :posts do
+    resources :post_comments do
+      resources :post_replies
+    end
+  end
 
   # namespace :admin do
   # get 'type_colors/index'

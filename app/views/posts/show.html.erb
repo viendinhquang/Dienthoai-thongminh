@@ -123,7 +123,7 @@ li {
                       <blockquote>
                         <div class="content"><%= post_show.content%></div>
                       </blockquote>
-                      <div>
+                      <div class="end_page">
                         <ul class="action">
                           <div id="edit_comment_form">
                             <%= form_for :post_comment, url: post_comment_path(post_show.id), method: :put do |f| %>
@@ -132,15 +132,13 @@ li {
                             <% end%>
                           </div>
                           <li>
-                            <!-- <a href=""><span class="glyphicon glyphicon-share"></span>Reply</a> -->
-                            <%= link_to "Reply", new_post_post_reply_path(@post_show.id), class: "glyphicon glyphicon-share"%>
+                            <%= link_to "Reply", new_post_post_comment_post_reply_path(@post_show.id, post_show.id), class: "glyphicon glyphicon-share"%>
                           </li>
                           <li>
                             <a href=""><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
                           </li>
                           <li class="edit">
                             <%= link_to 'Edit', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit"%>
-                            <!-- <button id="edit_comment_btn"><span class="glyphicon glyphicon-edit"></span></button> -->
                           </li>
                           <% if can? :update, @user%>
                             <li class="delete"><%= link_to 'Delete', post_comment_path(id: post_show.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
@@ -150,12 +148,50 @@ li {
                             <%="#{time_ago_in_words(post_show.created_at)} ago"%>
                             <% else %>
                             <%= l(post_show.created_at, format: '%B, %d %Y %H:%M:%S') %>
-                              <!-- %= "#{post_show.created_at.in_time_zone(7).strftime("%b %d, %Y")} at #{post_show.created_at.in_time_zone(7).strftime("%H:%M")}" %> -->
                             <% end %>
                           </li>
 
-
                         </ul>
+                      </div>
+
+                      <div class="content_replies">
+                        <!-- % binding.pry %> -->
+                        <% unless post_show.post_replies.empty?%>
+                          <% post_show.post_replies.each do |post_reply|%>
+                          <span class="name">
+                            <% unless post_reply.user.avatar.url.nil?%>
+                              <%= image_tag(post_reply.user.avatar.url, class: 'img-circle', size: "15x15")%>
+                            <% else%>
+                              <%= image_tag(post_reply.user.avatar.url, class: "fa fa-user-circle-o")%>
+                            <% end%>
+                            <strong><%= post_reply.user.name%></strong>
+                            <% if post_reply.user.admin?%>
+                              <i id="admin">ADMIN</i>
+                            <% end %>
+                            </span>
+                            <blockquote>
+                              <div class="content"><%= post_reply.content%></div>
+                            </blockquote>
+                              <ul class="action">
+                              <li>
+                                <a href=""><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
+                              </li>
+                              <li class="edit">
+                                <%= link_to 'Edit', "edit_post_reply_path(post_reply.id)", class: "glyphicon glyphicon-edit"%>
+                              </li>
+                              <% if can? :update, @user%>
+                                <li class="delete"><%= link_to 'Delete', post_post_comment_post_reply_path(@post_show.id, post_show.id, post_reply.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                              <% end%>
+                              <li class="time_comment">
+                                <% if post_reply.created_at > Time.now.beginning_of_day %>
+                                <%="#{time_ago_in_words(post_reply.created_at)} ago"%>
+                                <% else %>
+                                <%= l(post_reply.created_at, format: '%B, %d %Y %H:%M:%S') %>
+                                <% end %>
+                              </li>
+                            </ul>
+                          <% end%>
+                        <% end %>
                       </div>
                     </div>
                   <% end%>
