@@ -16,6 +16,10 @@
 .content {
   padding: 0px 40px;
 }
+#reply_content {
+  height: 40px;
+  border-radius: 18px;
+}
 .comment {
   padding: 5px 0;
 }
@@ -29,6 +33,13 @@ li {
   font-weight: bold;
   padding: 3px 6px;
   border-radius: 3px;
+}
+.form_reply {
+    padding-left: 20px;
+    border-radius: 20px;
+  }
+blockquote {
+  font-size: 14px;
 }
 
 </style>
@@ -101,7 +112,7 @@ li {
             <%= render 'posts/form' %>
 
             <div class="well">
-              <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng Quản trị viên mới là đại diện của chúng tôi trả lời khách hàng.</div>
+              <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng ADMIN mới là đại diện của chúng tôi trả lời khách hàng.</div>
               <div class="count_comment">
                 <h3 style="color: #FF8B00">Comment (<%= @post_show.post_comments.size%>)</h3>
               </div>
@@ -111,9 +122,9 @@ li {
                     <div class="comment">
                       <span class="name">
                       <% unless post_show.user.avatar.url.nil?%>
-                        <%= image_tag(post_show.user.avatar.url, class: 'img-circle fa-3x', size: "30x30")%>
+                        <%= image_tag(post_show.user.avatar.url, class: 'img-circle fa-3x', size: "45x45")%>
                       <% else%>
-                        <%= image_tag(post_show.user.avatar.url, class: "fa fa-user-circle-o fa-2x")%>
+                        <%= image_tag(post_show.user.avatar.url, class: "fa fa-user-circle-o fa-3x")%>
                       <% end%>
                       <strong><%= post_show.user.name%></strong>
                       <% if post_show.user.admin?%>
@@ -122,7 +133,6 @@ li {
                       </span>
                       <blockquote>
                         <div class="content"><%= post_show.content%></div>
-                      </blockquote>
                       <div class="end_page">
                         <ul class="action">
                           <div id="edit_comment_form">
@@ -132,13 +142,16 @@ li {
                             <% end%>
                           </div>
                           <li>
+                            <label class="glyphicon glyphicon-share" for="reply_content">Reply</label>
+                          </li>
+                          <li>
                             <%= link_to "Reply", new_post_post_comment_post_reply_path(@post_show.id, post_show.id), class: "glyphicon glyphicon-share"%>
                           </li>
                           <li>
                             <a href=""><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
                           </li>
                           <li class="edit">
-                            <%= link_to 'Edit', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit"%>
+                            <%= link_to 'Edit', edit_post_comment_path(post_show.id), class: "glyphicon glyphicon-edit", id: "edit_comment_btn"%>
                           </li>
                           <% if can? :update, @user%>
                             <li class="delete"><%= link_to 'Delete', post_comment_path(id: post_show.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
@@ -153,25 +166,26 @@ li {
 
                         </ul>
                       </div>
+                      </blockquote>
 
                       <div class="content_replies">
+                        <blockquote>
+                        <h4 style="color: #FF8B00">Replies (<%= post_show.post_replies.size%>)</h4>
                         <!-- % binding.pry %> -->
                         <% unless post_show.post_replies.empty?%>
                           <% post_show.post_replies.each do |post_reply|%>
                           <span class="name">
                             <% unless post_reply.user.avatar.url.nil?%>
-                              <%= image_tag(post_reply.user.avatar.url, class: 'img-circle', size: "15x15")%>
+                              <%= image_tag(post_reply.user.avatar.url, class: 'img-circle', size: "30x30")%>
                             <% else%>
-                              <%= image_tag(post_reply.user.avatar.url, class: "fa fa-user-circle-o")%>
+                              <%= image_tag(post_reply.user.avatar.url, class: "fa fa-user-circle-o fa-2x")%>
                             <% end%>
                             <strong><%= post_reply.user.name%></strong>
                             <% if post_reply.user.admin?%>
                               <i id="admin">ADMIN</i>
                             <% end %>
                             </span>
-                            <blockquote>
                               <div class="content"><%= post_reply.content%></div>
-                            </blockquote>
                               <ul class="action">
                               <li>
                                 <a href=""><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
@@ -179,8 +193,10 @@ li {
                               <li class="edit">
                                 <%= link_to 'Edit', "edit_post_reply_path(post_reply.id)", class: "glyphicon glyphicon-edit"%>
                               </li>
-                              <% if can? :update, @user%>
-                                <li class="delete"><%= link_to 'Delete', post_post_comment_post_reply_path(@post_show.id, post_show.id, post_reply.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                              <% binding.pry%>
+                              <% if @user == current_user%>
+                              <li class="delete"><%= link_to 'Delete', post_post_comment_post_reply_path(@post_show.id, post_show.id, post_reply.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                                                                         
                               <% end%>
                               <li class="time_comment">
                                 <% if post_reply.created_at > Time.now.beginning_of_day %>
@@ -192,7 +208,27 @@ li {
                             </ul>
                           <% end%>
                         <% end %>
+                                <!-- % binding.pry%> -->
+                                <span class="name">
+                                  <% unless current_user.avatar.url.nil?%>
+                                    <%= image_tag(current_user.avatar.url, class: 'img-circle', size: "30x30")%>
+                                  <% else%>
+                                    <%= image_tag(current_user.avatar.url, class: "fa fa-user-circle-o fa-2x")%>
+                                  <% end%>
+                                  <strong><%= current_user.name%></strong>
+                                  <% if current_user.admin?%>
+                                    <i id="admin">ADMIN</i>
+                                  <% end %>
+                                </span>
+                                <div class="form_reply">
+                                  <%= form_for :post_reply, url: post_post_comment_post_replies_path(@post_show.id, post_show.id), method: :post do |f| %>
+                                    <%= f.text_area :content, id:"reply_content", placeholder: "Create your reply...", name: "content", style: ""%>
+                                    <%= f.button "Reply", value: "reply", class: "btn btn-primary"%>
+                                  <% end%>
+                                </div>
+                            </blockquote>
                       </div>
+                      <hr>
                     </div>
                   <% end%>
                 </div>
