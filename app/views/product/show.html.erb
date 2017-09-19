@@ -1,3 +1,39 @@
+<style type="text/css">
+  .comment_form {
+    font-weight: normal;
+  }
+  h1 {
+    color: #FF8B00;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  /*.index {
+    overflow: auto;
+    padding: 0px;
+    margin-right: 10px;
+}*/
+.content {
+  padding: 0px 40px;
+}
+.comment {
+  padding: 5px 0;
+}
+li {
+  padding: 10px;
+  display: inline;
+}
+#admin {
+  background-color: #FF8B00;
+  color: white;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+</style>
 <div class="layout main_wrapper _2pi4 mbl">
   <div class="breadcrumbs mbm">
     <div class="breadcrumb clearfix">
@@ -13,7 +49,7 @@
   <div class="main-full-column">
     <div class="product heading row mbl">
       <div class="col-left col-md-3">
-        <h1><%= @product.name %></h1>
+        <h1><%= @product.name %> <%= @product.type_colors.first.name %></h1>
         <p class="basic_price"> <%= @product.price %> USD</p>
         <p><a class="status_store"> (Gọi giữ hàng - 1234.5678) </a></p>
       </div>
@@ -34,18 +70,8 @@
                 <label class="checkbox-inline">
                   <input id="s_fac" type="checkbox" value="" class="sev_check">
                 </label>
-                <!-- <a href="http://didongthongminh.vn/images/products/2015/04/20/original/6-gold_ok_1426732923_1429556510.jpg" rel="zoom-id:Zoomer" class="Selector MagicThumb-swap" onclick="load_quick(this);" data-price="+300000" data-type="color" data-id="891" rev="http://didongthongminh.vn/images/products/2015/04/20/large/6-gold_ok_1426732923_1429556510.jpg" style="outline: 0px; display: inline-block;" id="mt-1456584248814">
-                  <span class="color-item" data-toggle="tooltip" data-original-title="+300.000 vnđ" style="background-color: #ffff00"></span>
-                </a>
-                <a href="http://didongthongminh.vn/images/products/2015/04/20/original/6-silver_ok_1426732923_1429556510.jpg" rel="zoom-id:Zoomer" class="Selector MagicThumb-swap" onclick="load_quick(this);" data-price="+100000" data-type="color" data-id="895" rev="http://didongthongminh.vn/images/products/2015/04/20/large/6-silver_ok_1426732923_1429556510.jpg" style="outline: 0px; display: inline-block;" id="mt-845440647880">
-                  <span class="color-item" data-toggle="tooltip" data-original-title="+100.000 vnđ" style="background-color: #dad8d8"></span>
-                </a>
-                <a href="http://didongthongminh.vn/images/products/2015/04/20/original/6-gray_ok_1426732923_1429556510.jpg" rel="zoom-id:Zoomer" class="Selector MagicThumb-swap active" onclick="load_quick(this);" data-price="" data-type="color" data-id="896" rev="http://didongthongminh.vn/images/products/2015/04/20/large/6-gray_ok_1426732923_1429556510.jpg" style="outline: 0px; display: inline-block;" id="mt-947648017230">
-                  <span class="color-item" data-toggle="tooltip" data-original-title="+0 vnđ" style="background-color: #666666"></span>
-                </a> -->
               </div>
             </div>
-
 
             <div class="center">
               <div class="textlabel"><span>Chọn bảo hành:</span></div>
@@ -98,10 +124,24 @@
         <div class="product-image">
           <%= link_to image_tag @product.type_colors.first.picture %>
         </div>
+
         <div class="list-product-image">
           <% @product.type_colors.each do |type_color| %>
             <%= image_tag type_color.picture, class: "image"%>
           <% end %>
+        </div>
+        <hr>
+        <div class="col-xs-4">
+          <%= form_for :order_item, url: order_items_path, method: :post do |f| %>
+            <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency @product.price %></span></h4>
+            <div class="input-group">
+              <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+              <div class="input-group-btn">
+                <%= f.hidden_field :product_id, value: @product.id %>
+                <%= f.submit "Add to Cart", class: "btn btn-warning" %>
+              </div>
+            </div>
+            <% end %>
         </div>
       </div>
       <div class="righttext col-md-6">
@@ -125,6 +165,76 @@
           </div>
         </div>
       </div>
+    </div>
+    <hr>
+    <div class="comment_form">
+
+      <!-- %= render 'product/form_comment' %> -->
+      <%= render 'product/comment' %>
+
+      <div class="well">
+        <div class="title_note">Lưu ý: Chỉ những tài khoản có biểu tượng Quản trị viên mới là đại diện của chúng tôi trả lời khách hàng.</div>
+        <div class="count_comment">
+          <h3 style="color: #FF8B00">Comment (<%= @product.product_comments.size%>)
+          </h3>
+        </div>
+        <div class="contents">
+          <div class="item_comment">
+            <% @product.product_comments.order("created_at DESC").each do |product_show|%>
+              <div class="comment">
+                <span class="name">
+                  <% unless product_show.user.avatar.url.nil?%>
+                    <%= image_tag(product_show.user.avatar.url, class: 'img-circle fa-3x',size: "30x30")%>
+                  <% else%>
+                    <%= image_tag(product_show.user.avatar.url, class: "fa fa-user-circle-o fa-2x")%>
+                  <% end%>
+                <strong><%= product_show.user.name%></strong>
+                <% if product_show.user.admin?%>
+                  <i id="admin">ADMIN</i>
+                <% end %>
+                </span>
+                <blockquote>
+                  <div class="content"><%= product_show.content%></div>
+                  <!-- <p>%= product_show.content %></p> -->
+                </blockquote>
+                  <div>
+                    <ul class="action">
+                      <div id="edit_comment_form">
+                        <%= form_for :product_comment, url: product_comment_path(product_show.id), method: :put do |f| %>
+                          <%= f.text_area :content, id:"content", name: "content", style: "height:50px"%>
+                          <%= f.button "Update", value: "update", class: "edit_comment_btn"%>
+                        <% end%>
+                      </div>
+                      <li>
+                        <%= link_to "Reply", new_product_reply_path, class: "glyphicon glyphicon-share", method: :get%>
+                      </li>
+                      <li>
+                        <a href=""><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
+                      </li>
+                      <li class="edit">
+                        <%= link_to 'Edit', edit_product_comment_path(product_show.id), class: "glyphicon glyphicon-edit", id: "edit_comment_btn"%>
+                      </li>
+                      <% if can? :update, @user%>
+                        <li class="delete"><%= link_to 'Delete', product_comment_path(id: product_show.id), data: {confirm: "Are you sure?"}, method: :delete, class: "glyphicon glyphicon-trash"%></li>
+                      <% end%>
+                      <li class="time_comment">
+                      <!-- % binding.pry %> -->
+                        <% if product_show.created_at > Time.now.beginning_of_day %>
+                          <%="#{time_ago_in_words(product_show.created_at)} ago"%>
+                        <% else %>
+                        <%= l(product_show.created_at, format: '%B, %d %Y %H:%M:%S') %>
+                          <!-- %= "#{product_show.created_at.in_time_zone(7).strftime("%b %d, %Y")} at #{product_show.created_at.in_time_zone(7).strftime("%H:%M")}" %> -->
+                        <% end %>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+              <% end%>
+            </div>
+
+            <!-- %= render 'comments/form' %> -->
+
     </div>
   </div>
 </div>

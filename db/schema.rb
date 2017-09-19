@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901032609) do
+ActiveRecord::Schema.define(version: 20170914030233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,31 @@ ActiveRecord::Schema.define(version: 20170901032609) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "product_id"
+    t.string   "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "quantity"
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "address"
+    t.string   "order_status_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -107,6 +132,7 @@ ActiveRecord::Schema.define(version: 20170901032609) do
     t.integer  "sub_category_id"
     t.integer  "operating_system_id"
     t.integer  "producer_id"
+    t.boolean  "active"
   end
 
   create_table "sub_categories", force: :cascade do |t|
@@ -173,7 +199,6 @@ ActiveRecord::Schema.define(version: 20170901032609) do
     t.inet     "last_sign_in_ip"
     t.boolean  "admin"
     t.string   "password_confirmation"
-    t.string   "password_digest"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

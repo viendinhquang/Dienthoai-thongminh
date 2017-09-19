@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :logged_in_user
+  # before_action :logged_in_user
   before_action :correct_user, only: [:edit, :update, :destroy]
   # before_action :admin_user, only: :destroy
   def new
@@ -27,12 +27,12 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   def update
-    binding.pry
     @user = User.find(params[:id])
       if @user.update_attributes(user_params)
         flash[:success] = "User updated!"
         redirect_to  admin_users_path
       else
+        flash[:danger] = "Check your email/password again!"
         render 'edit'
       end
   end

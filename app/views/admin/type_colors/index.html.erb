@@ -13,7 +13,7 @@
       <tr>
         <th><%= link_to type_color.name, admin_type_color_path(type_color.id)%></th>
         <th><%= type_color.color_code%></th>
-        <td><%= link_to type_color.product.name, admin_product_path(type_color.product.id)%></td>
+        <td><%= link_to type_color.product.name, admin_product_path(type_color.product.id) unless type_color.product.nil?%></td>
         <td><%= link_to image_tag(type_color.picture.url, :height => "150", :crop => :fill), admin_type_color_path(type_color.id) if type_color.picture? %></td>
 
         <div class="btn btn-group">

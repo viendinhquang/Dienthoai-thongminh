@@ -1,4 +1,28 @@
 Rails.application.routes.draw do
+  # get 'post_replies/new'
+
+  # get 'post_replies/create'
+
+  # get 'post_replies/index'
+
+  # get 'product_replys/new'
+
+  # get 'product_replys/create'
+
+  # get 'product_replys/index'
+
+  get 'product_comments/new'
+
+  get 'product_comments/index'
+
+  # get 'order_items/create'
+
+  # get 'order_items/update'
+
+  # get 'order_items/destroy'
+
+  # get 'carts/show'
+
   get 'searchs/index'
 
   get 'post/index'
@@ -9,6 +33,8 @@ Rails.application.routes.draw do
   get 'errors/not_found'
 
   resources :product
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 
   # resources :post do
   # collection do
@@ -17,8 +43,20 @@ Rails.application.routes.draw do
   # end
 
 
-  resources :posts
+  resources :product_replys
+  # resources :post_comments do
+  #   resources :post_replies
+  # end
+  # resources :posts do
+  #   resources :post_comments
+  # end
   resources :post_comments
+  resources :product_comments
+  resources :posts do
+    resources :post_comments do
+      resources :post_replies
+    end
+  end
 
   # namespace :admin do
   # get 'type_colors/index'

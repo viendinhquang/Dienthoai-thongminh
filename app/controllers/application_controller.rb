@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # before_action :authenticate_user!
   protect_from_forgery with: :exception
+  helper_method :current_order
   before_action :init_variable
   after_filter :store_location
   include SessionHelper
@@ -21,6 +22,15 @@ class ApplicationController < ActionController::Base
   # store last url as long as it isn't a /users path
     # binding.pry
     session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
+  end
+
+  def current_order
+    # binding.pry
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
   end
 
 #   def store_location
